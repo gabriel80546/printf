@@ -1,0 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
+/*   Updated: 2021/03/05 10:19:33 by gabriel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../ft_printf.h"
+#include "../libft/libft.h"
+
+int main()
+{
+	printf("Hello World!\n");
+	printf("saida = %d\n", ft_printf("Hello World!\n"));
+	return (0);
+}
