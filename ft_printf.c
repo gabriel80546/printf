@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/07 09:27:02 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/07 09:58:30 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,21 @@ t_print	get_number(t_print print, char **output, va_list args)
 	char	*temp;
 
 	saida = print;
-
 	temp = ft_itoa(va_arg(args, int));
 	*output = ft_strappend(*output, temp);
 	free(temp);
-	saida.i += 1;
+	saida.i -= 1;
 	saida.estado = 1;
+	return (saida);
+}
+
+t_print	choose_action(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+
+	saida = print;
+	if(saida.atual_char == 'd')
+		saida.estado = 3;
 	return (saida);
 }
 
@@ -72,10 +81,7 @@ t_print	until_percent(t_print print, char **output, va_list args)
 	if (saida.atual_char != '%')
 		*output = ft_append(*output, saida.atual_char);
 	else
-	{
-		saida.i -= 1;
 		saida.estado = 2;
-	}
 	return (saida);
 }
 
@@ -88,16 +94,18 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
-		printf("*output = '%s'(%ld)\n", *output, ft_strlen(*output));
+		// printf("*output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado);
 		if (print.estado == 1)
-			print = until_percent(print, output, args); 
+			print = until_percent(print, output, args);
 		else if (print.estado == 2)
+			print = choose_action(print, output, args);
+		else if (print.estado == 3)
 			print = get_number(print, output, args);
 		else
 			return (-1);
 		print.i += 1;
 	}
-	printf("*output = '%s'(%ld)\n", *output, ft_strlen(*output));
+	// printf("*output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado);
 	return (0);
 }
 

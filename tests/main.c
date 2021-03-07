@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/06 11:30:48 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/07 09:55:39 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 int main()
 {
 	printf   ("numero normal = %d\n", 123);
-	ft_printf("numero normal = %d\n", 234);
+	ft_printf("numero normal = %d; %d\n", 234, 157);
 	return (0);
 }
