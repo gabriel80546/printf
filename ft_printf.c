@@ -6,12 +6,24 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/07 10:32:31 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/07 10:53:16 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+
+t_flags	ft_init_flags(void)
+{
+	t_flags saida;
+
+	saida.min_width = -1;
+	saida.max_width = -1;
+	saida.minus = -1;
+	saida.asteristc = -1;
+	saida.pad_zeros = -1;
+	return (saida);
+}
 
 char	*ft_append(char *str, char caracter)
 {
@@ -106,6 +118,7 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 
 	print.i = 0;
 	print.estado = 1;
+	print.flags = ft_init_flags();
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];

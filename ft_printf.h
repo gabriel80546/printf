@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:33:30 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/07 09:12:06 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/07 10:51:17 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,21 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
+typedef struct	s_flags
+{
+	int			min_width;
+	int			max_width;
+	int			pad_zeros;
+	int			minus;
+	int			asteristc;
+}				t_flags;
+
 typedef struct	s_print
 {
 	int			i;
 	int			estado;
 	char		atual_char;
+	t_flags		flags;
 }				t_print;
 
 int		ft_printf(const char *, ...);
