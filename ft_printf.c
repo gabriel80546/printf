@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/07 09:58:30 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/07 10:32:31 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,17 @@ t_print	get_number(t_print print, char **output, va_list args)
 	return (saida);
 }
 
+t_print	get_str(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+
+	saida = print;
+	*output = ft_strappend(*output, va_arg(args, char *));
+	saida.i -= 1;
+	saida.estado = 1;
+	return (saida);
+}
+
 t_print	choose_action(t_print print, char **output, va_list args)
 {
 	t_print	saida;
@@ -70,6 +81,10 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	saida = print;
 	if(saida.atual_char == 'd')
 		saida.estado = 3;
+	else if(saida.atual_char == 'i')
+		saida.estado = 3;
+	else if(saida.atual_char == 's')
+		saida.estado = 4;
 	return (saida);
 }
 
@@ -101,6 +116,8 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			print = choose_action(print, output, args);
 		else if (print.estado == 3)
 			print = get_number(print, output, args);
+		else if (print.estado == 4)
+			print = get_str(print, output, args);
 		else
 			return (-1);
 		print.i += 1;
