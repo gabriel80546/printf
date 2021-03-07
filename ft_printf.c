@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/07 11:07:43 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/07 11:22:43 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_print	get_number(t_print print, char **output, va_list args)
 	char	*temp;
 
 	saida = print;
+	// printf("saida.flags.min_width = %d\n", saida.flags.min_width);
 	temp = ft_itoa(va_arg(args, int));
 	*output = ft_strappend(*output, temp);
 	free(temp);
@@ -97,6 +98,8 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		saida.estado = 3;
 	else if (saida.atual_char == 's')
 		saida.estado = 4;
+	else if (saida.atual_char == '.')
+		saida.flags.min_width = 0;
 	return (saida);
 }
 
