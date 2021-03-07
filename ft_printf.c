@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/06 11:05:49 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/07 09:27:02 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,32 +49,85 @@ char	*ft_strappend(char *str, char *to_append)
 	return (saida);
 }
 
+t_print	get_number(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+	char	*temp;
+
+	saida = print;
+
+	temp = ft_itoa(va_arg(args, int));
+	*output = ft_strappend(*output, temp);
+	free(temp);
+	saida.i += 1;
+	saida.estado = 1;
+	return (saida);
+}
+
+t_print	until_percent(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+
+	saida = print;
+	if (saida.atual_char != '%')
+		*output = ft_append(*output, saida.atual_char);
+	else
+	{
+		saida.i -= 1;
+		saida.estado = 2;
+	}
+	return (saida);
+}
+
+int		ft_printf_parse(const char *str, char **output, va_list args)
+{
+	t_print	print;
+
+	print.i = 0;
+	print.estado = 1;
+	while (str[print.i] != '\0')
+	{
+		print.atual_char = str[print.i];
+		printf("*output = '%s'(%ld)\n", *output, ft_strlen(*output));
+		if (print.estado == 1)
+			print = until_percent(print, output, args); 
+		else if (print.estado == 2)
+			print = get_number(print, output, args);
+		else
+			return (-1);
+		print.i += 1;
+	}
+	printf("*output = '%s'(%ld)\n", *output, ft_strlen(*output));
+	return (0);
+}
+
 int		ft_printf(const char *str, ...)
 {
 	char	*output;
-	int		i;
+	int		saida;
+	va_list	args;
 
-    va_list arguments;
-    va_start(arguments, str);
-	// printf("va_arg(arguments, int) = %d\n", va_arg(arguments, int));
-
-	i = 0;
+	va_start(args, str);
 	output = ft_calloc(1, 1);
-	while (str[i] != '\0')
-	{
-		// printf("output = '%s'\n", output);
-		if (str[i] != '%')
-			output = ft_append(output, str[i]);
-		else
-		{
-			output = ft_strappend(output, ft_itoa(va_arg(arguments, int)));
-			i++;
-		}
-		i++;
-	}
+	saida = ft_printf_parse(str, &output, args);
 	ft_putstr_fd(output, 1);
 	free(output);
+	va_end(args);
+	return (saida);
+}
 
-    va_end(arguments);
-	return (0);
+/*
+**	"no lugar de 'done = 1;' estaria essa linha"
+**	done = vfprintf_internal_originial (stdout, format, arg, 0);
+*/
+
+int		printf_original(const char *format, ...)
+{
+	va_list	arg;
+	int		done;
+
+	va_start(arg, format);
+	done = 1;
+	va_end(arg);
+	return (done);
 }
