@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/07 10:53:16 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/07 11:07:43 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	t_print	saida;
 
 	saida = print;
-	if(saida.atual_char == 'd')
+	if (saida.atual_char == 'd')
 		saida.estado = 3;
-	else if(saida.atual_char == 'i')
+	else if (saida.atual_char == 'i')
 		saida.estado = 3;
-	else if(saida.atual_char == 's')
+	else if (saida.atual_char == 's')
 		saida.estado = 4;
 	return (saida);
 }
@@ -155,17 +155,14 @@ int		ft_printf(const char *str, ...)
 }
 
 /*
-**	"no lugar de 'done = 1;' estaria essa linha"
-**	done = vfprintf_internal_originial (stdout, format, arg, 0);
+**	int		printf_original(const char *format, ...)
+**	{
+**		va_list	arg;
+**		int		done;
+**
+**		va_start(arg, format);
+**		done = vfprintf_internal_originial (stdout, format, arg, 0);
+**		va_end(arg);
+**		return (done);
+**	}
 */
-
-int		printf_original(const char *format, ...)
-{
-	va_list	arg;
-	int		done;
-
-	va_start(arg, format);
-	done = 1;
-	va_end(arg);
-	return (done);
-}
