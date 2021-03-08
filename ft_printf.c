@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/08 07:27:38 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/08 08:18:28 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,24 +90,22 @@ t_print	get_str(t_print print, char **output, va_list args)
 t_print	choose_action(t_print print, char **output, va_list args)
 {
 	t_print	saida;
-	int		*seg;
 
-	seg = 0;
 	saida = print;
 	if (saida.choose.estado == 1)
 	{
+		// printf("99: saida.atual_char = '%c'; saida.choose.n_auxiliar = %d\n", saida.atual_char, saida.choose.n_auxiliar);
 		if (saida.atual_char == 'd')
 			saida.estado = GET_NUMBER;
 		else if (saida.atual_char == 'i')
 			saida.estado = GET_NUMBER;
 		else if (saida.atual_char == 's')
 			saida.estado = GET_STR;
-		else if (saida.atual_char == '0' && saida.flags.pad_zeros == -1)
-			saida.flags.pad_zeros = 1;
-		else if (saida.atual_char >= '1' && saida.atual_char <= '9')
+		else if (saida.atual_char == '0')
 		{
+			saida.flags.pad_zeros = 1;
 			saida.choose.estado = 2;
-			saida.i -= 1;
+			saida.choose.auxiliar = (char *)calloc(1, 1);
 		}
 		else
 		{
@@ -119,10 +117,18 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	}
 	else if (saida.choose.estado == 2)
 	{
-		printf("antes do segfault\n");
-		printf("saida.atual_char = '%c'\n", saida.atual_char);
-		*seg = 123;
-		printf("depois do segfault\n");
+		if (saida.atual_char >= '0' && saida.atual_char <= '9')
+		{
+			// printf("122: saida.atual_char = '%c'\n", saida.atual_char);
+			saida.choose.auxiliar = ft_append(saida.choose.auxiliar, saida.atual_char);
+		}
+		else
+		{
+			saida.choose.estado = 1;
+			saida.choose.n_auxiliar = ft_atoi(saida.choose.auxiliar);
+			free(saida.choose.auxiliar);
+			saida.i -= 1;
+		}
 	}
 	return (saida);
 }

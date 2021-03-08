@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:33:30 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/08 06:56:57 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/08 07:54:22 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_choose
 	int			pos_inicial;
 	int			estado;
 	char		*auxiliar;
+	int			n_auxiliar;
 }				t_choose;
 
 typedef struct	s_print
