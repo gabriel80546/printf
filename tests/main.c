@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/07 11:21:59 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/08 05:29:08 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@
 
 int main()
 {
-	printf   ("numero normal = %d; %i; '%s'\n", 234, 157, "teste");
-	ft_printf("numero normal = %d; %.i; '%s'\n", 234, 157, "teste");
+
+	printf   ("%d; %i; '%s'\n", 234, 351, "teste");
+	ft_printf("%d; %i; '%s'\n", 234, 351, "teste");
+
+	printf   ("%d; '%s'\n", 351, "teste");
+	ft_printf("%d; '%s'\n", 351, "teste");
+
+	printf   ("%00d\n", 123);
+	// printf   ("%010.1d %d\n", 123);
 	return (0);
 }
