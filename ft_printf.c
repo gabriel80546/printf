@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/07 11:22:43 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/08 07:27:38 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_print	get_number(t_print print, char **output, va_list args)
 	*output = ft_strappend(*output, temp);
 	free(temp);
 	saida.i -= 1;
-	saida.estado = 1;
+	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
 
@@ -81,25 +81,49 @@ t_print	get_str(t_print print, char **output, va_list args)
 	t_print	saida;
 
 	saida = print;
-	*output = ft_strappend(*output, va_arg(args, char *));
+	*output = ft_strappend(*output, va_arg(args, char*));
 	saida.i -= 1;
-	saida.estado = 1;
+	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
 
 t_print	choose_action(t_print print, char **output, va_list args)
 {
 	t_print	saida;
+	int		*seg;
 
+	seg = 0;
 	saida = print;
-	if (saida.atual_char == 'd')
-		saida.estado = 3;
-	else if (saida.atual_char == 'i')
-		saida.estado = 3;
-	else if (saida.atual_char == 's')
-		saida.estado = 4;
-	else if (saida.atual_char == '.')
-		saida.flags.min_width = 0;
+	if (saida.choose.estado == 1)
+	{
+		if (saida.atual_char == 'd')
+			saida.estado = GET_NUMBER;
+		else if (saida.atual_char == 'i')
+			saida.estado = GET_NUMBER;
+		else if (saida.atual_char == 's')
+			saida.estado = GET_STR;
+		else if (saida.atual_char == '0' && saida.flags.pad_zeros == -1)
+			saida.flags.pad_zeros = 1;
+		else if (saida.atual_char >= '1' && saida.atual_char <= '9')
+		{
+			saida.choose.estado = 2;
+			saida.i -= 1;
+		}
+		else
+		{
+			*output = ft_append(*output, '%');
+			saida.i = saida.choose.pos_inicial;
+			saida.estado = UNTIL_PERCENT;
+			saida.choose.estado = 1;
+		}
+	}
+	else if (saida.choose.estado == 2)
+	{
+		printf("antes do segfault\n");
+		printf("saida.atual_char = '%c'\n", saida.atual_char);
+		*seg = 123;
+		printf("depois do segfault\n");
+	}
 	return (saida);
 }
 
@@ -111,7 +135,12 @@ t_print	until_percent(t_print print, char **output, va_list args)
 	if (saida.atual_char != '%')
 		*output = ft_append(*output, saida.atual_char);
 	else
-		saida.estado = 2;
+	{
+		saida.flags = ft_init_flags();
+		saida.choose.pos_inicial = saida.i;
+		saida.estado = CHOOSE_ACTION;
+		saida.choose.estado = 1;
+	}
 	return (saida);
 }
 
@@ -120,19 +149,18 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 	t_print	print;
 
 	print.i = 0;
-	print.estado = 1;
-	print.flags = ft_init_flags();
+	print.estado = UNTIL_PERCENT;
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
 		// printf("*output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado);
-		if (print.estado == 1)
+		if (print.estado == UNTIL_PERCENT)
 			print = until_percent(print, output, args);
-		else if (print.estado == 2)
+		else if (print.estado == CHOOSE_ACTION)
 			print = choose_action(print, output, args);
-		else if (print.estado == 3)
+		else if (print.estado == GET_NUMBER)
 			print = get_number(print, output, args);
-		else if (print.estado == 4)
+		else if (print.estado == GET_STR)
 			print = get_str(print, output, args);
 		else
 			return (-1);
