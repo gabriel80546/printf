@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/09 10:31:43 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/09 14:27:12 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int main()
 	printf   ("26: %d; '%s'\n", 352, "teste2");
 	ft_printf("27: %d; '%s'\n", 352, "teste2");
 
-	printf   ("29: %05d; '%s'\n", 353, "teste3");
-	ft_printf("30: %05d; '%s'\n", 353, "teste3");
+	printf   ("29: %052d; '%s'\n", 353, "teste3");
+	ft_printf("30: %052d; '%s'\n", 353, "teste3");
 
 	printf   ("32: %1.2d; '%s'\n", 354, "teste4");
 	ft_printf("33: %1.2d; '%s'\n", 354, "teste4");
