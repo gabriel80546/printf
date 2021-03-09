@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/08 08:18:28 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/09 11:03:07 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	saida = print;
 	if (saida.choose.estado == 1)
 	{
-		// printf("99: saida.atual_char = '%c'; saida.choose.n_auxiliar = %d\n", saida.atual_char, saida.choose.n_auxiliar);
+		printf("99: saida.atual_char = '%c'; saida.choose.n_auxiliar = %d\n", saida.atual_char, saida.choose.n_auxiliar);
 		if (saida.atual_char == 'd')
 			saida.estado = GET_NUMBER;
 		else if (saida.atual_char == 'i')
@@ -119,7 +119,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	{
 		if (saida.atual_char >= '0' && saida.atual_char <= '9')
 		{
-			// printf("122: saida.atual_char = '%c'\n", saida.atual_char);
+			printf("122: saida.atual_char = '%c'\n", saida.atual_char);
 			saida.choose.auxiliar = ft_append(saida.choose.auxiliar, saida.atual_char);
 		}
 		else
@@ -156,10 +156,11 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 
 	print.i = 0;
 	print.estado = UNTIL_PERCENT;
+	printf("159: str = '%s'\n", str);
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
-		// printf("*output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado);
+		printf("163: *output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado);
 		if (print.estado == UNTIL_PERCENT)
 			print = until_percent(print, output, args);
 		else if (print.estado == CHOOSE_ACTION)
@@ -172,7 +173,7 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			return (-1);
 		print.i += 1;
 	}
-	// printf("*output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado);
+	printf("176: *output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado);
 	return (0);
 }
 

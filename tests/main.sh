@@ -3,5 +3,5 @@ NC='\033[0m'
 
 printf "${GREEN}"
 make -C ..
-gcc -g ../ft_printf.o -w main.c -o main -L../libft -lft
+gcc -g ../ft_printf.o main.c -o main -L../libft -lft
 printf "${NC}"

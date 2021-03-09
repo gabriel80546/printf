@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -g -Wall
+#CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror
 CC = gcc
 
 SOURCES = ft_printf.c
