@@ -6,22 +6,22 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/10 10:18:32 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/10 10:33:35 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int debug = -1;
+int debug = 0;
 int *seg = NULL;
 
 t_flags	ft_init_flags(void)
 {
 	t_flags saida;
 
-	saida.n_left      = 0;
-	saida.n_right     = 0;
+	saida.n_left      = -2;
+	saida.n_right     = -2;
 	saida.pad_zeros   = 0;
 	saida.minus       = 0;
 	saida.precision   = 0;
@@ -125,7 +125,7 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 		{
 			if (saida.flags.precision == 0)
 				saida.flags.n_left = -1;
-			else if (saida.flags.precision == 1 && saida.flags.n_right == 0)
+			else if (saida.flags.precision == 1 && saida.flags.n_right == -2)
 				saida.flags.n_right = -1;
 		}
 		else if (saida.atual_char == '0' && saida.flags.pad_zeros != 1)
@@ -138,7 +138,7 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 			saida.p_flags.auxiliar = ft_calloc(1, 1);
 			if (saida.flags.precision == 0)
 				saida.p_flags.left_or_right = 1;
-			else if (saida.flags.precision == 1 && saida.flags.n_right == 0)
+			else if (saida.flags.precision == 1 && saida.flags.n_right == -2)
 				saida.p_flags.left_or_right = 2;
 			else
 				saida.p_flags.left_or_right = 3;
