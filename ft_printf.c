@@ -6,14 +6,14 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/10 10:33:35 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/10 11:21:10 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int debug = 0;
+int debug = -1;
 int *seg = NULL;
 
 t_flags	ft_init_flags(void)
@@ -41,6 +41,28 @@ void	ft_print_flags(char *append, t_flags flags)
 	printf("%sflags.precision   = %d\n", append, flags.precision);
 }
 
+int	ft_printf_itoa_log(long n)
+{
+	int contador;
+	int temp;
+
+	contador = 0;
+	if (n < 0)
+	{
+		contador++;
+		n = -n;
+	}
+	temp = n;
+	while (n > 9)
+	{
+		n = n / 10;
+		contador++;
+	}
+	n = temp;
+	contador++;
+	return (contador + 1);
+}
+
 char	*ft_append(char *str, char caracter)
 {
 	char	*saida;
@@ -62,7 +84,7 @@ char	*ft_strappend(char *str, char *to_append)
 	int		len_str;
 	int		len_append;
 
-	if (debug > 2) { printf("54: to_append = %p\n", to_append); }
+	if (debug > 2) { printf("87: to_append = %p\n", to_append); }
 	len_str = ft_strlen(str);
 	len_append = ft_strlen(to_append);
 	saida = (char *)malloc(len_str + len_append + 2);
@@ -82,15 +104,35 @@ t_print	get_number(t_print print, char **output, va_list args)
 {
 	t_print	saida;
 	char	*temp;
+	int		n;
+	int		log;
+	int		i;
 
 	saida = print;
-	if (debug > -1) { ft_print_flags("87: saida.", saida.flags); }
-	temp = ft_itoa(va_arg(args, int));
-	if (debug > 2) { printf("77: temp = %p\n", temp); }
-	if (debug > 2) { printf("78: temp = '%s'\n", temp); }
+	if (debug > 2) { ft_print_flags("109: saida.", saida.flags); }
+
+	if (debug > -1) { printf("saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > -1) { printf("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	n = va_arg(args, int);
+	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
+	{
+		log = ft_printf_itoa_log((long)n);
+		i = 0;
+		while ((i + log - 1) < saida.flags.n_left)
+		{
+			*output = ft_append(*output, '0');
+			i++;
+		}
+	}
+	// else
+	// {
+	temp = ft_itoa(n);
+	if (debug > 2) { printf("111: temp = %p\n", temp); }
+	if (debug > 2) { printf("112: temp = '%s'\n", temp); }
 	// if(debug > -1) { printf("saida.flags.pad_zeros = %d\n", saida.flags.pad_zeros); }
 	*output = ft_strappend(*output, temp);
-	if (debug > 2) { printf("81: temp = '%s'\n", temp); }
+	// }
+	if (debug > 2) { printf("115: temp = '%s'\n", temp); }
 	free(temp);
 	saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
@@ -113,10 +155,10 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 		t_print	saida;
 
 	saida = print;
-	if (debug > 0) { printf("104: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+	if (debug > 0) { printf("138: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
 	if (saida.p_flags.estado == 1)
 	{
-		if (debug > 0) { printf("107: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+		if (debug > 0) { printf("141: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
 		if (saida.atual_char == '-')
 			saida.flags.minus = 1;
 		else if (saida.atual_char == '.')
@@ -129,9 +171,7 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 				saida.flags.n_right = -1;
 		}
 		else if (saida.atual_char == '0' && saida.flags.pad_zeros != 1)
-		{
 			saida.flags.pad_zeros = 1;
-		}
 		else if (saida.atual_char >= '0' && saida.atual_char <= '9')
 		{
 			saida.p_flags.estado = 2;
@@ -152,11 +192,9 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 	}
 	else if (saida.p_flags.estado == 2)
 	{
-		if (debug > 0) { printf("149: saida.p_flags.auxiliar = '%s'\n", saida.p_flags.auxiliar); }
+		if (debug > 0) { printf("177: saida.p_flags.auxiliar = '%s'\n", saida.p_flags.auxiliar); }
 		if(saida.atual_char >= '0' && saida.atual_char <= '9')
-		{
 			saida.p_flags.auxiliar = ft_append(saida.p_flags.auxiliar, saida.atual_char);
-		}
 		else
 		{
 			// printf("saida.p_flags.auxiliar = '%s'\n", saida.p_flags.auxiliar);
@@ -170,7 +208,7 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 			saida.i -= 1;
 		}
 	}
-	if (debug > 0) { printf("167: saida.estado = %d\n", saida.estado); }
+	if (debug > 0) { printf("195: saida.estado = %d\n", saida.estado); }
  	return (saida);
 }
 
@@ -179,7 +217,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	t_print	saida;
 
 	saida = print;
-	if (debug > 0) { printf("182: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+	if (debug > 0) { printf("204: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
 	if (saida.atual_char == 'd')
 		saida.estado = GET_NUMBER;
 	else if (saida.atual_char == 'i')
@@ -191,7 +229,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		saida.i -= 1;
 		saida.estado = UNTIL_PERCENT;
 	}
-	if (debug > 0) { printf("190: saida.estado = %d\n", saida.estado); }
+	if (debug > 0) { printf("216: saida.estado = %d\n", saida.estado); }
  	return (saida);
 }
 
@@ -220,11 +258,11 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 
 	print.i = 0;
 	print.estado = UNTIL_PERCENT;
-	if (debug > 0) { printf("196: str = '%s'\n", str); }
+	if (debug > 0) { printf("245: str = '%s'\n", str); }
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
-		if (debug > 1) { printf("200: *output = '%s'(%ld); print.estado = %d; print.p_flags.estado = %d\n", *output, ft_strlen(*output), print.estado, print.p_flags.estado); }
+		if (debug > 1) { printf("249: *output = '%s'(%ld); print.estado = %d; print.p_flags.estado = %d\n", *output, ft_strlen(*output), print.estado, print.p_flags.estado); }
 		if (print.estado == UNTIL_PERCENT)
 			print = until_percent(print, output, args);
 		else if (print.estado == PARSE_FLAGS)
@@ -239,7 +277,7 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			return (-1);
 		print.i += 1;
 	}
-	if (debug > 0) { printf("213: *output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado); }
+	if (debug > 0) { printf("264: *output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado); }
 	return (0);
 }
 
