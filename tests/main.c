@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/10 09:15:43 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/10 09:40:55 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,19 @@ int main()
 	printf   ("29: %052d; '%s'\n", 353, "teste3");
 	ft_printf("30: %052d; '%s'\n", 353, "teste3");
 
-	printf   ("32: %1.2d; '%s'\n", 354, "teste4");
-	ft_printf("33: %1.2d; '%s'\n", /* 354, */ "teste4");
-
 	printf   ("45: %05d; '%s'\n", 355, "teste5");
 	ft_printf("46: %05d; '%s'\n", 355, "teste5");
 
-	printf   ("48: float = '%f'\n", 3.56);
-	ft_printf("49: float = '%f'\n", 3.56);
+	printf   ("32: %1.2d; '%s'\n", 354, "teste4");
+	ft_printf("33: %1.2d; '%s'\n", 354, "teste4");
+
+	printf   ("32: %*.2d; '%s'\n", 354, "teste4");
+	ft_printf("33: %*.2d; '%s'\n", 354, "teste4");
+
+	printf   ("32: %1.*d; '%s'\n", 354, "teste4");
+	ft_printf("33: %1.*d; '%s'\n", 354, "teste4");
+
+	// printf   ("48: float = '%f'\n", 3.56);
+	// ft_printf("49: float = '%f'\n", 3.56);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:33:30 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/09 10:32:56 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/10 09:27:17 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@
 
 typedef struct	s_flags
 {
-	int			min_width;
-	int			max_width;
+	int			n_left;
+	int			n_right;
 	int			pad_zeros;
 	int			minus;
-	int			asteristc;
+	int			precision;
+	int			asteristc_l;
+	int			asteristc_r;
 }				t_flags;
 
 typedef struct	s_choose
@@ -37,6 +39,7 @@ typedef struct	s_choose
 	int			pos_inicial;
 	int			estado;
 	char		*auxiliar;
+	int			left_or_right;
 	int			n_auxiliar;
 }				t_choose;
 
