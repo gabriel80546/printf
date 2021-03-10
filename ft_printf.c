@@ -6,14 +6,14 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/10 09:39:23 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/10 10:18:32 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int debug = 2;
+int debug = -1;
 int *seg = NULL;
 
 t_flags	ft_init_flags(void)
@@ -84,7 +84,7 @@ t_print	get_number(t_print print, char **output, va_list args)
 	char	*temp;
 
 	saida = print;
-	if (debug > 1) { ft_print_flags("87: saida.", saida.flags); }
+	if (debug > -1) { ft_print_flags("87: saida.", saida.flags); }
 	temp = ft_itoa(va_arg(args, int));
 	if (debug > 2) { printf("77: temp = %p\n", temp); }
 	if (debug > 2) { printf("78: temp = '%s'\n", temp); }
@@ -108,22 +108,16 @@ t_print	get_str(t_print print, char **output, va_list args)
 	return (saida);
 }
 
-t_print	choose_action(t_print print, char **output, va_list args)
+t_print	parse_flags(t_print print, char **output, va_list args)
 {
-	t_print	saida;
+		t_print	saida;
 
 	saida = print;
-	if (debug > 0) { printf("104: saida.atual_char = '%c'; saida.choose.n_auxiliar = %d; saida.choose.estado = %d\n", saida.atual_char, saida.choose.n_auxiliar, saida.choose.estado); }
-	if (saida.choose.estado == 1)
+	if (debug > 0) { printf("104: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+	if (saida.p_flags.estado == 1)
 	{
-		if (debug > 0) { printf("107: saida.atual_char = '%c'; saida.choose.n_auxiliar = %d; saida.choose.estado = %d\n", saida.atual_char, saida.choose.n_auxiliar, saida.choose.estado); }
-		if (saida.atual_char == 'd')
-			saida.estado = GET_NUMBER;
-		else if (saida.atual_char == 'i')
-			saida.estado = GET_NUMBER;
-		else if (saida.atual_char == 's')
-			saida.estado = GET_STR;
-		else if (saida.atual_char == '-')
+		if (debug > 0) { printf("107: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+		if (saida.atual_char == '-')
 			saida.flags.minus = 1;
 		else if (saida.atual_char == '.')
 			saida.flags.precision = 1;
@@ -140,43 +134,64 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		}
 		else if (saida.atual_char >= '0' && saida.atual_char <= '9')
 		{
-			saida.choose.estado = 2;
-			saida.choose.auxiliar = ft_calloc(1, 1);
+			saida.p_flags.estado = 2;
+			saida.p_flags.auxiliar = ft_calloc(1, 1);
 			if (saida.flags.precision == 0)
-				saida.choose.left_or_right = 1;
+				saida.p_flags.left_or_right = 1;
 			else if (saida.flags.precision == 1 && saida.flags.n_right == 0)
-				saida.choose.left_or_right = 2;
+				saida.p_flags.left_or_right = 2;
 			else
-				saida.choose.left_or_right = 3;
+				saida.p_flags.left_or_right = 3;
 			saida.i -= 1;
 		}
 		else
 		{
-			saida.estado = UNTIL_PERCENT;
+			saida.estado = CHOOSE_ACTION;
 			saida.i -= 1;
 		}
 	}
-	else if (saida.choose.estado == 2)
+	else if (saida.p_flags.estado == 2)
 	{
-		if (debug > 0) { printf("149: saida.choose.auxiliar = '%s'\n", saida.choose.auxiliar); }
+		if (debug > 0) { printf("149: saida.p_flags.auxiliar = '%s'\n", saida.p_flags.auxiliar); }
 		if(saida.atual_char >= '0' && saida.atual_char <= '9')
 		{
-			saida.choose.auxiliar = ft_append(saida.choose.auxiliar, saida.atual_char);
+			saida.p_flags.auxiliar = ft_append(saida.p_flags.auxiliar, saida.atual_char);
 		}
 		else
 		{
-			// printf("saida.choose.auxiliar = '%s'\n", saida.choose.auxiliar);
-			saida.choose.n_auxiliar = ft_atoi(saida.choose.auxiliar);
-			free(saida.choose.auxiliar);
-			if (saida.choose.left_or_right == 1)
-				saida.flags.n_left  = saida.choose.n_auxiliar;
-			else if (saida.choose.left_or_right == 2)
-				saida.flags.n_right = saida.choose.n_auxiliar;
-			saida.choose.estado = 1;
+			// printf("saida.p_flags.auxiliar = '%s'\n", saida.p_flags.auxiliar);
+			saida.p_flags.n_auxiliar = ft_atoi(saida.p_flags.auxiliar);
+			free(saida.p_flags.auxiliar);
+			if (saida.p_flags.left_or_right == 1)
+				saida.flags.n_left  = saida.p_flags.n_auxiliar;
+			else if (saida.p_flags.left_or_right == 2)
+				saida.flags.n_right = saida.p_flags.n_auxiliar;
+			saida.p_flags.estado = 1;
 			saida.i -= 1;
 		}
 	}
 	if (debug > 0) { printf("167: saida.estado = %d\n", saida.estado); }
+ 	return (saida);
+}
+
+t_print	choose_action(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+
+	saida = print;
+	if (debug > 0) { printf("182: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+	if (saida.atual_char == 'd')
+		saida.estado = GET_NUMBER;
+	else if (saida.atual_char == 'i')
+		saida.estado = GET_NUMBER;
+	else if (saida.atual_char == 's')
+		saida.estado = GET_STR;
+	else
+	{
+		saida.i -= 1;
+		saida.estado = UNTIL_PERCENT;
+	}
+	if (debug > 0) { printf("190: saida.estado = %d\n", saida.estado); }
  	return (saida);
 }
 
@@ -190,11 +205,11 @@ t_print	until_percent(t_print print, char **output, va_list args)
 	else
 	{
 		saida.flags = ft_init_flags();
-		saida.choose.pos_inicial = saida.i;
-		saida.choose.auxiliar = NULL;
-		saida.choose.n_auxiliar = 0;
-		saida.estado = CHOOSE_ACTION;
-		saida.choose.estado = 1;
+		saida.p_flags.pos_inicial = saida.i;
+		saida.p_flags.auxiliar = NULL;
+		saida.p_flags.n_auxiliar = 0;
+		saida.p_flags.estado = 1;
+		saida.estado = PARSE_FLAGS;
 	}
 	return (saida);
 }
@@ -209,9 +224,11 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
-		if (debug > 1) { printf("200: *output = '%s'(%ld); print.estado = %d; print.choose.estado = %d\n", *output, ft_strlen(*output), print.estado, print.choose.estado); }
+		if (debug > 1) { printf("200: *output = '%s'(%ld); print.estado = %d; print.p_flags.estado = %d\n", *output, ft_strlen(*output), print.estado, print.p_flags.estado); }
 		if (print.estado == UNTIL_PERCENT)
 			print = until_percent(print, output, args);
+		else if (print.estado == PARSE_FLAGS)
+			print = parse_flags(print, output, args);
 		else if (print.estado == CHOOSE_ACTION)
 			print = choose_action(print, output, args);
 		else if (print.estado == GET_NUMBER)

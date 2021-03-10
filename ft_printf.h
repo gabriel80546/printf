@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:33:30 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/10 09:27:17 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/10 10:11:58 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include <stdarg.h>
 
 # define UNTIL_PERCENT 1
-# define CHOOSE_ACTION 2
-# define GET_NUMBER 3
-# define GET_STR 4
+# define PARSE_FLAGS 2
+# define CHOOSE_ACTION 3
+# define GET_NUMBER 4
+# define GET_STR 5
 
 typedef struct	s_flags
 {
@@ -34,21 +35,21 @@ typedef struct	s_flags
 	int			asteristc_r;
 }				t_flags;
 
-typedef struct	s_choose
+typedef struct	s_p_flags
 {
 	int			pos_inicial;
 	int			estado;
 	char		*auxiliar;
 	int			left_or_right;
 	int			n_auxiliar;
-}				t_choose;
+}				t_p_flags;
 
 typedef struct	s_print
 {
 	int			i;
 	int			estado;
 	char		atual_char;
-	t_choose	choose;
+	t_p_flags	p_flags;
 	t_flags		flags;
 }				t_print;
 
