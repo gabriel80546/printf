@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 11:31:40 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 11:36:54 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,7 +317,7 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			return (-1);
 		print.i += 1;
 	}
-	if (debug > 0) { logging("320: *output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado); }
+	if (debug > 0) { logging("320: *output = '%s'(%ld); print.estado = %d; str[print.i] = %d\n", *output, ft_strlen(*output), print.estado, str[print.i]); }
 	return (0);
 }
 
