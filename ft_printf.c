@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/10 11:23:42 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 09:24:43 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,14 @@ t_print	get_number(t_print print, char **output, va_list args)
 t_print	get_str(t_print print, char **output, va_list args)
 {
 	t_print	saida;
+	char	*temp;
 
 	saida = print;
-	*output = ft_strappend(*output, va_arg(args, char*));
+	temp = va_arg(args, char*);
+	if (temp == NULL)
+		*output = ft_strappend(*output, "(null)");
+	else
+		*output = ft_strappend(*output, temp);
 	saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -291,6 +296,7 @@ int		ft_printf(const char *str, ...)
 	output = ft_calloc(1, 1);
 	saida = ft_printf_parse(str, &output, args);
 	ft_putstr_fd(output, 1);
+	saida = (int)ft_strlen(output);
 	free(output);
 	va_end(args);
 	return (saida);
