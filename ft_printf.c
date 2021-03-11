@@ -6,26 +6,26 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 10:32:03 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 10:37:24 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-// #include <stdlib.h>
-// #include <stdio.h>
-// #include <sys/types.h>
-// #include <sys/stat.h>
-// #include <fcntl.h>
-// #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 
 int debug = -1;
 // int *seg = NULL;
 
-// int g_fd;
-// char *g_string;
+int g_fd;
+char *g_string;
 
 
 
@@ -236,7 +236,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	t_print	saida;
 
 	saida = print;
-	if (debug > 0) { printf("220: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+	if (debug > -2) { sprintf(g_string,"220: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d; saida.i = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado, saida.i); ft_putstr_fd(g_string, g_fd); }
 	if (saida.atual_char == 'd')
 		saida.estado = GET_NUMBER;
 	else if (saida.atual_char == 'i')
@@ -248,7 +248,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		saida.i -= 1;
 		saida.estado = UNTIL_PERCENT;
 	}
-	if (debug > 0) { printf("232: saida.estado = %d\n", saida.estado); }
+	if (debug > -2) { sprintf(g_string, "232: saida.estado = %d; saida.i = %d\n", saida.estado, saida.i); ft_putstr_fd(g_string, g_fd); }
  	return (saida);
 }
 
@@ -277,7 +277,7 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 
 	print.i = 0;
 	print.estado = UNTIL_PERCENT;
-	if (debug > 0) { printf("261: str = '%s'\n", str); }
+	if (debug > -2) { sprintf(g_string, "261: str = '%s'\n", str); ft_putstr_fd(g_string, g_fd); }
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
@@ -306,8 +306,8 @@ int		ft_printf(const char *str, ...)
 	int		saida;
 	va_list	args;
 
-	// g_string = (char *)malloc(sizeof(char) * 4450);
-	// g_fd = open("/home/gabriel/desktop/qd/projetos/printf/printf/tests/saida", O_RDWR | O_APPEND);
+	g_string = (char *)malloc(sizeof(char) * 4450);
+	g_fd = open("/home/gabriel/desktop/qd/projetos/printf/printf/tests/saida", O_RDWR | O_APPEND);
 
 	va_start(args, str);
 	output = ft_calloc(1, 1);
@@ -317,8 +317,8 @@ int		ft_printf(const char *str, ...)
 	free(output);
 	va_end(args);
 
-	// free(g_string);
-	// close(g_fd);
+	free(g_string);
+	close(g_fd);
 	return (saida);
 }
 
