@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 11:44:01 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 13:53:29 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,176 @@ int main()
 	// if (verbose == 1) { printf   ("\n\"main: 91: %%1i, %%1d, %%1d, %%1d, %%1d, %%1d, %%1d, %%1d\\n\", i, j, k, l, m, c, e, d\n"); } //T4
 	// printf   ("main: 92: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d); //T4
 	ft_printf("main: 93: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d); //T4
+
+
+
+	printf   ("\nteste: %-32s\n", NULL);
+	ft_printf("teste: %-32s\n", NULL);
+
+	printf   ("\nteste: %-16s\n", NULL);
+	ft_printf("teste: %-16s\n", NULL);
+
+	printf   ("\nteste: %.03s\n", NULL);
+	ft_printf("teste: %.03s\n", NULL);
+
+	printf   ("\nteste: %3.s\n", NULL);
+	ft_printf("teste: %3.s\n", NULL);
+
+	printf   ("\nteste: %10.s\n", NULL);
+	ft_printf("teste: %10.s\n", NULL);
+
+	printf   ("\nteste: %-3.s\n", NULL);
+	ft_printf("teste: %-3.s\n", NULL);
+
+	printf   ("\nteste: %-8.s\n", NULL);
+	ft_printf("teste: %-8.s\n", NULL);
+
+	printf   ("\nteste: %3.1s\n", NULL);
+	ft_printf("teste: %3.1s\n", NULL);
+
+	printf   ("\nteste: %9.1s\n", NULL);
+	ft_printf("teste: %9.1s\n", NULL);
+
+	printf   ("\nteste: %-3.1s\n", NULL);
+	ft_printf("teste: %-3.1s\n", NULL);
+
+	printf   ("\nteste: %-9.1s\n", NULL);
+	ft_printf("teste: %-9.1s\n", NULL);
+
+	printf   ("\nteste: %-10.8s\n", NULL);
+	ft_printf("teste: %-10.8s\n", NULL);
+
+
+	printf   ("\nteste: %23s\n", NULL);
+	ft_printf("teste: %23s\n", NULL);
+	
+	printf   ("\nteste: %.s\n", NULL);
+	ft_printf("teste: %.s\n", NULL);
+	
+	printf   ("\nteste: %32s\n", NULL);
+	ft_printf("teste: %32s\n", NULL);
+	
+	printf   ("\nteste: %-32s\n", NULL);
+	ft_printf("teste: %-32s\n", NULL);
+	
+	printf   ("\nteste: %-16s\n", NULL);
+	ft_printf("teste: %-16s\n", NULL);
+	
+	printf   ("\nteste: %.03s\n", NULL);
+	ft_printf("teste: %.03s\n", NULL);
+	
+	printf   ("\nteste: %3.s\n", NULL);
+	ft_printf("teste: %3.s\n", NULL);
+	
+	printf   ("\nteste: %10.s\n", NULL);
+	ft_printf("teste: %10.s\n", NULL);
+	
+	printf   ("\nteste: %-3.s\n", NULL);
+	ft_printf("teste: %-3.s\n", NULL);
+	
+	printf   ("\nteste: %-8.s\n", NULL);
+	ft_printf("teste: %-8.s\n", NULL);
+	
+	printf   ("\nteste: %3.1s\n", NULL);
+	ft_printf("teste: %3.1s\n", NULL);
+	
+	printf   ("\nteste: %9.1s\n", NULL);
+	ft_printf("teste: %9.1s\n", NULL);
+	
+	printf   ("\nteste: %-3.1s\n", NULL);
+	ft_printf("teste: %-3.1s\n", NULL);
+	
+	printf   ("\nteste: %-9.1s\n", NULL);
+	ft_printf("teste: %-9.1s\n", NULL);
+	
+	printf   ("\nteste: %20.6s\n", NULL);
+	ft_printf("teste: %20.6s\n", NULL);
+	
+	printf   ("\nteste: %-10.8s\n", NULL);
+	ft_printf("teste: %-10.8s\n", NULL);
+	
+	printf   ("\nteste: p3 %.4s\n\n", NULL);
+	ft_printf("teste: p3 %.4s\n\n", NULL);
+	
+	printf("#######################################\n");
+	printf("################teste 3################\n");
+	printf("#######################################\n");
+
+	printf   ("\nteste: %23s\n", NULL);
+	ft_printf("teste: %23s\n", NULL);
+	
+	printf   ("\nteste: %32s\n", NULL);
+	ft_printf("teste: %32s\n", NULL);
+	
+	printf   ("\nteste: %-32s\n", NULL);
+	ft_printf("teste: %-32s\n", NULL);
+	
+	printf   ("\nteste: %-16s\n", NULL);
+	ft_printf("teste: %-16s\n", NULL);
+	
+	printf   ("\nteste: %3.s\n", NULL);
+	ft_printf("teste: %3.s\n", NULL);
+	
+	printf   ("\nteste: %10.s\n", NULL);
+	ft_printf("teste: %10.s\n", NULL);
+	
+	printf   ("\nteste: %-3.s\n", NULL);
+	ft_printf("teste: %-3.s\n", NULL);
+	
+	printf   ("\nteste: %-8.s\n", NULL);
+	ft_printf("teste: %-8.s\n", NULL);
+	
+	printf   ("\nteste: %3.1s\n", NULL);
+	ft_printf("teste: %3.1s\n", NULL);
+	
+	printf   ("\nteste: %9.1s\n", NULL);
+	ft_printf("teste: %9.1s\n", NULL);
+	
+	printf   ("\nteste: %-3.1s\n", NULL);
+	ft_printf("teste: %-3.1s\n", NULL);
+	
+	printf   ("\nteste: %-9.1s\n", NULL);
+	ft_printf("teste: %-9.1s\n", NULL);
+	
+	printf   ("\nteste: %20.6s\n", NULL);
+	ft_printf("teste: %20.6s\n", NULL);
+	
+	printf   ("\nteste: %-10.8s\n", NULL);
+	ft_printf("teste: %-10.8s\n", NULL);
+	
+
+	printf("#######################################\n");
+	printf("################teste 4################\n");
+	printf("#######################################\n");
+
+
+	printf   ("\nteste: %3.s\n", NULL);
+	ft_printf("teste: %3.s\n", NULL);
+	
+	printf   ("\nteste: %10.s\n", NULL);
+	ft_printf("teste: %10.s\n", NULL);
+	
+	printf   ("\nteste: %-3.s\n", NULL);
+	ft_printf("teste: %-3.s\n", NULL);
+	
+	printf   ("\nteste: %-8.s\n", NULL);
+	ft_printf("teste: %-8.s\n", NULL);
+	
+	printf   ("\nteste: %3.1s\n", NULL);
+	ft_printf("teste: %3.1s\n", NULL);
+	
+	printf   ("\nteste: %9.1s\n", NULL);
+	ft_printf("teste: %9.1s\n", NULL);
+	
+	printf   ("\nteste: %-3.1s\n", NULL);
+	ft_printf("teste: %-3.1s\n", NULL);
+	
+	printf   ("\nteste: %-9.1s\n", NULL);
+	ft_printf("teste: %-9.1s\n", NULL);
+	
+	printf   ("\nteste: %50.2s\n", NULL);
+	ft_printf("teste: %50.2s\n", NULL);
+	
+
 	return (0);
 }

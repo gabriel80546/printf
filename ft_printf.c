@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 11:45:40 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 13:55:00 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,21 +178,45 @@ t_print	get_str(t_print print, char **output, va_list args)
 {
 	t_print	saida;
 	char	*temp;
+	int		i;
 
 	saida = print;
 	temp = va_arg(args, char*);
 	if (temp == NULL)
-		*output = ft_strappend(*output, "(null)");
+	{
+		if ((saida.flags.precision == 1 && saida.flags.n_right >= 6) ||
+			(saida.flags.precision == 0))
+		{
+			if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+			{
+				i = 0;
+				while ((i + 6 - 0) < saida.flags.n_left)
+				{
+					*output = ft_append(*output, ' ');
+					i++;
+				}
+			}
+			*output = ft_strappend(*output, "(null)");
+			if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+			{
+				i = 0;
+				while ((i + 6 - 0) < saida.flags.n_left)
+				{
+					*output = ft_append(*output, ' ');
+					i++;
+				}
+			}
+		}
+	}
 	else
 		*output = ft_strappend(*output, temp);
-	// saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
 
 t_print	parse_flags(t_print print, char **output, va_list args)
 {
-		t_print	saida;
+	t_print	saida;
 
 	saida = print;
 	if (debug > 0) { logging("198: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
