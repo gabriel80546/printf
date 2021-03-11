@@ -2,75 +2,171 @@
 '
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 11
 232: saida.estado = 4; saida.i = 11
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = -2
+130: temp = 0x602000000170
+131: temp = '234'
+135: temp = '234'
 220: saida.atual_char = 'i'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 15
 232: saida.estado = 4; saida.i = 15
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = -2
+130: temp = 0x6020000001f0
+131: temp = '351'
+135: temp = '351'
 220: saida.atual_char = 's'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 20
 232: saida.estado = 5; saida.i = 20
 261: str = 'main: 33: %d; '%s'
 '
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 11
 232: saida.estado = 4; saida.i = 11
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = -2
+130: temp = 0x602000000370
+131: temp = '352'
+135: temp = '352'
 220: saida.atual_char = 's'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 16
 232: saida.estado = 5; saida.i = 16
 261: str = 'main: 37: %052d; '%s'
 '
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 52; saida.p_flags.estado = 1; saida.i = 14
 232: saida.estado = 4; saida.i = 14
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = 52
+130: temp = 0x602000000650
+131: temp = '353'
+135: temp = '353'
 220: saida.atual_char = 's'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 19
 232: saida.estado = 5; saida.i = 19
 261: str = 'main: 41: %05d; '%s'
 '
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 5; saida.p_flags.estado = 1; saida.i = 13
 232: saida.estado = 4; saida.i = 13
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = 5
+130: temp = 0x602000000850
+131: temp = '355'
+135: temp = '355'
 220: saida.atual_char = 's'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 18
 232: saida.estado = 5; saida.i = 18
 261: str = 'main: 45: %1.2d; '%s'
 '
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 2; saida.p_flags.estado = 1; saida.i = 14
 232: saida.estado = 4; saida.i = 14
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000000a50
+131: temp = '354'
+135: temp = '354'
 220: saida.atual_char = 's'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 19
 232: saida.estado = 5; saida.i = 19
 261: str = 'main: 49: {%10d}
 '
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 10; saida.p_flags.estado = 1; saida.i = 14
 232: saida.estado = 4; saida.i = 14
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 10
+130: temp = 0x602000000cb0
+131: temp = '42'
+135: temp = '42'
 261: str = 'main: 53: %d
 '
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 11
 232: saida.estado = 4; saida.i = 11
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = -2
+130: temp = 0x602000000e90
+131: temp = '2147483647'
+135: temp = '2147483647'
 261: str = 'main: 89: %0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d
 '
 220: saida.atual_char = 'i'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 12
 232: saida.estado = 4; saida.i = 12
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001010
+131: temp = '8'
+135: temp = '8'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 17
 232: saida.estado = 4; saida.i = 17
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001090
+131: temp = '-12'
+135: temp = '-12'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 22
 232: saida.estado = 4; saida.i = 22
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010b0
+131: temp = '123456789'
+135: temp = '123456789'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 27
 232: saida.estado = 4; saida.i = 27
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010d0
+131: temp = '0'
+135: temp = '0'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 32
 232: saida.estado = 4; saida.i = 32
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010f0
+131: temp = '-12345678'
+135: temp = '-12345678'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 37
 232: saida.estado = 4; saida.i = 37
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001110
+131: temp = '97'
+135: temp = '97'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 42
 232: saida.estado = 4; saida.i = 42
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001130
+131: temp = '-2147483648'
+135: temp = '-2147483648'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 0; saida.p_flags.estado = 1; saida.i = 47
 232: saida.estado = 4; saida.i = 47
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001150
+131: temp = '2147483647'
+135: temp = '2147483647'
 261: str = 'main: 93: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d
 '
 220: saida.atual_char = 'i'; saida.p_flags.n_auxiliar = 1; saida.p_flags.estado = 1; saida.i = 12
 232: saida.estado = 4; saida.i = 12
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001310
+131: temp = '8'
+135: temp = '8'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 1; saida.p_flags.estado = 1; saida.i = 17
 232: saida.estado = 4; saida.i = 17
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000013d0
+131: temp = '-12'
+135: temp = '-12'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 1; saida.p_flags.estado = 1; saida.i = 22
 232: saida.estado = 4; saida.i = 22
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001430
+131: temp = '123456789'
+135: temp = '123456789'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 1; saida.p_flags.estado = 1; saida.i = 27
 232: saida.estado = 4; saida.i = 27
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001490
+131: temp = '0'
+135: temp = '0'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 1; saida.p_flags.estado = 1; saida.i = 32
 232: saida.estado = 4; saida.i = 32
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000014f0
+131: temp = '-12345678'
+135: temp = '-12345678'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 1; saida.p_flags.estado = 1; saida.i = 37
 232: saida.estado = 4; saida.i = 37
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001550
+131: temp = '97'
+135: temp = '97'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 1; saida.p_flags.estado = 1; saida.i = 42
 232: saida.estado = 4; saida.i = 42
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000015b0
+131: temp = '-2147483648'
+135: temp = '-2147483648'
 220: saida.atual_char = 'd'; saida.p_flags.n_auxiliar = 1; saida.p_flags.estado = 1; saida.i = 47
 232: saida.estado = 4; saida.i = 47
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001610
+131: temp = '2147483647'
+135: temp = '2147483647'

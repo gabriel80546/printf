@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 10:37:24 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 10:46:02 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,8 @@ t_print	get_number(t_print print, char **output, va_list args)
 	saida = print;
 	if (debug > 2) { ft_print_flags("112: saida.", saida.flags); }
 
-	if (debug > 2) { printf("114,115: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
-	if (debug > 2) { printf("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	if (debug > -2) { sprintf(g_string, "114,115: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); ft_putstr_fd(g_string, g_fd); }
+	if (debug > -2) { sprintf(g_string, "saida.flags.n_left = %d\n",    saida.flags.n_left); ft_putstr_fd(g_string, g_fd); }
 	n = va_arg(args, int);
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
@@ -141,12 +141,12 @@ t_print	get_number(t_print print, char **output, va_list args)
 	// else
 	// {
 	temp = ft_itoa(n);
-	if (debug > 2) { printf("130: temp = %p\n", temp); }
-	if (debug > 2) { printf("131: temp = '%s'\n", temp); }
+	if (debug > -2) { sprintf(g_string, "130: temp = %p\n", temp); ft_putstr_fd(g_string, g_fd); }
+	if (debug > -2) { sprintf(g_string, "131: temp = '%s'\n", temp); ft_putstr_fd(g_string, g_fd); }
 	// if(debug > -1) { printf("saida.flags.pad_zeros = %d\n", saida.flags.pad_zeros); }
 	*output = ft_strappend(*output, temp);
 	// }
-	if (debug > 2) { printf("135: temp = '%s'\n", temp); }
+	if (debug > -2) { sprintf(g_string, "135: temp = '%s'\n", temp); ft_putstr_fd(g_string, g_fd); }
 	free(temp);
 	saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
