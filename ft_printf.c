@@ -6,15 +6,30 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 09:24:43 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 10:00:55 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+
 int debug = -1;
 int *seg = NULL;
+int g_fd;
+
+int g_fd;
+char *g_string;
+
+
+
 
 t_flags	ft_init_flags(void)
 {
@@ -111,8 +126,8 @@ t_print	get_number(t_print print, char **output, va_list args)
 	saida = print;
 	if (debug > 2) { ft_print_flags("112: saida.", saida.flags); }
 
-	if (debug > 2) { printf("114,115: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
-	if (debug > 2) { printf("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	if (debug > -2) { sprintf(g_string, "114,115: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); ft_putstr_fd(g_string, g_fd); }
+	if (debug > -2) { sprintf(g_string, "saida.flags.n_left = %d\n",    saida.flags.n_left); ft_putstr_fd(g_string, g_fd); }
 	n = va_arg(args, int);
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
@@ -127,12 +142,12 @@ t_print	get_number(t_print print, char **output, va_list args)
 	// else
 	// {
 	temp = ft_itoa(n);
-	if (debug > 2) { printf("130: temp = %p\n", temp); }
-	if (debug > 2) { printf("131: temp = '%s'\n", temp); }
+	if (debug > -2) { sprintf(g_string, "130: temp = %p\n", temp); ft_putstr_fd(g_string, g_fd); }
+	if (debug > -2) { sprintf(g_string, "131: temp = '%s'\n", temp); ft_putstr_fd(g_string, g_fd); }
 	// if(debug > -1) { printf("saida.flags.pad_zeros = %d\n", saida.flags.pad_zeros); }
 	*output = ft_strappend(*output, temp);
 	// }
-	if (debug > 2) { printf("135: temp = '%s'\n", temp); }
+	if (debug > -2) { sprintf(g_string, "135: temp = '%s'\n", temp); ft_putstr_fd(g_string, g_fd); }
 	free(temp);
 	saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
@@ -292,6 +307,10 @@ int		ft_printf(const char *str, ...)
 	int		saida;
 	va_list	args;
 
+	g_string = (char *)malloc(sizeof(char) * 4450);
+	g_fd = open("/home/gabriel/desktop/qd/projetos/printf/printf/tests/saida", O_RDWR | O_APPEND);
+
+
 	va_start(args, str);
 	output = ft_calloc(1, 1);
 	saida = ft_printf_parse(str, &output, args);
@@ -299,6 +318,10 @@ int		ft_printf(const char *str, ...)
 	saida = (int)ft_strlen(output);
 	free(output);
 	va_end(args);
+
+
+	free(g_string);
+	close(g_fd);
 	return (saida);
 }
 
