@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 11:36:54 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 11:45:40 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include <unistd.h>
 
 
-int in_file = 1;
-int debug = 10;
+int in_file = 0;
+int debug = -2;
 // int *seg = NULL;
 
 int g_fd;
@@ -169,7 +169,7 @@ t_print	get_number(t_print print, char **output, va_list args)
 	// }
 	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
 	free(temp);
-	saida.i -= 1;
+	// saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
@@ -185,7 +185,7 @@ t_print	get_str(t_print print, char **output, va_list args)
 		*output = ft_strappend(*output, "(null)");
 	else
 		*output = ft_strappend(*output, temp);
-	saida.i -= 1;
+	// saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
@@ -265,10 +265,8 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	else if (saida.atual_char == 's')
 		saida.estado = GET_STR;
 	else
-	{
-		saida.i -= 1;
 		saida.estado = UNTIL_PERCENT;
-	}
+	saida.i -= 1;
 	if (debug > -2) { logging("272: saida.estado = %d; saida.i = %d\n", saida.estado, saida.i); }
  	return (saida);
 }

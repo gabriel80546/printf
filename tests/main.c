@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 10:16:23 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 11:44:01 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,18 @@ int main()
 	printf   ("main: 48: {%10d}\n", 42);
 	ft_printf("main: 49: {%10d}\n", 42);
 
-	if (verbose == 1) { printf   ("\n\"main: 51: %%d\\n\", 2147483647\n"); }
-	printf   ("main: 52: %d\n", d);
-	ft_printf("main: 53: %d\n", d);
+	// if (verbose == 1) { printf   ("\n\"main: 51: %%d\\n\", 2147483647\n"); }
+	// printf   ("main: 52: %d\n", d);
+	// ft_printf("main: 53: %d\n", d);
 
-	// printf("Simple input test"));
-	// printf("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X", i, j, k, l, m, n, c, c, j, j, j)); //T2
-	if (verbose == 1) { printf   ("\n\"main: 87: %%0i, %%0d, %%0d, %%0d, %%0d, %%0d, %%0d, %%0d\\n\", i, j, k, l, m, c, e, d\n"); } //T3
-	printf   ("main: 88: %0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
-	ft_printf("main: 89: %0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
+	// // printf("Simple input test"));
+	// // printf("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X", i, j, k, l, m, n, c, c, j, j, j)); //T2
+	// if (verbose == 1) { printf   ("\n\"main: 87: %%0i, %%0d, %%0d, %%0d, %%0d, %%0d, %%0d, %%0d\\n\", i, j, k, l, m, c, e, d\n"); } //T3
+	// printf   ("main: 88: %0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
+	// ft_printf("main: 89: %0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d\n", i, j, k, l, m, c, e, d); //T3
 
-	if (verbose == 1) { printf   ("\n\"main: 91: %%1i, %%1d, %%1d, %%1d, %%1d, %%1d, %%1d, %%1d\\n\", i, j, k, l, m, c, e, d\n"); } //T4
-	printf   ("main: 92: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
-	ft_printf("main: 93: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
+	// if (verbose == 1) { printf   ("\n\"main: 91: %%1i, %%1d, %%1d, %%1d, %%1d, %%1d, %%1d, %%1d\\n\", i, j, k, l, m, c, e, d\n"); } //T4
+	// printf   ("main: 92: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d); //T4
+	ft_printf("main: 93: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d); //T4
 	return (0);
 }
