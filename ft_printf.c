@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 11:21:30 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/11 11:31:40 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include <unistd.h>
 
 
-int in_file = 0;
-int debug = -1;
+int in_file = 1;
+int debug = 10;
 // int *seg = NULL;
 
 int g_fd;
@@ -119,7 +119,7 @@ char	*ft_strappend(char *str, char *to_append)
 	int		len_str;
 	int		len_append;
 
-	if (debug > 2) { logging("87: to_append = %p\n", to_append); }
+	if (debug > 2) { logging("122: to_append = %p\n", to_append); }
 	len_str = ft_strlen(str);
 	len_append = ft_strlen(to_append);
 	saida = (char *)malloc(len_str + len_append + 2);
@@ -144,9 +144,9 @@ t_print	get_number(t_print print, char **output, va_list args)
 	int		i;
 
 	saida = print;
-	if (debug > 2) { ft_print_flags("112: saida.", saida.flags); }
+	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
 
-	if (debug > -2) { logging("114,115: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
 	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
 	n = va_arg(args, int);
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
@@ -162,12 +162,12 @@ t_print	get_number(t_print print, char **output, va_list args)
 	// else
 	// {
 	temp = ft_itoa(n);
-	if (debug > -2) { logging("130: temp = %p\n", temp); }
-	if (debug > -2) { logging("131: temp = '%s'\n", temp); }
+	if (debug > -2) { logging("165: temp = %p\n", temp); }
+	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
 	// if(debug > -1) { printf("saida.flags.pad_zeros = %d\n", saida.flags.pad_zeros); }
 	*output = ft_strappend(*output, temp);
 	// }
-	if (debug > -2) { logging("135: temp = '%s'\n", temp); }
+	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
 	free(temp);
 	saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
@@ -195,10 +195,10 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 		t_print	saida;
 
 	saida = print;
-	if (debug > 0) { logging("158: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+	if (debug > 0) { logging("198: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
 	if (saida.p_flags.estado == 1)
 	{
-		if (debug > 0) { logging("161: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
+		if (debug > 0) { logging("201: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado); }
 		if (saida.atual_char == '-')
 			saida.flags.minus = 1;
 		else if (saida.atual_char == '.')
@@ -232,7 +232,7 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 	}
 	else if (saida.p_flags.estado == 2)
 	{
-		if (debug > 0) { logging("195: saida.p_flags.auxiliar = '%s'\n", saida.p_flags.auxiliar); }
+		if (debug > 0) { logging("235: saida.p_flags.auxiliar = '%s'\n", saida.p_flags.auxiliar); }
 		if(saida.atual_char >= '0' && saida.atual_char <= '9')
 			saida.p_flags.auxiliar = ft_append(saida.p_flags.auxiliar, saida.atual_char);
 		else
@@ -248,7 +248,7 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 			saida.i -= 1;
 		}
 	}
-	if (debug > 0) { logging("211: saida.estado = %d\n", saida.estado); }
+	if (debug > 0) { logging("251: saida.estado = %d\n", saida.estado); }
  	return (saida);
 }
 
@@ -257,7 +257,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	t_print	saida;
 
 	saida = print;
-	if (debug > -2) { logging("220: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d; saida.i = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado, saida.i); }
+	if (debug > -2) { logging("260: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d; saida.i = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado, saida.i); }
 	if (saida.atual_char == 'd')
 		saida.estado = GET_NUMBER;
 	else if (saida.atual_char == 'i')
@@ -269,7 +269,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		saida.i -= 1;
 		saida.estado = UNTIL_PERCENT;
 	}
-	if (debug > -2) { logging("232: saida.estado = %d; saida.i = %d\n", saida.estado, saida.i); }
+	if (debug > -2) { logging("272: saida.estado = %d; saida.i = %d\n", saida.estado, saida.i); }
  	return (saida);
 }
 
@@ -298,11 +298,11 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 
 	print.i = 0;
 	print.estado = UNTIL_PERCENT;
-	if (debug > -2) { logging("261: str = '%s'\n", str); }
+	if (debug > -2) { logging("301: str = '%s'\n", str); }
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
-		if (debug > 1) { logging("265: *output = '%s'(%ld); print.estado = %d; print.p_flags.estado = %d\n", *output, ft_strlen(*output), print.estado, print.p_flags.estado); }
+		if (debug > 1) { logging("305: *output = '%s'(%ld); print.estado = %d; print.p_flags.estado = %d\n", *output, ft_strlen(*output), print.estado, print.p_flags.estado); }
 		if (print.estado == UNTIL_PERCENT)
 			print = until_percent(print, output, args);
 		else if (print.estado == PARSE_FLAGS)
@@ -317,7 +317,7 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			return (-1);
 		print.i += 1;
 	}
-	if (debug > 0) { logging("280: *output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado); }
+	if (debug > 0) { logging("320: *output = '%s'(%ld); print.estado = %d\n", *output, ft_strlen(*output), print.estado); }
 	return (0);
 }
 
