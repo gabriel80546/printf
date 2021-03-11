@@ -30,3 +30,163 @@
 130: temp = 0x602000000e90
 131: temp = '2147483647'
 135: temp = '2147483647'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001010
+131: temp = '8'
+135: temp = '8'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001090
+131: temp = '-12'
+135: temp = '-12'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010b0
+131: temp = '123456789'
+135: temp = '123456789'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010d0
+131: temp = '0'
+135: temp = '0'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010f0
+131: temp = '-12345678'
+135: temp = '-12345678'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001110
+131: temp = '97'
+135: temp = '97'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001130
+131: temp = '-2147483648'
+135: temp = '-2147483648'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001150
+131: temp = '2147483647'
+135: temp = '2147483647'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001310
+131: temp = '8'
+135: temp = '8'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000013d0
+131: temp = '-12'
+135: temp = '-12'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001430
+131: temp = '123456789'
+135: temp = '123456789'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001490
+131: temp = '0'
+135: temp = '0'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000014f0
+131: temp = '-12345678'
+135: temp = '-12345678'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001550
+131: temp = '97'
+135: temp = '97'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000015b0
+131: temp = '-2147483648'
+135: temp = '-2147483648'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001610
+131: temp = '2147483647'
+135: temp = '2147483647'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = -2
+130: temp = 0x602000000170
+131: temp = '234'
+135: temp = '234'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = -2
+130: temp = 0x6020000001f0
+131: temp = '351'
+135: temp = '351'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = -2
+130: temp = 0x602000000370
+131: temp = '352'
+135: temp = '352'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = 52
+130: temp = 0x602000000650
+131: temp = '353'
+135: temp = '353'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = 5
+130: temp = 0x602000000850
+131: temp = '355'
+135: temp = '355'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000000a50
+131: temp = '354'
+135: temp = '354'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 10
+130: temp = 0x602000000cb0
+131: temp = '42'
+135: temp = '42'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = -2
+130: temp = 0x602000000e90
+131: temp = '2147483647'
+135: temp = '2147483647'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001010
+131: temp = '8'
+135: temp = '8'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001090
+131: temp = '-12'
+135: temp = '-12'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010b0
+131: temp = '123456789'
+135: temp = '123456789'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010d0
+131: temp = '0'
+135: temp = '0'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x6020000010f0
+131: temp = '-12345678'
+135: temp = '-12345678'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001110
+131: temp = '97'
+135: temp = '97'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001130
+131: temp = '-2147483648'
+135: temp = '-2147483648'
+114,115: saida.flags.pad_zeros = 1; saida.flags.n_left = -2
+130: temp = 0x602000001150
+131: temp = '2147483647'
+135: temp = '2147483647'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001310
+131: temp = '8'
+135: temp = '8'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000013d0
+131: temp = '-12'
+135: temp = '-12'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001430
+131: temp = '123456789'
+135: temp = '123456789'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001490
+131: temp = '0'
+135: temp = '0'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000014f0
+131: temp = '-12345678'
+135: temp = '-12345678'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001550
+131: temp = '97'
+135: temp = '97'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x6020000015b0
+131: temp = '-2147483648'
+135: temp = '-2147483648'
+114,115: saida.flags.pad_zeros = 0; saida.flags.n_left = 1
+130: temp = 0x602000001610
+131: temp = '2147483647'
+135: temp = '2147483647'
