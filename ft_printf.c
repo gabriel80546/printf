@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 11:35:03 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 11:42:24 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,33 +114,33 @@ static unsigned int	ft_itoa_ui_log(unsigned long n)
 	return (contador + 1);
 }
 
-static char	*ft_itoa_ui_overfl(void)
-{
-	char	*saida;
+// static char	*ft_itoa_ui_overfl(void)
+// {
+// 	char	*saida;
 
-	saida = (char *)malloc(sizeof(char) * 12);
-	*(saida + 0) = '-';
-	*(saida + 1) = '2';
-	*(saida + 2) = '1';
-	*(saida + 3) = '4';
-	*(saida + 4) = '7';
-	*(saida + 5) = '4';
-	*(saida + 6) = '8';
-	*(saida + 7) = '3';
-	*(saida + 8) = '6';
-	*(saida + 9) = '4';
-	*(saida + 10) = '8';
-	*(saida + 11) = '\0';
-	return (saida);
-}
+// 	saida = (char *)malloc(sizeof(char) * 12);
+// 	*(saida + 0) = '-';
+// 	*(saida + 1) = '2';
+// 	*(saida + 2) = '1';
+// 	*(saida + 3) = '4';
+// 	*(saida + 4) = '7';
+// 	*(saida + 5) = '4';
+// 	*(saida + 6) = '8';
+// 	*(saida + 7) = '3';
+// 	*(saida + 8) = '6';
+// 	*(saida + 9) = '4';
+// 	*(saida + 10) = '8';
+// 	*(saida + 11) = '\0';
+// 	return (saida);
+// }
 
 char		*ft_itoa_ui(unsigned int n)
 {
 	char			*saida;
 	unsigned int	contador;
 
-	if (n == -2147483648LL)
-		return (ft_itoa_ui_overfl());
+	// if (n == -2147483648LL)
+		// return (ft_itoa_ui_overfl());
 	saida = (char *)malloc(sizeof(char) * ft_itoa_ui_log(n));
 	if (saida == NULL)
 		return (NULL);
