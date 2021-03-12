@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:33:30 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 09:53:23 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 11:29:10 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@
 # define CHOOSE_ACTION 3
 # define GET_INT 4
 # define GET_UINT 5
-# define GET_STR 6
+# define GET_hex 6
+# define GET_HEX 7
+# define GET_STR 8
 
 typedef struct	s_flags
 {
@@ -44,7 +46,6 @@ typedef struct	s_p_flags
 	int			left_or_right;
 	int			n_auxiliar;
 }				t_p_flags;
-
 
 typedef struct	s_print
 {

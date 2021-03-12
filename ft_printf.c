@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 09:58:30 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 11:35:03 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 
 int in_file = 0;
-int debug = -2;
+int debug = -3;
 
 int g_fd;
 char *g_string;
@@ -92,8 +92,6 @@ int	ft_printf_itoa_log(long n)
 	return (contador + 1);
 }
 
-
-
 static unsigned int	ft_itoa_ui_log(unsigned long n)
 {
 	unsigned int contador;
@@ -160,6 +158,151 @@ char		*ft_itoa_ui(unsigned int n)
 	return (saida);
 }
 
+static int	ft_itoa_x_log(long n)
+{
+	int contador;
+	int temp;
+
+	contador = 0;
+	if (n < 0)
+	{
+		contador++;
+		n = -n;
+	}
+	temp = n;
+	while (n > 15)
+	{
+		n = n / 16;
+		contador++;
+	}
+	n = temp;
+	contador++;
+	return (contador + 1);
+}
+
+static char	*ft_itoa_x_overfl(void)
+{
+	char	*saida;
+
+	saida = (char *)malloc(sizeof(char) * 12);
+	*(saida + 0) = '-';
+	*(saida + 1) = '2';
+	*(saida + 2) = '1';
+	*(saida + 3) = '4';
+	*(saida + 4) = '7';
+	*(saida + 5) = '4';
+	*(saida + 6) = '8';
+	*(saida + 7) = '3';
+	*(saida + 8) = '6';
+	*(saida + 9) = '4';
+	*(saida + 10) = '8';
+	*(saida + 11) = '\0';
+	return (saida);
+}
+
+char		*ft_itoa_x(int n)
+{
+	char	*saida;
+	int		contador;
+	char	temp;
+
+	if (n == -2147483648LL)
+		return (ft_itoa_x_overfl());
+	saida = (char *)malloc(sizeof(char) * ft_itoa_x_log(n));
+	if (saida == NULL)
+		return (NULL);
+	*(saida + 0) = '-';
+	contador = (ft_itoa_x_log(n) - 1);
+	n = (n < 0) ? (-n) : n;
+	*(saida + contador) = '\0';
+	while (n > 15)
+	{
+		temp = (n % 16) + '0';
+		if (temp > '9')
+			temp += ('a' - ('9' + 1));
+		*(saida + contador - 1) = temp;
+		n = (n / 16);
+		contador--;
+	}
+	temp = (n % 16) + '0';
+	if (temp > '9')
+		temp += ('a' - ('9' + 1));
+	*(saida + contador - 1) = temp;
+	return (saida);
+}
+
+static int	ft_itoa_X_log(long n)
+{
+	int contador;
+	int temp;
+
+	contador = 0;
+	if (n < 0)
+	{
+		contador++;
+		n = -n;
+	}
+	temp = n;
+	while (n > 15)
+	{
+		n = n / 16;
+		contador++;
+	}
+	n = temp;
+	contador++;
+	return (contador + 1);
+}
+
+static char	*ft_itoa_X_overfl(void)
+{
+	char	*saida;
+
+	saida = (char *)malloc(sizeof(char) * 12);
+	*(saida + 0) = '-';
+	*(saida + 1) = '2';
+	*(saida + 2) = '1';
+	*(saida + 3) = '4';
+	*(saida + 4) = '7';
+	*(saida + 5) = '4';
+	*(saida + 6) = '8';
+	*(saida + 7) = '3';
+	*(saida + 8) = '6';
+	*(saida + 9) = '4';
+	*(saida + 10) = '8';
+	*(saida + 11) = '\0';
+	return (saida);
+}
+
+char		*ft_itoa_X(int n)
+{
+	char	*saida;
+	int		contador;
+	char	temp;
+
+	if (n == -2147483648LL)
+		return (ft_itoa_X_overfl());
+	saida = (char *)malloc(sizeof(char) * ft_itoa_X_log(n));
+	if (saida == NULL)
+		return (NULL);
+	*(saida + 0) = '-';
+	contador = (ft_itoa_X_log(n) - 1);
+	n = (n < 0) ? (-n) : n;
+	*(saida + contador) = '\0';
+	while (n > 15)
+	{
+		temp = (n % 16) + '0';
+		if (temp > '9')
+			temp += ('A' - ('9' + 1));
+		*(saida + contador - 1) = temp;
+		n = (n / 16);
+		contador--;
+	}
+	temp = (n % 16) + '0';
+	if (temp > '9')
+		temp += ('A' - ('9' + 1));
+	*(saida + contador - 1) = temp;
+	return (saida);
+}
 
 char	*ft_append(char *str, char caracter)
 {
@@ -257,6 +400,74 @@ t_print	get_uint(t_print print, char **output, va_list args)
 		}
 	}
 	temp = ft_itoa_ui(n);
+	if (debug > -2) { logging("165: temp = %p\n", temp); }
+	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
+	*output = ft_strappend(*output, temp);
+	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
+	free(temp);
+	saida.estado = UNTIL_PERCENT;
+	return (saida);
+}
+
+t_print	get_hex(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+	char	*temp;
+	int		n;
+	int		log;
+	int		i;
+
+	saida = print;
+	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
+
+	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	n = va_arg(args, int);
+	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
+	{
+		log = ft_itoa_x_log((long)n);
+		i = 0;
+		while ((i + log - 1) < saida.flags.n_left)
+		{
+			*output = ft_append(*output, '0');
+			i++;
+		}
+	}
+	temp = ft_itoa_x(n);
+	if (debug > -2) { logging("165: temp = %p\n", temp); }
+	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
+	*output = ft_strappend(*output, temp);
+	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
+	free(temp);
+	saida.estado = UNTIL_PERCENT;
+	return (saida);
+}
+
+t_print	get_HEX(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+	char	*temp;
+	int		n;
+	int		log;
+	int		i;
+
+	saida = print;
+	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
+
+	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	n = va_arg(args, int);
+	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
+	{
+		log = ft_itoa_X_log((long)n);
+		i = 0;
+		while ((i + log - 1) < saida.flags.n_left)
+		{
+			*output = ft_append(*output, '0');
+			i++;
+		}
+	}
+	temp = ft_itoa_X(n);
 	if (debug > -2) { logging("165: temp = %p\n", temp); }
 	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
 	*output = ft_strappend(*output, temp);
@@ -380,6 +591,10 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		saida.estado = GET_INT;
 	else if (saida.atual_char == 'u')
 		saida.estado = GET_UINT;
+	else if (saida.atual_char == 'x')
+		saida.estado = GET_hex;
+	else if (saida.atual_char == 'x')
+		saida.estado = GET_HEX;
 	else if (saida.atual_char == 's')
 		saida.estado = GET_STR;
 	else
@@ -429,6 +644,10 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			print = get_int(print, output, args);
 		else if (print.estado == GET_UINT)
 			print = get_uint(print, output, args);
+		else if (print.estado == GET_hex)
+			print = get_hex(print, output, args);
+		else if (print.estado == GET_HEX)
+			print = get_HEX(print, output, args);
 		else if (print.estado == GET_STR)
 			print = get_str(print, output, args);
 		else
