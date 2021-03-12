@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 12:41:23 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 13:05:26 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,13 @@ int main()
 	printf("\n");
 
 	if (verbose == 1) { printf   ("main: 123: \"%%s%%s\\n\", \"hello\", \"world\"\n"); }
-	printf   ("main: 124: %s%%s\n", "hello", "world");
-	ft_printf("main: 125: %s%%s\n", "hello", "world");
+	printf   ("main: 124: %s%s\n", "hello", "world");
+	ft_printf("main: 125: %s%s\n", "hello", "world");
+	printf("\n");
+
+	if (verbose == 1) { printf   ("main: 123: \"%%s%%s\\n\", \"hello\", \"world\"\n"); }
+	printf   ("main: 124: %p %p\n", "hello", "world");
+	ft_printf("main: 125: %p %p\n", "hello", "world");
 	printf("\n");
 	return (0);
 }

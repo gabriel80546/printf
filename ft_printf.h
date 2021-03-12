@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:33:30 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 12:30:25 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 12:54:08 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define GET_HEX 8
 # define GET_CHAR 9
 # define GET_STR 10
+# define GET_POINTER 11
 
 typedef struct	s_flags
 {
