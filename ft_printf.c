@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 11:42:24 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 11:47:25 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ char		*ft_itoa_ui(unsigned int n)
 	return (saida);
 }
 
-static int	ft_itoa_x_log(long n)
+static int	ft_itoa_x_log(unsigned long n)
 {
 	int contador;
 	int temp;
@@ -180,34 +180,34 @@ static int	ft_itoa_x_log(long n)
 	return (contador + 1);
 }
 
-static char	*ft_itoa_x_overfl(void)
-{
-	char	*saida;
+// static char	*ft_itoa_x_overfl(void)
+// {
+// 	char	*saida;
 
-	saida = (char *)malloc(sizeof(char) * 12);
-	*(saida + 0) = '-';
-	*(saida + 1) = '2';
-	*(saida + 2) = '1';
-	*(saida + 3) = '4';
-	*(saida + 4) = '7';
-	*(saida + 5) = '4';
-	*(saida + 6) = '8';
-	*(saida + 7) = '3';
-	*(saida + 8) = '6';
-	*(saida + 9) = '4';
-	*(saida + 10) = '8';
-	*(saida + 11) = '\0';
-	return (saida);
-}
+// 	saida = (char *)malloc(sizeof(char) * 12);
+// 	*(saida + 0) = '-';
+// 	*(saida + 1) = '2';
+// 	*(saida + 2) = '1';
+// 	*(saida + 3) = '4';
+// 	*(saida + 4) = '7';
+// 	*(saida + 5) = '4';
+// 	*(saida + 6) = '8';
+// 	*(saida + 7) = '3';
+// 	*(saida + 8) = '6';
+// 	*(saida + 9) = '4';
+// 	*(saida + 10) = '8';
+// 	*(saida + 11) = '\0';
+// 	return (saida);
+// }
 
-char		*ft_itoa_x(int n)
+char		*ft_itoa_x(unsigned int n)
 {
 	char	*saida;
 	int		contador;
 	char	temp;
 
-	if (n == -2147483648LL)
-		return (ft_itoa_x_overfl());
+	// if (n == -2147483648LL)
+	// 	return (ft_itoa_x_overfl());
 	saida = (char *)malloc(sizeof(char) * ft_itoa_x_log(n));
 	if (saida == NULL)
 		return (NULL);
@@ -231,7 +231,7 @@ char		*ft_itoa_x(int n)
 	return (saida);
 }
 
-static int	ft_itoa_X_log(long n)
+static int	ft_itoa_X_log(unsigned long n)
 {
 	int contador;
 	int temp;
@@ -253,34 +253,34 @@ static int	ft_itoa_X_log(long n)
 	return (contador + 1);
 }
 
-static char	*ft_itoa_X_overfl(void)
-{
-	char	*saida;
+// static char	*ft_itoa_X_overfl(void)
+// {
+// 	char	*saida;
 
-	saida = (char *)malloc(sizeof(char) * 12);
-	*(saida + 0) = '-';
-	*(saida + 1) = '2';
-	*(saida + 2) = '1';
-	*(saida + 3) = '4';
-	*(saida + 4) = '7';
-	*(saida + 5) = '4';
-	*(saida + 6) = '8';
-	*(saida + 7) = '3';
-	*(saida + 8) = '6';
-	*(saida + 9) = '4';
-	*(saida + 10) = '8';
-	*(saida + 11) = '\0';
-	return (saida);
-}
+// 	saida = (char *)malloc(sizeof(char) * 12);
+// 	*(saida + 0) = '-';
+// 	*(saida + 1) = '2';
+// 	*(saida + 2) = '1';
+// 	*(saida + 3) = '4';
+// 	*(saida + 4) = '7';
+// 	*(saida + 5) = '4';
+// 	*(saida + 6) = '8';
+// 	*(saida + 7) = '3';
+// 	*(saida + 8) = '6';
+// 	*(saida + 9) = '4';
+// 	*(saida + 10) = '8';
+// 	*(saida + 11) = '\0';
+// 	return (saida);
+// }
 
-char		*ft_itoa_X(int n)
+char		*ft_itoa_X(unsigned int n)
 {
 	char	*saida;
 	int		contador;
 	char	temp;
 
-	if (n == -2147483648LL)
-		return (ft_itoa_X_overfl());
+	// if (n == -2147483648LL)
+	// 	return (ft_itoa_X_overfl());
 	saida = (char *)malloc(sizeof(char) * ft_itoa_X_log(n));
 	if (saida == NULL)
 		return (NULL);
@@ -411,18 +411,18 @@ t_print	get_uint(t_print print, char **output, va_list args)
 
 t_print	get_hex(t_print print, char **output, va_list args)
 {
-	t_print	saida;
-	char	*temp;
-	int		n;
-	int		log;
-	int		i;
+	t_print			saida;
+	char			*temp;
+	unsigned int	n;
+	int				log;
+	int				i;
 
 	saida = print;
 	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
 
 	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
 	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
-	n = va_arg(args, int);
+	n = va_arg(args, unsigned int);
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
 		log = ft_itoa_x_log((long)n);
@@ -445,18 +445,18 @@ t_print	get_hex(t_print print, char **output, va_list args)
 
 t_print	get_HEX(t_print print, char **output, va_list args)
 {
-	t_print	saida;
-	char	*temp;
-	int		n;
-	int		log;
-	int		i;
+	t_print			saida;
+	char			*temp;
+	unsigned int	n;
+	int				log;
+	int				i;
 
 	saida = print;
 	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
 
 	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
 	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
-	n = va_arg(args, int);
+	n = va_arg(args, unsigned int);
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
 		log = ft_itoa_X_log((long)n);
