@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:33:30 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/10 10:11:58 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 09:53:23 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 # define UNTIL_PERCENT 1
 # define PARSE_FLAGS 2
 # define CHOOSE_ACTION 3
-# define GET_NUMBER 4
-# define GET_STR 5
+# define GET_INT 4
+# define GET_UINT 5
+# define GET_STR 6
 
 typedef struct	s_flags
 {
@@ -31,8 +32,8 @@ typedef struct	s_flags
 	int			pad_zeros;
 	int			minus;
 	int			precision;
-	int			asteristc_l;
-	int			asteristc_r;
+	// int			asteristc_l;
+	// int			asteristc_r;
 }				t_flags;
 
 typedef struct	s_p_flags
@@ -43,6 +44,7 @@ typedef struct	s_p_flags
 	int			left_or_right;
 	int			n_auxiliar;
 }				t_p_flags;
+
 
 typedef struct	s_print
 {
