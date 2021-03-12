@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 11:55:15 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 12:42:53 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 
 int in_file = 0;
-int debug = -3;
+int debug = -5;
 
 int g_fd;
 char *g_string;
@@ -352,8 +352,8 @@ t_print	get_int(t_print print, char **output, va_list args)
 	saida = print;
 	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
 
-	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
-	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	if (debug > 2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > 2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
 	n = va_arg(args, int);
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
@@ -366,10 +366,10 @@ t_print	get_int(t_print print, char **output, va_list args)
 		}
 	}
 	temp = ft_itoa(n);
-	if (debug > -2) { logging("165: temp = %p\n", temp); }
-	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
+	if (debug > 2) { logging("165: temp = %p\n", temp); }
+	if (debug > 2) { logging("166: temp = '%s'\n", temp); }
 	*output = ft_strappend(*output, temp);
-	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
+	if (debug > 2) { logging("170: temp = '%s'\n", temp); }
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -384,11 +384,12 @@ t_print	get_uint(t_print print, char **output, va_list args)
 	int				i;
 
 	saida = print;
-	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
+	if (debug > 2) { ft_print_flags("387: saida.", saida.flags); }
 
-	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > -2) { logging("389,390: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
 	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
 	n = va_arg(args, unsigned int);
+	if (debug > -2) { logging("n = %u\n", n); }
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
 		log = ft_itoa_ui_log((unsigned long)n);
@@ -400,10 +401,10 @@ t_print	get_uint(t_print print, char **output, va_list args)
 		}
 	}
 	temp = ft_itoa_ui(n);
-	if (debug > -2) { logging("165: temp = %p\n", temp); }
-	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
+	if (debug > -2) { logging("403: temp = %p\n", temp); }
+	if (debug > -2) { logging("404: temp = '%s'\n", temp); }
 	*output = ft_strappend(*output, temp);
-	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
+	if (debug > -2) { logging("406: temp = '%s'\n", temp); }
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -420,8 +421,8 @@ t_print	get_hex(t_print print, char **output, va_list args)
 	saida = print;
 	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
 
-	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
-	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	if (debug > 2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > 2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
 	n = va_arg(args, unsigned int);
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
@@ -434,10 +435,10 @@ t_print	get_hex(t_print print, char **output, va_list args)
 		}
 	}
 	temp = ft_itoa_x(n);
-	if (debug > -2) { logging("165: temp = %p\n", temp); }
-	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
+	if (debug > 2) { logging("165: temp = %p\n", temp); }
+	if (debug > 2) { logging("166: temp = '%s'\n", temp); }
 	*output = ft_strappend(*output, temp);
-	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
+	if (debug > 2) { logging("170: temp = '%s'\n", temp); }
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -454,8 +455,8 @@ t_print	get_HEX(t_print print, char **output, va_list args)
 	saida = print;
 	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
 
-	if (debug > -2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
-	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	if (debug > 2) { logging("149,150: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > 2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
 	n = va_arg(args, unsigned int);
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
@@ -468,14 +469,28 @@ t_print	get_HEX(t_print print, char **output, va_list args)
 		}
 	}
 	temp = ft_itoa_X(n);
-	if (debug > -2) { logging("165: temp = %p\n", temp); }
-	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
+	if (debug > 2) { logging("165: temp = %p\n", temp); }
+	if (debug > 2) { logging("166: temp = '%s'\n", temp); }
 	*output = ft_strappend(*output, temp);
-	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
+	if (debug > 2) { logging("170: temp = '%s'\n", temp); }
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
+
+
+t_print	get_char(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+	char	temp;
+
+	saida = print;
+	temp = va_arg(args, int);
+	*output = ft_append(*output, temp);
+	saida.estado = UNTIL_PERCENT;
+	return (saida);
+}
+
 
 t_print	get_str(t_print print, char **output, va_list args)
 {
@@ -584,7 +599,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 	t_print	saida;
 
 	saida = print;
-	if (debug > -2) { logging("260: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d; saida.i = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado, saida.i); }
+	if (debug > 2) { logging("260: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d; saida.i = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado, saida.i); }
 	if (saida.atual_char == 'd')
 		saida.estado = GET_INT;
 	else if (saida.atual_char == 'i')
@@ -595,12 +610,14 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		saida.estado = GET_hex;
 	else if (saida.atual_char == 'X')
 		saida.estado = GET_HEX;
+	else if (saida.atual_char == 'c')
+		saida.estado = GET_CHAR;
 	else if (saida.atual_char == 's')
 		saida.estado = GET_STR;
 	else
 		saida.estado = UNTIL_PERCENT;
 	saida.i -= 1;
-	if (debug > -2) { logging("272: saida.estado = %d; saida.i = %d\n", saida.estado, saida.i); }
+	if (debug > 2) { logging("272: saida.estado = %d; saida.i = %d\n", saida.estado, saida.i); }
  	return (saida);
 }
 
@@ -613,15 +630,40 @@ t_print	until_percent(t_print print, char **output, va_list args)
 		*output = ft_append(*output, saida.atual_char);
 	else
 	{
+		// saida.flags = ft_init_flags();
+		// saida.p_flags.pos_inicial = saida.i;
+		// saida.p_flags.auxiliar = NULL;
+		// saida.p_flags.n_auxiliar = 0;
+		// saida.p_flags.estado = 1;
+		// saida.estado = PARSE_FLAGS;
+		saida.estado = OTHER_PERCENT;
+	}
+	return (saida);
+}
+
+t_print	other_percent(t_print print, char **output, va_list args)
+{
+	t_print	saida;
+
+	saida = print;
+	if (saida.atual_char == '%')
+	{
+		*output = ft_append(*output, saida.atual_char);
+		saida.estado = UNTIL_PERCENT;
+	}
+	else
+	{
 		saida.flags = ft_init_flags();
 		saida.p_flags.pos_inicial = saida.i;
 		saida.p_flags.auxiliar = NULL;
 		saida.p_flags.n_auxiliar = 0;
 		saida.p_flags.estado = 1;
 		saida.estado = PARSE_FLAGS;
+		saida.i -= 1;
 	}
 	return (saida);
 }
+
 
 int		ft_printf_parse(const char *str, char **output, va_list args)
 {
@@ -633,8 +675,10 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
-		if (debug > 1) { logging("305: *output = '%s'(%ld); print.estado = %d; print.p_flags.estado = %d\n", *output, ft_strlen(*output), print.estado, print.p_flags.estado); }
-		if (print.estado == UNTIL_PERCENT)
+		if (debug > 1) { logging("305: *output = '%s'(%ld); print.estado = %d; print.atual_char = '%c'\n", *output, ft_strlen(*output), print.estado, print.atual_char); }
+		if (print.estado == OTHER_PERCENT)
+			print = other_percent(print, output, args);
+		else if (print.estado == UNTIL_PERCENT)
 			print = until_percent(print, output, args);
 		else if (print.estado == PARSE_FLAGS)
 			print = parse_flags(print, output, args);
@@ -648,13 +692,15 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			print = get_hex(print, output, args);
 		else if (print.estado == GET_HEX)
 			print = get_HEX(print, output, args);
+		else if (print.estado == GET_CHAR)
+			print = get_char(print, output, args);
 		else if (print.estado == GET_STR)
 			print = get_str(print, output, args);
 		else
 			return (-1);
 		print.i += 1;
 	}
-	if (debug > 0) { logging("320: *output = '%s'(%ld); print.estado = %d; str[print.i] = %d\n", *output, ft_strlen(*output), print.estado, str[print.i]); }
+	if (debug > 1) { logging("305: *output = '%s'(%ld); print.estado = %d; print.atual_char = '%c'\n", *output, ft_strlen(*output), print.estado, print.atual_char); }
 	return (0);
 }
 
