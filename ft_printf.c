@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/11 13:55:00 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 07:56:19 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,11 @@ t_flags	ft_init_flags(void)
 {
 	t_flags saida;
 
-
 	saida.n_left      = -2;
 	saida.n_right     = -2;
 	saida.pad_zeros   = 0;
 	saida.minus       = 0;
 	saida.precision   = 0;
-	saida.asteristc_l = 0;
-	saida.asteristc_r = 0;
 	return (saida);
 }
 
@@ -67,8 +64,6 @@ void	logging(char *str, ...)
 
 void	ft_print_flags(char *append, t_flags flags)
 {
-	logging("%sflags.asteristc_l = %d\n", append, flags.asteristc_l);
-	logging("%sflags.asteristc_r = %d\n", append, flags.asteristc_r);
 	logging("%sflags.minus       = %d\n", append, flags.minus);
 	logging("%sflags.n_left      = %d\n", append, flags.n_left);
 	logging("%sflags.n_right     = %d\n", append, flags.n_right);
@@ -159,17 +154,12 @@ t_print	get_number(t_print print, char **output, va_list args)
 			i++;
 		}
 	}
-	// else
-	// {
 	temp = ft_itoa(n);
 	if (debug > -2) { logging("165: temp = %p\n", temp); }
 	if (debug > -2) { logging("166: temp = '%s'\n", temp); }
-	// if(debug > -1) { printf("saida.flags.pad_zeros = %d\n", saida.flags.pad_zeros); }
 	*output = ft_strappend(*output, temp);
-	// }
 	if (debug > -2) { logging("170: temp = '%s'\n", temp); }
 	free(temp);
-	// saida.i -= 1;
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }

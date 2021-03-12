@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 10:05:36 by gabriel           #+#    #+#              #
-#    Updated: 2021/03/11 11:13:37 by gabriel          ###   ########.fr        #
+#    Updated: 2021/03/12 08:05:54 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,3 +31,4 @@ all: fclean
 #CAMINHO_SAIDA="$(P)saida"
 fclean:
 	rm -f -- *.o
+	rm -f -- libftprintf.a
