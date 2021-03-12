@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 11:47:25 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 11:55:15 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,11 +377,11 @@ t_print	get_int(t_print print, char **output, va_list args)
 
 t_print	get_uint(t_print print, char **output, va_list args)
 {
-	t_print	saida;
-	char	*temp;
-	int		n;
-	int		log;
-	int		i;
+	t_print			saida;
+	char			*temp;
+	unsigned int	n;
+	int				log;
+	int				i;
 
 	saida = print;
 	if (debug > 2) { ft_print_flags("147: saida.", saida.flags); }
@@ -593,7 +593,7 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		saida.estado = GET_UINT;
 	else if (saida.atual_char == 'x')
 		saida.estado = GET_hex;
-	else if (saida.atual_char == 'x')
+	else if (saida.atual_char == 'X')
 		saida.estado = GET_HEX;
 	else if (saida.atual_char == 's')
 		saida.estado = GET_STR;

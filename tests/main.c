@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 11:35:27 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/12 11:53:07 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,20 @@ int main()
 	// printf   ("main: 48: {%10d}\n", 42);
 	// ft_printf("main: 49: {%10d}\n", 42);
 
-	// ft_printf("main: 93: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d); //T4
+	printf   ("main: 93: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
+	ft_printf("main: 93: %1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d\n", i, j, k, l, m, c, e, d); //T4
+	printf("\n");
+
+	printf   ("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X\n", 8, -12, 123456789, 0, -12345678, "abcdefghijklmnop", 'a', 97, (unsigned)4294967284, 0xfffffff4, 0xFFFFFFF4);
+	ft_printf("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X\n", 8, -12, 123456789, 0, -12345678, "abcdefghijklmnop", 'a', 97, (unsigned)4294967284, 0xfffffff4, 0xFFFFFFF4);
+	printf("\n");
+
+// 1c1
+// < 8, -12, 123456789, 0, -12345678, abcdefghijklmnop, c, 97, 97, fffffff4, X --- Return : 73
+// ---
+// > 8, -12, 123456789, 0, -12345678, abcdefghijklmnop, a, 97, 4294967284, fffffff4, FFFFFFF4 --- Return : 88
+
+
 	// printf("\n");
 	if (verbose == 1) { printf   ("\"main: 61: unsined = %%u\\n\", 4294967284\n"); }
 	printf   ("main: 62: unsined = %u\n", (unsigned)4294967284);
