@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 10:52:11 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 10:52:44 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -559,6 +559,7 @@ t_print	get_char(t_print print, char **output, va_list args)
 {
 	t_print	saida;
 	char	temp;
+	int		i;
 
 	saida = print;
 
