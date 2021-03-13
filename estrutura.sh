@@ -1,5 +1,6 @@
 # git clone https://github.com/mrjvs/42cursus_gnl_tests
 caminho=$(pwd)
+cp printf/cmd .
 mkdir testeum
 mkdir testedois
 mkdir testetreis
