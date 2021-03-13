@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 09:47:13 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 10:44:21 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -659,24 +659,23 @@ t_print	get_pointer(t_print print, char **output, va_list args)
 t_print	get_percent(t_print print, char **output, va_list args)
 {
 	t_print			saida;
+	int				i;
 	// long			temp;
 	// char			*out;
 
 	saida = print;
 
+
+	if (saida.flags.n_left >= 0)
+	{
+		i = 0;
+		while (i < (saida.flags.n_left - 1))
+		{
+			*output = ft_append(*output, ' ');
+			i++;
+		}
+	}
 	*output = ft_append(*output, '%');
-	// temp = va_arg(args, unsigned long);
-	// if (temp == 0)
-	// {
-	// 	*output = ft_strappend(*output, "(nil)");
-	// }
-	// else
-	// {
-	// 	out = ft_itoa_x_ul(temp);
-	// 	*output = ft_strappend(*output, "0x");
-	// 	*output = ft_strappend(*output, out);
-	// 	free(out);
-	// }
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
