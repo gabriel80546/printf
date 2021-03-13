@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 13:37:13 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 14:03:41 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -513,33 +513,35 @@ t_print	get_str(t_print print, char **output, va_list args)
 		temp = "(null)";
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 		temp = ft_substr(temp, 0, saida.flags.n_right);
-	if (saida.flags.precision == 0 || saida.flags.n_right >= 0)
+	else if (saida.flags.precision == 1)
+		temp = "";
+	// if (saida.flags.precision == 0 || saida.flags.n_right >= 0)
+	// {
+	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
-		if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+		i = 0;
+		tamanho = ft_strlen(temp);
+		while (i < (saida.flags.n_left - tamanho))
 		{
-			i = 0;
-			tamanho = ft_strlen(temp);
-			while (i < (saida.flags.n_left - tamanho))
-			{
-				if (saida.flags.pad_zeros == 1)
-					*output = ft_append(*output, '0');
-				else
-					*output = ft_append(*output, ' ');
-				i++;
-			}
-		}
-		*output = ft_strappend(*output, temp);
-		if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
-		{
-			i = 0;
-			tamanho = ft_strlen(temp);
-			while (i < (saida.flags.n_left - tamanho))
-			{
+			if (saida.flags.pad_zeros == 1)
+				*output = ft_append(*output, '0');
+			else
 				*output = ft_append(*output, ' ');
-				i++;
-			}
+			i++;
 		}
 	}
+	*output = ft_strappend(*output, temp);
+	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+	{
+		i = 0;
+		tamanho = ft_strlen(temp);
+		while (i < (saida.flags.n_left - tamanho))
+		{
+			*output = ft_append(*output, ' ');
+			i++;
+		}
+	}
+	// }
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 		free(temp);
 	saida.estado = UNTIL_PERCENT;
