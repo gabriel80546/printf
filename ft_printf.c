@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 13:17:24 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 13:10:31 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -504,6 +504,7 @@ t_print	get_str(t_print print, char **output, va_list args)
 {
 	t_print	saida;
 	char	*temp;
+	// char	*aloc;
 	int		tamanho;
 	int		i;
 
@@ -511,37 +512,114 @@ t_print	get_str(t_print print, char **output, va_list args)
 	temp = va_arg(args, char*);
 	if (temp == NULL)
 		temp = "(null)";
-	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
-		temp = ft_substr(temp, 0, saida.flags.n_right);
-	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+	// if (temp == NULL)
+	// {
+	// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+	// 	{
+	// 		i = 0;
+	// 		tamanho = ft_strlen("(null)");
+	// 		while (i < (saida.flags.n_left - tamanho))
+	// 		{
+	// 			if (saida.flags.pad_zeros == 1)
+	// 				*output = ft_append(*output, '0');
+	// 			else
+	// 				*output = ft_append(*output, ' ');
+	// 			i++;
+	// 		}
+	// 	}
+	// 	*output = ft_strappend(*output, "(null)");
+	// }
+	// else
+	// {
+	if (saida.flags.precision == 0)
 	{
-		i = 0;
-		tamanho = ft_strlen(temp);
-		while (i < (saida.flags.n_left - tamanho))
+		if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 		{
-			if (saida.flags.pad_zeros == 1)
-				*output = ft_append(*output, '0');
-			else
+			i = 0;
+			tamanho = ft_strlen(temp);
+			while (i < (saida.flags.n_left - tamanho))
+			{
+				if (saida.flags.pad_zeros == 1)
+					*output = ft_append(*output, '0');
+				else
+					*output = ft_append(*output, ' ');
+				i++;
+			}
+		}
+		*output = ft_strappend(*output, temp);
+		if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+		{
+			i = 0;
+			tamanho = ft_strlen(temp);
+			while (i < (saida.flags.n_left - tamanho))
+			{
 				*output = ft_append(*output, ' ');
-			i++;
+				i++;
+			}
 		}
 	}
-	*output = ft_strappend(*output, temp);
-	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+	else if (saida.flags.n_right >= 0)
 	{
-		i = 0;
-		tamanho = ft_strlen(temp);
-		while (i < (saida.flags.n_left - tamanho))
+		temp = ft_substr(temp, 0, saida.flags.n_right);
+		if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 		{
-			*output = ft_append(*output, ' ');
-			i++;
+			i = 0;
+			tamanho = ft_strlen(temp);
+			while (i < (saida.flags.n_left - tamanho))
+			{
+				if (saida.flags.pad_zeros == 1)
+					*output = ft_append(*output, '0');
+				else
+					*output = ft_append(*output, ' ');
+				i++;
+			}
+		}
+		*output = ft_strappend(*output, temp);
+		free(temp);
+		if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+		{
+			i = 0;
+			tamanho = ft_strlen(temp);
+			while (i < (saida.flags.n_left - tamanho))
+			{
+				*output = ft_append(*output, ' ');
+				i++;
+			}
 		}
 	}
-	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
-		free(temp);
+	// }
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
+	// ^^^^^^^^^^^^get_str
+	// if (temp == NULL)
+	// {
+		// if ((saida.flags.precision == 1 && saida.flags.n_right >= 6) ||
+		// 	(saida.flags.precision == 0))
+		// {
+		// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+		// 	{
+		// 		i = 0;
+		// 		while ((i + 6 - 0) < saida.flags.n_left)
+		// 		{
+		// 			*output = ft_append(*output, ' ');
+		// 			i++;
+		// 		}
+		// 	}
+		// 	*output = ft_strappend(*output, "(null)");
+		// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+		// 	{
+		// 		i = 0;
+		// 		while ((i + 6 - 0) < saida.flags.n_left)
+		// 		{
+		// 			*output = ft_append(*output, ' ');
+		// 			i++;
+		// 		}
+		// 	}
+		// }
+	// }
+	// else
+	// ^^^^^^^^^^^^get_str
 
 t_print	get_pointer(t_print print, char **output, va_list args)
 {
