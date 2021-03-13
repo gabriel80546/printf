@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 13:33:07 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 13:34:01 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -568,8 +568,10 @@ t_print	get_str(t_print print, char **output, va_list args)
 				i++;
 			}
 		}
-		free(temp);
+		// free(temp);
 	}
+	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
+		free(temp);
 	// }
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
