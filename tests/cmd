@@ -1,0 +1,1 @@
+cd ../../; rm -rf printf; git clone https://github.com/gabriel80546/printf; cd printf/tests
