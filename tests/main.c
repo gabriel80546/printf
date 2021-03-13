@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 09:40:08 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 11:55:53 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,52 @@ int main()
 	// printf   ("main: 48: {%10d}\n", 42);
 	// ft_printf("main: 49: {%10d}\n", 42);
 
-	if (verbose == 1) { printf   ("\"%%%%\\n\"\n"); }
-	printf   ("%%\n");
-	ft_printf("%%\n");
-	printf("\n");
+	// if (verbose == 1) { printf   ("\"%%%%\\n\"\n"); }
+	// printf   ("%%\n");
+	// ft_printf("%%\n");
+	// printf("\n");
 
-	if (verbose == 1) { printf   ("\"%%5%%\\n\"\n"); }
-	printf   ("%5%\n");
-	ft_printf("%5%\n");
+	// if (verbose == 1) { printf   ("\"%%5%%\\n\"\n"); }
+	// printf   ("%5%\n");
+	// ft_printf("%5%\n");
+	// printf("\n");
+
+	if (verbose == 1) { printf("\n"); }
+	printf   ("main: 69: %32s\n", "abc");
+	ft_printf("main: 69: %32s\n", "abc");
 	printf("\n");
+	
+	if (verbose == 1) { printf("\n"); }
+	printf   ("main: 69: %16s\n", "nark nark");
+	ft_printf("main: 69: %16s\n", "nark nark");
+	printf("\n");
+	
+	if (verbose == 1) { printf("\n"); }
+	printf   ("main: 69: %-32s\n", "abc");
+	ft_printf("main: 69: %-32s\n", "abc");
+	printf("\n");
+	
+	if (verbose == 1) { printf("\n"); }
+	printf   ("main: 69: %-16s\n", "nark nark");
+	ft_printf("main: 69: %-16s\n", "nark nark");
+	printf("\n");
+	
+	if (verbose == 1) { printf("\n"); }
+	printf   ("main: 69: %.3s\n", "hello");
+	ft_printf("main: 69: %.3s\n", "hello");
+	printf("\n");
+	
+	if (verbose == 1) { printf("\n"); }
+	printf   ("main: 69: %.s\n", "hello");
+	ft_printf("main: 69: %.s\n", "hello");
+	printf("\n");
+	
+	if (verbose == 1) { printf("\n"); }
+	printf   ("main: 69: %.0s\n", "hello");
+	ft_printf("main: 69: %.0s\n", "hello");
+	printf("\n");
+	
+
 
 	return (0);
 }
