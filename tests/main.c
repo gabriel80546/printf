@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 13:52:57 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 14:26:11 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,82 @@ int main()
 	if (verbose == 1) { printf   ("\"main: 177: %%-6.s\\n\", \"\\0\"\n"); }
 	printf   ("main: 178: '%-6.s'\n", "\0");
 	ft_printf("main: 179: '%-6.s'\n", "\0");
+	printf("\n");
+
+
+	printf("@#@#@###@#@###@#@###@@#@#@##@#@@@#@#@#@#@#@##@#@#@@#@#@@#@#@#\n");
+	printf("##@@@##@@#@#@##@#@##@@#@# Parte 3 @@#@##@@#@@#@##@#@#@#@#@#@@\n");
+	printf("@@@#@#@@#@#@#@##@#@#@#@#@#@###@@@#@#@@@#@#@@#@#@#@#@#@@#@#@@#\n");
+	printf("\n");
+
+	if (verbose == 1) { printf   ("main: 188: '%%7i'\n", 33); }
+	printf   ("main: 189: '%7i'\n", 33);
+	ft_printf("main: 190: '%7i'\n", 33);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 193: '%%7i'\n", -14); }
+	printf   ("main: 193: '%7i'\n", -14);
+	ft_printf("main: 194: '%7i'\n", -14);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 198: '%%3i'\n", 0); }
+	printf   ("main: 197: '%3i'\n", 0);
+	ft_printf("main: 198: '%3i'\n", 0);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 203: '%%-7i'\n", 33); }
+	printf   ("main: 201: '%-7i'\n", 33);
+	ft_printf("main: 202: '%-7i'\n", 33);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 208: '%%-7i'\n", -14); }
+	printf   ("main: 205: '%-7i'\n", -14);
+	ft_printf("main: 206: '%-7i'\n", -14);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 213: '%%-3i'\n", 0); }
+	printf   ("main: 209: '%-3i'\n", 0);
+	ft_printf("main: 210: '%-3i'\n", 0);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 218: '%%.5i'\n", 2); }
+	printf   ("main: 213: '%.5i'\n", 2);
+	ft_printf("main: 214: '%.5i'\n", 2);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 223: '%%.6i'\n", -3); }
+	printf   ("main: 217: '%.6i'\n", -3);
+	ft_printf("main: 218: '%.6i'\n", -3);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 228: '%%.3i'\n", 0); }
+	printf   ("main: 221: '%.3i'\n", 0);
+	ft_printf("main: 222: '%.3i'\n", 0);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 233: '%%07i'\n", -54); }
+	printf   ("main: 225: '%07i'\n", -54);
+	ft_printf("main: 226: '%07i'\n", -54);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 238: '%%8.5i'\n", 34); }
+	printf   ("main: 229: '%8.5i'\n", 34);
+	ft_printf("main: 230: '%8.5i'\n", 34);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 243: '%%10.5i'\n", -216); }
+	printf   ("main: 233: '%10.5i'\n", -216);
+	ft_printf("main: 234: '%10.5i'\n", -216);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 248: '%%8.5i'\n", 0); }
+	printf   ("main: 237: '%8.5i'\n", 0);
+	ft_printf("main: 238: '%8.5i'\n", 0);
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("main: 253: '%%8.3i'\n", 8375); }
+	printf   ("main: 241: '%8.3i'\n", 8375);
+	ft_printf("main: 242: '%8.3i'\n", 8375);
 	printf("\n");
 
 	return (0);
