@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:31:12 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 12:02:55 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 12:16:56 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,42 +66,45 @@ int main()
 	// ft_printf("%5%\n");
 	// printf("\n");
 
-	if (verbose == 1) { printf("\n"); }
-	printf   ("main: 70: %32s\n", "abc");
-	ft_printf("main: 71: %32s\n", "abc");
+	if (verbose == 1) { printf   ("\"main: 69: %%-s\\n\", NULL\n"); }
+	printf   ("main: 70: %-s\n", NULL);
+	ft_printf("main: 71: %-s\n", NULL);
 	printf("\n");
 	
-	if (verbose == 1) { printf("\n"); }
-	printf   ("main: 75: %16s\n", "nark nark");
-	ft_printf("main: 76: %16s\n", "nark nark");
+	if (verbose == 1) { printf   ("\nmain: 73: %%23s\\n\", NULL\n"); }
+	printf   ("main: 74: %23s\n", NULL);
+	ft_printf("main: 75: %23s\n", NULL);
 	printf("\n");
 	
-	if (verbose == 1) { printf("\n"); }
-	printf   ("main: 80: %-32s\n", "abc");
-	ft_printf("main: 81: %-32s\n", "abc");
+	if (verbose == 1) { printf   ("\nmain: 77: %%s\\n\", NULL\n"); }
+	printf   ("main: 78: %s\n", NULL);
+	ft_printf("main: 79: %s\n", NULL);
 	printf("\n");
 	
-	if (verbose == 1) { printf("\n"); }
-	printf   ("main: 85: %-16s\n", "nark nark");
-	ft_printf("main: 86: %-16s\n", "nark nark");
+	if (verbose == 1) { printf   ("\nmain: 81: %%-32s\\n\", \"abc\"\n"); }
+	printf   ("main: 82: %-32s\n", "abc");
+	ft_printf("main: 83: %-32s\n", "abc");
 	printf("\n");
 	
-	if (verbose == 1) { printf("\n"); }
+	if (verbose == 1) { printf   ("\nmain: 85: %%-16s\\n\", \"nark nark\"\n"); }
+	printf   ("main: 86: %-16s\n", "nark nark");
+	ft_printf("main: 87: %-16s\n", "nark nark");
+	printf("\n");
+	
+	if (verbose == 1) { printf   ("\nmain: 89: %%.3s\\n\", \"hello\"\n"); }
 	printf   ("main: 90: %.3s\n", "hello");
 	ft_printf("main: 91: %.3s\n", "hello");
 	printf("\n");
 	
-	if (verbose == 1) { printf("\n"); }
-	printf   ("main: 95: %.s\n", "hello");
-	ft_printf("main: 96: %.s\n", "hello");
+	if (verbose == 1) { printf   ("\nmain: 93: %%.s\\n\", \"hello\"\n"); }
+	printf   ("main: 94: %.s\n", "hello");
+	ft_printf("main: 95: %.s\n", "hello");
 	printf("\n");
 	
-	if (verbose == 1) { printf("\n"); }
-	printf   ("main: 100: %.0s\n", "hello");
-	ft_printf("main: 101: %.0s\n", "hello");
+	if (verbose == 1) { printf   ("\nmain: 97: %%.0s\\n\", \"hello\"\n"); }
+	printf   ("main: 98: %.0s\n", "hello");
+	ft_printf("main: 99: %.0s\n", "hello");
 	printf("\n");
-	
-
 
 	return (0);
 }
