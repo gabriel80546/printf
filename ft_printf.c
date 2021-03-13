@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 13:34:48 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 13:35:57 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -516,6 +516,8 @@ t_print	get_str(t_print print, char **output, va_list args)
 		temp = ft_substr(temp, 0, saida.flags.n_right);
 	// if (saida.flags.precision == 0)
 	// {
+	if (saida.flags.precision == 0 || saida.flags.n_right >= 0)
+	{
 		if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 		{
 			i = 0;
@@ -540,7 +542,7 @@ t_print	get_str(t_print print, char **output, va_list args)
 				i++;
 			}
 		}
-	// }
+	}
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 		free(temp);
 	// }
