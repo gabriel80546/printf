@@ -15,4 +15,5 @@ cp -r -v -n testetreis/repo testetreis/copia
 caminho=$(echo $caminho | sed 's/\//\\\//g')
 #echo $caminho
 cp printf/refazer.sh .
+chmod 775 refazer.sh
 cat refazer.sh | sed "s/fWU3KdermTW3n9FRbtXwZ7AM/$caminho/g" > temp; mv temp refazer.sh
