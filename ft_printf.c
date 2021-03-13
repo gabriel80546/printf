@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/12 13:08:24 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 09:47:13 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 
 int in_file = 0;
-int debug = -55;
+int debug = 0;
 
 int g_fd;
 char *g_string;
@@ -462,10 +462,10 @@ t_print	get_uint(t_print print, char **output, va_list args)
 	saida = print;
 	if (debug > 2) { ft_print_flags("387: saida.", saida.flags); }
 
-	if (debug > -2) { logging("389,390: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
-	if (debug > -2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
+	if (debug > 2) { logging("389,390: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
+	if (debug > 2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
 	n = va_arg(args, unsigned int);
-	if (debug > -2) { logging("n = %u\n", n); }
+	if (debug > 2) { logging("n = %u\n", n); }
 	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
 	{
 		log = ft_itoa_ui_log((unsigned long)n);
@@ -477,10 +477,10 @@ t_print	get_uint(t_print print, char **output, va_list args)
 		}
 	}
 	temp = ft_itoa_ui(n);
-	if (debug > -2) { logging("403: temp = %p\n", temp); }
-	if (debug > -2) { logging("404: temp = '%s'\n", temp); }
+	if (debug > 2) { logging("403: temp = %p\n", temp); }
+	if (debug > 2) { logging("404: temp = '%s'\n", temp); }
 	*output = ft_strappend(*output, temp);
-	if (debug > -2) { logging("406: temp = '%s'\n", temp); }
+	if (debug > 2) { logging("406: temp = '%s'\n", temp); }
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -654,6 +654,35 @@ t_print	get_pointer(t_print print, char **output, va_list args)
 	return (saida);
 }
 
+
+
+t_print	get_percent(t_print print, char **output, va_list args)
+{
+	t_print			saida;
+	// long			temp;
+	// char			*out;
+
+	saida = print;
+
+	*output = ft_append(*output, '%');
+	// temp = va_arg(args, unsigned long);
+	// if (temp == 0)
+	// {
+	// 	*output = ft_strappend(*output, "(nil)");
+	// }
+	// else
+	// {
+	// 	out = ft_itoa_x_ul(temp);
+	// 	*output = ft_strappend(*output, "0x");
+	// 	*output = ft_strappend(*output, out);
+	// 	free(out);
+	// }
+	saida.estado = UNTIL_PERCENT;
+	return (saida);
+}
+
+
+
 t_print	parse_flags(t_print print, char **output, va_list args)
 {
 	t_print	saida;
@@ -738,6 +767,8 @@ t_print	choose_action(t_print print, char **output, va_list args)
 		saida.estado = GET_STR;
 	else if (saida.atual_char == 'p')
 		saida.estado = GET_POINTER;
+	else if (saida.atual_char == '%')
+		saida.estado = GET_PERCENT;
 	else
 		saida.estado = UNTIL_PERCENT;
 	saida.i -= 1;
@@ -754,17 +785,18 @@ t_print	until_percent(t_print print, char **output, va_list args)
 		*output = ft_append(*output, saida.atual_char);
 	else
 	{
-		// saida.flags = ft_init_flags();
-		// saida.p_flags.pos_inicial = saida.i;
-		// saida.p_flags.auxiliar = NULL;
-		// saida.p_flags.n_auxiliar = 0;
-		// saida.p_flags.estado = 1;
-		// saida.estado = PARSE_FLAGS;
-		saida.estado = OTHER_PERCENT;
+		saida.flags = ft_init_flags();
+		saida.p_flags.pos_inicial = saida.i;
+		saida.p_flags.auxiliar = NULL;
+		saida.p_flags.n_auxiliar = 0;
+		saida.p_flags.estado = 1;
+		saida.estado = PARSE_FLAGS;
+		// saida.estado = OTHER_PERCENT;
 	}
 	return (saida);
 }
 
+/*
 t_print	other_percent(t_print print, char **output, va_list args)
 {
 	t_print	saida;
@@ -787,7 +819,7 @@ t_print	other_percent(t_print print, char **output, va_list args)
 	}
 	return (saida);
 }
-
+ */
 
 int		ft_printf_parse(const char *str, char **output, va_list args)
 {
@@ -795,14 +827,14 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 
 	print.i = 0;
 	print.estado = UNTIL_PERCENT;
-	if (debug > -2) { logging("301: str = '%s'\n", str); }
+	if (debug > 2) { logging("301: str = '%s'\n", str); }
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
 		if (debug > 2) { logging("305: *output = '%s'(%ld); print.estado = %d; print.atual_char = '%c'\n", *output, ft_strlen(*output), print.estado, print.atual_char); }
-		if (print.estado == OTHER_PERCENT)
+		/* if (print.estado == OTHER_PERCENT)
 			print = other_percent(print, output, args);
-		else if (print.estado == UNTIL_PERCENT)
+		else */ if (print.estado == UNTIL_PERCENT)
 			print = until_percent(print, output, args);
 		else if (print.estado == PARSE_FLAGS)
 			print = parse_flags(print, output, args);
@@ -822,6 +854,8 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			print = get_str(print, output, args);
 		else if (print.estado == GET_POINTER)
 			print = get_pointer(print, output, args);
+		else if (print.estado == GET_PERCENT)
+			print = get_percent(print, output, args);
 		else
 			return (-1);
 		print.i += 1;
