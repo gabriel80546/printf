@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 10:49:58 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 10:50:52 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -684,10 +684,7 @@ t_print	get_percent(t_print print, char **output, va_list args)
 		i = 0;
 		while (i < (saida.flags.n_left - 1))
 		{
-			if (saida.flags.pad_zeros == 1)
-				*output = ft_append(*output, '0');
-			else
-				*output = ft_append(*output, ' ');
+			*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
