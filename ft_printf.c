@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 12:21:29 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 12:23:10 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -510,24 +510,26 @@ t_print	get_str(t_print print, char **output, va_list args)
 	saida = print;
 	temp = va_arg(args, char*);
 	if (temp == NULL)
-	{
-		if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
-		{
-			i = 0;
-			tamanho = ft_strlen("(null)");
-			while (i < (saida.flags.n_left - tamanho))
-			{
-				if (saida.flags.pad_zeros == 1)
-					*output = ft_append(*output, '0');
-				else
-					*output = ft_append(*output, ' ');
-				i++;
-			}
-		}
-		*output = ft_strappend(*output, "(null)");
-	}
-	else
-	{
+		temp = "(null)";
+	// if (temp == NULL)
+	// {
+	// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+	// 	{
+	// 		i = 0;
+	// 		tamanho = ft_strlen("(null)");
+	// 		while (i < (saida.flags.n_left - tamanho))
+	// 		{
+	// 			if (saida.flags.pad_zeros == 1)
+	// 				*output = ft_append(*output, '0');
+	// 			else
+	// 				*output = ft_append(*output, ' ');
+	// 			i++;
+	// 		}
+	// 	}
+	// 	*output = ft_strappend(*output, "(null)");
+	// }
+	// else
+	// {
 		if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 		{
 			i = 0;
@@ -542,7 +544,7 @@ t_print	get_str(t_print print, char **output, va_list args)
 			}
 		}
 		*output = ft_strappend(*output, temp);
-	}
+	// }
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
