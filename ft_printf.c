@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 10:56:41 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/13 11:24:41 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -548,39 +548,39 @@ t_print	get_pointer(t_print print, char **output, va_list args)
 
 	saida = print;
 	temp = va_arg(args, unsigned long);
-	if (temp == 0)
-	{
-		// if ((saida.flags.precision == 1 && saida.flags.n_right >= 6) ||
-		// 	(saida.flags.precision == 0))
-		// {
-		// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
-		// 	{
-		// 		i = 0;
-		// 		while ((i + 6 - 0) < saida.flags.n_left)
-		// 		{
-		// 			*output = ft_append(*output, ' ');
-		// 			i++;
-		// 		}
-		// 	}
-			*output = ft_strappend(*output, "(nil)");
-		// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
-		// 	{
-		// 		i = 0;
-		// 		while ((i + 6 - 0) < saida.flags.n_left)
-		// 		{
-		// 			*output = ft_append(*output, ' ');
-		// 			i++;
-		// 		}
-		// 	}
-		// }
-	}
-	else
-	{
+	// if (temp == 0)
+	// {
+	// 	// if ((saida.flags.precision == 1 && saida.flags.n_right >= 6) ||
+	// 	// 	(saida.flags.precision == 0))
+	// 	// {
+	// 	// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+	// 	// 	{
+	// 	// 		i = 0;
+	// 	// 		while ((i + 6 - 0) < saida.flags.n_left)
+	// 	// 		{
+	// 	// 			*output = ft_append(*output, ' ');
+	// 	// 			i++;
+	// 	// 		}
+	// 	// 	}
+	// 		*output = ft_strappend(*output, "(nil)");
+	// 	// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+	// 	// 	{
+	// 	// 		i = 0;
+	// 	// 		while ((i + 6 - 0) < saida.flags.n_left)
+	// 	// 		{
+	// 	// 			*output = ft_append(*output, ' ');
+	// 	// 			i++;
+	// 	// 		}
+	// 	// 	}
+	// 	// }
+	// }
+	// else
+	// {
 		out = ft_itoa_x_ul(temp);
 		*output = ft_strappend(*output, "0x");
 		*output = ft_strappend(*output, out);
 		free(out);
-	}
+	// }
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
