@@ -20,6 +20,7 @@
 int main()
 {
 	char *s_hidden = "hi low\0don't print me lol\0";
+	char *nulo = NULL;
 
 	int verbose;
 	verbose = 0;
@@ -105,8 +106,8 @@ int main()
 	ft_printf("main: 103: '%7.3s%3.3s'\n", "hello", "world");
 	printf("\n");
 
-	printf("@#@#@###@#@###@#@###@@#@#@##@#@@@#@#@#@#@#@##@#@#@@#@#@@#@#@#\n\0");
-	printf("##@@@##@@#@#@##@#@##@@#@# Parte 2 @@#@##@@#@@#@##@#@#@#@#@#@@\n\0");
+	printf("@#@#@###@#@###@#@###@@#@#@##@#@@@#@#@#@#@#@##@#@#@@#@#@@#@#@#\n");
+	printf("##@@@##@@#@#@##@#@##@@#@# Parte 2 @@#@##@@#@@#@##@#@#@#@#@#@@\n");
 	printf("@@@#@#@@#@#@#@##@#@#@#@#@#@###@@@#@#@@@#@#@@#@#@#@#@#@@#@#@@#\n\n");
 
 	if (verbose == 1) { printf   ("\"main: 112: %%3.s\\n\", s_hidden\n"); }
@@ -120,13 +121,13 @@ int main()
 	printf("\n");
 
 	if (verbose == 1) { printf   ("\"main: 122: %%3.s\\n\", NULL\n"); }
-	printf   ("main: 123: '%3.s'\n", NULL);
-	ft_printf("main: 124: '%3.s'\n", NULL);
+	printf   ("main: 123: '%3.s'\n", (char*)nulo);
+	ft_printf("main: 124: '%3.s'\n", (char*)nulo);
 	printf("\n");
 
 	if (verbose == 1) { printf   ("\"main: 127: %%10.s\\n\", NULL\n"); }
-	printf   ("main: 128: '%10.s'\n", NULL);
-	ft_printf("main: 129: '%10.s'\n", NULL);
+	printf   ("main: 128: '%10.s'\n", (char*)nulo);
+	ft_printf("main: 129: '%10.s'\n", (char*)nulo);
 	printf("\n");
 
 	if (verbose == 1) { printf   ("\"main: 132: %%1.s\\n\", \"\\0\"\n"); }
@@ -155,13 +156,13 @@ int main()
 	printf("\n");
 
 	if (verbose == 1) { printf   ("\"main: 157: %%-3.s\\n\", NULL\n"); }
-	printf   ("main: 158: '%-3.s'\n", NULL);
-	ft_printf("main: 159: '%-3.s'\n", NULL);
+	printf   ("main: 158: '%-3.s'\n", (char*)nulo);
+	ft_printf("main: 159: '%-3.s'\n", (char*)nulo);
 	printf("\n");
 
 	if (verbose == 1) { printf   ("\"main: 162: %%-8.s\\n\", NULL\n"); }
-	printf   ("main: 163: '%-8.s'\n", NULL);
-	ft_printf("main: 164: '%-8.s'\n", NULL);
+	printf   ("main: 163: '%-8.s'\n", (char*)nulo);
+	ft_printf("main: 164: '%-8.s'\n", (char*)nulo);
 	printf("\n");
 
 	if (verbose == 1) { printf   ("\"main: 167: %%-1.s\\n\", \"\\0\"\n"); }
@@ -185,72 +186,72 @@ int main()
 	printf("@@@#@#@@#@#@#@##@#@#@#@#@#@###@@@#@#@@@#@#@@#@#@#@#@#@@#@#@@#\n");
 	printf("\n");
 
-	if (verbose == 1) { printf   ("main: 188: '%%7i'\n", 33); }
+	if (verbose == 1) { printf   ("\"main: 188: '%%7i'\\n\", 33\n"); }
 	printf   ("main: 189: '%7i'\n", 33);
 	ft_printf("main: 190: '%7i'\n", 33);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 193: '%%7i'\n", -14); }
+	if (verbose == 1) { printf   ("\"main: 193: '%%7i'\\n\", -14\n"); }
 	printf   ("main: 193: '%7i'\n", -14);
 	ft_printf("main: 194: '%7i'\n", -14);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 198: '%%3i'\n", 0); }
+	if (verbose == 1) { printf   ("\"main: 198: '%%3i'\\n\", 0\n"); }
 	printf   ("main: 197: '%3i'\n", 0);
 	ft_printf("main: 198: '%3i'\n", 0);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 203: '%%-7i'\n", 33); }
+	if (verbose == 1) { printf   ("\"main: 203: '%%-7i'\\n\", 33\n"); }
 	printf   ("main: 201: '%-7i'\n", 33);
 	ft_printf("main: 202: '%-7i'\n", 33);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 208: '%%-7i'\n", -14); }
+	if (verbose == 1) { printf   ("\"main: 208: '%%-7i'\\n\", -14\n"); }
 	printf   ("main: 205: '%-7i'\n", -14);
 	ft_printf("main: 206: '%-7i'\n", -14);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 213: '%%-3i'\n", 0); }
+	if (verbose == 1) { printf   ("\nmain: 213: '%%-3i'\\n\", 0\n"); }
 	printf   ("main: 209: '%-3i'\n", 0);
 	ft_printf("main: 210: '%-3i'\n", 0);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 218: '%%.5i'\n", 2); }
+	if (verbose == 1) { printf   ("\nmain: 218: '%%.5i'\\n\", 2\n"); }
 	printf   ("main: 213: '%.5i'\n", 2);
 	ft_printf("main: 214: '%.5i'\n", 2);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 223: '%%.6i'\n", -3); }
+	if (verbose == 1) { printf   ("\nmain: 223: '%%.6i'\\n\", -3\n"); }
 	printf   ("main: 217: '%.6i'\n", -3);
 	ft_printf("main: 218: '%.6i'\n", -3);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 228: '%%.3i'\n", 0); }
+	if (verbose == 1) { printf   ("\nmain: 228: '%%.3i'\\n\", 0\n"); }
 	printf   ("main: 221: '%.3i'\n", 0);
 	ft_printf("main: 222: '%.3i'\n", 0);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 233: '%%07i'\n", -54); }
+	if (verbose == 1) { printf   ("\nmain: 233: '%%07i'\\n\", -54\n"); }
 	printf   ("main: 225: '%07i'\n", -54);
 	ft_printf("main: 226: '%07i'\n", -54);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 238: '%%8.5i'\n", 34); }
+	if (verbose == 1) { printf   ("\nmain: 238: '%%8.5i'\\n\", 34\n"); }
 	printf   ("main: 229: '%8.5i'\n", 34);
 	ft_printf("main: 230: '%8.5i'\n", 34);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 243: '%%10.5i'\n", -216); }
+	if (verbose == 1) { printf   ("\nmain: 243: '%%10.5i'\\n\", -216\n"); }
 	printf   ("main: 233: '%10.5i'\n", -216);
 	ft_printf("main: 234: '%10.5i'\n", -216);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 248: '%%8.5i'\n", 0); }
+	if (verbose == 1) { printf   ("\nmain: 248: '%%8.5i'\\n\", 0\n"); }
 	printf   ("main: 237: '%8.5i'\n", 0);
 	ft_printf("main: 238: '%8.5i'\n", 0);
 	printf("\n");
 	
-	if (verbose == 1) { printf   ("main: 253: '%%8.3i'\n", 8375); }
+	if (verbose == 1) { printf   ("\nmain: 253: '%%8.3i'\\n\", 8375\n"); }
 	printf   ("main: 241: '%8.3i'\n", 8375);
 	ft_printf("main: 242: '%8.3i'\n", 8375);
 	printf("\n");

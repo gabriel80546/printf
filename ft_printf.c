@@ -27,10 +27,21 @@ int debug = 0;
 int g_fd;
 char *g_string;
 
+
 #ifndef CAMINHO_SAIDA
 # define CAMINHO_SAIDA "/home/gabriel/desktop/qd/projetos/printf/printf/tests/saida"
 #endif
 
+// void	*ft_calloco(size_t nmemb, size_t size)
+// {
+// 	void *saida;
+
+// 	saida = malloc(nmemb * size);
+// 	if (saida == NULL)
+// 		return (NULL);
+// 	ft_memset(saida, 0, nmemb * size);
+// 	return (saida);
+// }
 
 
 t_flags	ft_init_flags(void)
@@ -377,6 +388,8 @@ t_print	get_int(t_print print, char **output, va_list args)
 	{
 		i = 0;
 		tamanho = ft_printf_itoa_log((long)n) - 1;
+        if ((tamanho - saida.flags.n_right) < 0)
+            tamanho -= (tamanho - saida.flags.n_right);
 		while (i < (saida.flags.n_left - tamanho - neg))
 		{
 			if (saida.flags.pad_zeros == 1)
@@ -862,11 +875,18 @@ int		ft_printf(const char *str, ...)
 	int		saida;
 	va_list	args;
 
+
+    if (debug > 0) { logging("866: entrou aqui\n"); }
+
 	g_string = (char *)malloc(sizeof(char) * 4450);
 	g_fd = open(CAMINHO_SAIDA, O_RDWR | O_APPEND);
 
+    if (debug > 0) { logging("871: entrou aqui\n"); }
+
 	va_start(args, str);
+    if (debug > 0) { logging("874: entrou aqui\n"); }
 	output = ft_calloc(1, 1);
+    if (debug > 0) { logging("876: entrou aqui\n"); }
 	saida = ft_printf_parse(str, &output, args);
 	ft_putstr_fd(output, 1);
 	saida = (int)ft_strlen(output);
@@ -874,6 +894,7 @@ int		ft_printf(const char *str, ...)
 	va_end(args);
 
 	free(g_string);
-	close(g_fd);
+	if (g_fd != -1)
+		close(g_fd);
 	return (saida);
 }
