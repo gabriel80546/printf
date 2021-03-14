@@ -379,7 +379,7 @@ t_print	get_int(t_print print, char **output, va_list args)
 		n = -n;
 		neg = 1;
 	}
-	if (neg == 1 && saida.flags.pad_zeros == 1)
+	if (neg == 1 && (saida.flags.pad_zeros == 1 && saida.flags.precision == 0))
 		*output = ft_append(*output, '-');
 
 	//if (debug > -1) { logging("saida.flags.pad_zeros = %d\n", saida.flags.pad_zeros); }
@@ -393,14 +393,17 @@ t_print	get_int(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - tamanho - neg))
 		{
 			if (saida.flags.pad_zeros == 1)
-				*output = ft_append(*output, ' ');
+				if (saida.flags.precision == 1)
+					*output = ft_append(*output, ' ');
+				else
+					*output = ft_append(*output, '0');
 			else
 				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
 
-	if (neg == 1 && saida.flags.pad_zeros == 0)
+	if (neg == 1 && !(saida.flags.pad_zeros == 1 && saida.flags.precision == 0))
 		*output = ft_append(*output, '-');
 
 

@@ -421,5 +421,125 @@ int main()
 	ft_printf("main: 421: '%08.3d'\n", 8375);
 	printf("\n");
 
+	printf("@#@#@###@#@###@#@###@@#@#@##@#@@@#@#@#@#@#@##@#@#@@#@#@@#@#@#\n");
+	printf("##@@@##@@#@#@##@#@##@@#@# Parte 5 @@#@##@@#@@#@##@#@#@#@#@#@@\n");
+	printf("@@@#@#@@#@#@#@##@#@#@#@#@#@###@@@#@#@@@#@#@@#@#@#@#@#@@#@#@@#\n");
+	printf("\n");
+
+//	if (verbose == 1) { printf   ("\nmain: 424: %%05i\", 43\n"); }
+//	printf   ("main: 430: %05i\n", 43);
+//	ft_printf("main: 431: %05i\n", 43);
+//	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%05i\", 43\n"); }
+	printf   ("main: 435: '%05i'\n", 43);
+	ft_printf("main: 436: '%05i'\n", 43);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%07i\", -54\n"); }
+	printf   ("main: 440: '%07i'\n", -54);
+	ft_printf("main: 441: '%07i'\n", -54);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%03i\", 0\n"); }
+	printf   ("main: 445: '%03i'\n", 0);
+	ft_printf("main: 446: '%03i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%010.5i\", -216\n"); }
+	printf   ("main: 450: '%010.5i'\n", -216);
+	ft_printf("main: 451: '%010.5i'\n", -216);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%08.3i\", -8473\n"); }
+	printf   ("main: 455: '%08.3i'\n", -8473);
+	ft_printf("main: 456: '%08.3i'\n", -8473);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%.0i\", 0\n"); }
+	printf   ("main: 460: '%.0i'\n", 0);
+	ft_printf("main: 461: '%.0i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%.i\", 0\n"); }
+	printf   ("main: 465: '%.i'\n", 0);
+	ft_printf("main: 466: '%.i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%5.0i\", 0\n"); }
+	printf   ("main: 470: '%5.0i'\n", 0);
+	ft_printf("main: 471: '%5.0i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%5.i\", 0\n"); }
+	printf   ("main: 475: '%5.i'\n", 0);
+	ft_printf("main: 476: '%5.i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%-5.0i\", 0\n"); }
+	printf   ("main: 480: '%-5.0i'\n", 0);
+	ft_printf("main: 481: '%-5.0i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%-5.i\", 0\n"); }
+	printf   ("main: 485: '%-5.i'\n", 0);
+	ft_printf("main: 486: '%-5.i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%05d\", 43\n"); }
+	printf   ("main: 490: '%05d'\n", 43);
+	ft_printf("main: 491: '%05d'\n", 43);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%07d\", -54\n"); }
+	printf   ("main: 495: '%07d'\n", -54);
+	ft_printf("main: 496: '%07d'\n", -54);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%03d\", 0\n"); }
+	printf   ("main: 500: '%03d'\n", 0);
+	ft_printf("main: 501: '%03d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%010.5d\", -216\n"); }
+	printf   ("main: 505: '%010.5d'\n", -216);
+	ft_printf("main: 506: '%010.5d'\n", -216);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%08.3d\", -8473\n"); }
+	printf   ("main: 510: '%08.3d'\n", -8473);
+	ft_printf("main: 511: '%08.3d'\n", -8473);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%.0d\", 0\n"); }
+	printf   ("main: 515: '%.0d'\n", 0);
+	ft_printf("main: 516: '%.0d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%.d\", 0\n"); }
+	printf   ("main: 520: '%.d'\n", 0);
+	ft_printf("main: 521: '%.d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%5.0d\", 0\n"); }
+	printf   ("main: 525: '%5.0d'\n", 0);
+	ft_printf("main: 526: '%5.0d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%5.d\", 0\n"); }
+	printf   ("main: 530: '%5.d'\n", 0);
+	ft_printf("main: 531: '%5.d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%-5.0d\", 0\n"); }
+	printf   ("main: 535: '%-5.0d'\n", 0);
+	ft_printf("main: 536: '%-5.0d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\nmain: 424: %%-5.d\", 0\n"); }
+	printf   ("main: 540: '%-5.d'\n", 0);
+	ft_printf("main: 541: '%-5.d'\n", 0);
+	printf("\n");
+
 	return (0);
 }
