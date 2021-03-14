@@ -374,7 +374,7 @@ t_print	get_int(t_print print, char **output, va_list args)
 
 	neg = 0;
 
-	if (n < 0)
+	if (n < 0 && n != -2147483648)
 	{
 		n = -n;
 		neg = 1;
