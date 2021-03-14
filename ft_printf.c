@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 08:29:20 by gabriel           #+#    #+#             */
-/*   Updated: 2021/03/13 14:33:57 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/03/14 11:29:31 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,14 +335,49 @@ t_print	get_int(t_print print, char **output, va_list args)
 	int		n;
 	int		i;
 	int		tamanho;
+	int		neg;
+
 
 	saida = print;
 	n = va_arg(args, int);
+
+
+//	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
+//		temp = ft_substr(temp, 0, saida.flags.n_right);
+//	else if (saida.flags.precision == 1)
+//		temp = "";
+
+//	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+//	{
+//		i = 0;
+//		tamanho = ft_printf_itoa_log((long)n) - 1;
+//		while (i < (saida.flags.n_left - tamanho))
+//		{
+//			if (saida.flags.pad_zeros == 1)
+//				*output = ft_append(*output, '0');
+//			else
+//				*output = ft_append(*output, ' ');
+//			i++;
+//		}
+//	}
+
+	neg = 0;
+
+	if (n < 0)
+	{
+		n = -n;
+		neg = 1;
+	}
+	if (neg == 1 && saida.flags.pad_zeros == 1)
+		*output = ft_append(*output, '-');
+
+	//if (debug > -1) { logging("saida.flags.pad_zeros = %d\n", saida.flags.pad_zeros); }
+
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;
 		tamanho = ft_printf_itoa_log((long)n) - 1;
-		while (i < (saida.flags.n_left - tamanho))
+		while (i < (saida.flags.n_left - tamanho - neg))
 		{
 			if (saida.flags.pad_zeros == 1)
 				*output = ft_append(*output, '0');
@@ -352,22 +387,22 @@ t_print	get_int(t_print print, char **output, va_list args)
 		}
 	}
 
-	temp = ft_itoa(n);
-	*output = ft_strappend(*output, temp);
+	if (neg == 1 && saida.flags.pad_zeros == 0)
+		*output = ft_append(*output, '-');
 
-	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
 		i = 0;
 		tamanho = ft_printf_itoa_log((long)n) - 1;
-		while (i < (saida.flags.n_left - tamanho))
+		while (i < (saida.flags.n_right - tamanho))
 		{
-			if (saida.flags.pad_zeros == 1)
-				*output = ft_append(*output, '0');
-			else
-				*output = ft_append(*output, ' ');
+			*output = ft_append(*output, '0');
 			i++;
 		}
 	}
+	temp = ft_itoa(n);
+	*output = ft_strappend(*output, temp);
+
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
