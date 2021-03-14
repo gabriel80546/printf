@@ -180,7 +180,6 @@ int main()
 	ft_printf("main: 179: '%-6.s'\n", "\0");
 	printf("\n");
 
-
 	printf("@#@#@###@#@###@#@###@@#@#@##@#@@@#@#@#@#@#@##@#@#@@#@#@@#@#@#\n");
 	printf("##@@@##@@#@#@##@#@##@@#@# Parte 3 @@#@##@@#@@#@##@#@#@#@#@#@@\n");
 	printf("@@@#@#@@#@#@#@##@#@#@#@#@#@###@@@#@#@@@#@#@@#@#@#@#@#@@#@#@@#\n");
@@ -259,6 +258,168 @@ int main()
 	if (verbose == 1) { printf   ("\"max int = '%d'\\n\", -2147483648\n"); }
 	printf   ("max int = '%d'\n", -2147483648);
 	ft_printf("max int = '%d'\n", -2147483648);
+	printf("\n");
+
+	printf("@#@#@###@#@###@#@###@@#@#@##@#@@@#@#@#@#@#@##@#@#@@#@#@@#@#@#\n");
+	printf("##@@@##@@#@#@##@#@##@@#@# Parte 4 @@#@##@@#@@#@##@#@#@#@#@#@@\n");
+	printf("@@@#@#@@#@#@#@##@#@#@#@#@#@###@@@#@#@@@#@#@@#@#@#@#@#@@#@#@@#\n");
+	printf("\n");
+
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-7i'\", 33\n"); }
+	printf   ("main: 270: '%-7i'\n", 33);
+	ft_printf("main: 271: '%-7i'\n", 33);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-7i'\", -14\n"); }
+	printf   ("main: 275: '%-7i'\n", -14);
+	ft_printf("main: 276: '%-7i'\n", -14);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-3i'\", 0\n"); }
+	printf   ("main: 280: '%-3i'\n", 0);
+	ft_printf("main: 281: '%-3i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-8.5i'\", 34\n"); }
+	printf   ("main: 285: '%-8.5i'\n", 34);
+	ft_printf("main: 286: '%-8.5i'\n", 34);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-10.5i'\", -216\n"); }
+	printf   ("main: 290: '%-10.5i'\n", -216);
+	ft_printf("main: 291: '%-10.5i'\n", -216);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-8.5i'\", 0\n"); }
+	printf   ("main: 295: '%-8.5i'\n", 0);
+	ft_printf("main: 296: '%-8.5i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-8.3i'\", 8375\n"); }
+	printf   ("main: 300: '%-8.3i'\n", 8375);
+	ft_printf("main: 301: '%-8.3i'\n", 8375);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-8.3i'\", -8473\n"); }
+	printf   ("main: 305: '%-8.3i'\n", -8473);
+	ft_printf("main: 306: '%-8.3i'\n", -8473);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%08.5i'\", 34\n"); }
+	printf   ("main: 310: '%08.5i'\n", 34);
+	ft_printf("main: 311: '%08.5i'\n", 34);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%010.5i'\", -216\n"); }
+	printf   ("main: 315: '%010.5i'\n", -216);
+	ft_printf("main: 316: '%010.5i'\n", -216);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%08.5i'\", 0\n"); }
+	printf   ("main: 320: '%08.5i'\n", 0);
+	ft_printf("main: 321: '%08.5i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%08.3i'\", 8375\n"); }
+	printf   ("main: 325: '%08.3i'\n", 8375);
+	ft_printf("main: 326: '%08.3i'\n", 8375);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%08.3i'\", -8473\n"); }
+	printf   ("main: 330: '%08.3i'\n", -8473);
+	ft_printf("main: 331: '%08.3i'\n", -8473);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%.0i'\", 0\n"); }
+	printf   ("main: 335: '%.0i'\n", 0);
+	ft_printf("main: 336: '%.0i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%.i'\", 0\n"); }
+	printf   ("main: 340: '%.i'\n", 0);
+	ft_printf("main: 341: '%.i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%5.0i'\", 0\n"); }
+	printf   ("main: 345: '%5.0i'\n", 0);
+	ft_printf("main: 346: '%5.0i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%5.i'\", 0\n"); }
+	printf   ("main: 350: '%5.i'\n", 0);
+	ft_printf("main: 351: '%5.i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-5.0i'\", 0\n"); }
+	printf   ("main: 355: '%-5.0i'\n", 0);
+	ft_printf("main: 356: '%-5.0i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-5.i'\", 0\n"); }
+	printf   ("main: 360: '%-5.i'\n", 0);
+	ft_printf("main: 361: '%-5.i'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-7d'\", 33\n"); }
+	printf   ("main: 365: '%-7d'\n", 33);
+	ft_printf("main: 366: '%-7d'\n", 33);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-7d'\", -14\n"); }
+	printf   ("main: 370: '%-7d'\n", -14);
+	ft_printf("main: 371: '%-7d'\n", -14);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-3d'\", 0\n"); }
+	printf   ("main: 375: '%-3d'\n", 0);
+	ft_printf("main: 376: '%-3d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-8.5d'\", 34\n"); }
+	printf   ("main: 380: '%-8.5d'\n", 34);
+	ft_printf("main: 381: '%-8.5d'\n", 34);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-10.5d'\", -216\n"); }
+	printf   ("main: 385: '%-10.5d'\n", -216);
+	ft_printf("main: 386: '%-10.5d'\n", -216);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-8.5d'\", 0\n"); }
+	printf   ("main: 390: '%-8.5d'\n", 0);
+	ft_printf("main: 391: '%-8.5d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-8.3d'\", 8375\n"); }
+	printf   ("main: 395: '%-8.3d'\n", 8375);
+	ft_printf("main: 396: '%-8.3d'\n", 8375);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%-8.3d'\", -8473\n"); }
+	printf   ("main: 400: '%-8.3d'\n", -8473);
+	ft_printf("main: 401: '%-8.3d'\n", -8473);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%08.5d'\", 34\n"); }
+	printf   ("main: 405: '%08.5d'\n", 34);
+	ft_printf("main: 406: '%08.5d'\n", 34);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%010.5d'\", -216\n"); }
+	printf   ("main: 410: '%010.5d'\n", -216);
+	ft_printf("main: 411: '%010.5d'\n", -216);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%08.5d'\", 0\n"); }
+	printf   ("main: 415: '%08.5d'\n", 0);
+	ft_printf("main: 416: '%08.5d'\n", 0);
+	printf("\n");
+
+	if (verbose == 1) { printf   ("\"main: 268: '%%08.3d'\", 8375\n"); }
+	printf   ("main: 420: '%08.3d'\n", 8375);
+	ft_printf("main: 421: '%08.3d'\n", 8375);
+	printf("\n");
 
 	return (0);
 }
