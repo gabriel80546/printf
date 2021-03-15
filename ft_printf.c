@@ -22,7 +22,7 @@
 
 
 int in_file = 0;
-int debug = 50;
+int debug = 0;
 
 int g_fd;
 char *g_string;
@@ -443,6 +443,7 @@ t_print	get_uint(t_print print, char **output, va_list args)
 	int				i;
 	int				tamanho;
 
+	saida = print;
 	n = va_arg(args, unsigned int);
 	if (debug > 2) { logging("parte1\n"); }
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
@@ -515,6 +516,7 @@ t_print	get_uint(t_print print, char **output, va_list args)
 	if (debug > 2) { logging("parte6\n"); }
 	saida.estado = UNTIL_PERCENT;
 	if (debug > 2) { logging("parte7\n"); }
+	if (debug > 2) { logging("*output = '%s'\n", *output); }
 	return (saida);
 }
 

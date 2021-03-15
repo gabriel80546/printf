@@ -562,7 +562,7 @@ int main()
 	ft_printf("main: 562: '%-0.0d' \n", 0); // 1st '*' = -4, 2nd '*' = 0
 	printf("\n");
 
-
+/*
 	printf   ("this %u number\n", 17);
 	ft_printf("this %u number\n", 17);
 	printf("\n");
@@ -578,6 +578,7 @@ int main()
 	printf   ("%u\n", 4294967295u);
 	ft_printf("%u\n", 4294967295u);
 	printf("\n");
+*/
 
 	printf   ("%7u\n", 33);
 	ft_printf("%7u\n", 33);
