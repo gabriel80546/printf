@@ -255,7 +255,7 @@ int main()
 	ft_printf("main: 242: '%8.3i'\n", 8375);
 	printf("\n");
 
-	if (verbose == 1) { printf   ("\"max int = '%d'\\n\", -2147483648\n"); }
+	if (verbose == 1) { printf   ("\"max int = '%%d'\\n\", -2147483648\n"); }
 	printf   ("max int = '%d'\n", -2147483648);
 	ft_printf("max int = '%d'\n", -2147483648);
 	printf("\n");
@@ -560,6 +560,63 @@ int main()
 	printf   ("\"main: 560: %%-0.0d \\n\", 0\n"); // 1st '*' = -4, 2nd '*' = 0
 	printf   ("main: 561: '%-0.0d' \n", 0); // 1st '*' = -4, 2nd '*' = 0
 	ft_printf("main: 562: '%-0.0d' \n", 0); // 1st '*' = -4, 2nd '*' = 0
+	printf("\n");
+
+
+	printf   ("this %u number\n", 17);
+	ft_printf("this %u number\n", 17);
+	printf("\n");
+
+	printf   ("this %u number\n", 0);
+	ft_printf("this %u number\n", 0);
+	printf("\n");
+
+	printf   ("%u\n", 3);
+	ft_printf("%u\n", 3);
+	printf("\n");
+
+	printf   ("%u\n", 4294967295u);
+	ft_printf("%u\n", 4294967295u);
+	printf("\n");
+
+	printf   ("%7u\n", 33);
+	ft_printf("%7u\n", 33);
+	printf("\n");
+
+	printf   ("%3u\n", 0);
+	ft_printf("%3u\n", 0);
+	printf("\n");
+
+	printf   ("%5u\n", 52625);
+	ft_printf("%5u\n", 52625);
+	printf("\n");
+
+	printf   ("%4u\n", 94827);
+	ft_printf("%4u\n", 94827);
+	printf("\n");
+
+	printf   ("%-7u\n", 33);
+	ft_printf("%-7u\n", 33);
+	printf("\n");
+
+	printf   ("%-3u\n", 0);
+	ft_printf("%-3u\n", 0);
+	printf("\n");
+
+	printf   ("%-5u\n", 52625);
+	ft_printf("%-5u\n", 52625);
+	printf("\n");
+
+	printf   ("%-4u\n", 94827);
+	ft_printf("%-4u\n", 94827);
+	printf("\n");
+
+	printf   ("%.5u\n", 2);
+	ft_printf("%.5u\n", 2);
+	printf("\n");
+
+	printf   ("%.3u\n", 0);
+	ft_printf("%.3u\n", 0);
 	printf("\n");
 
 	return (0);
