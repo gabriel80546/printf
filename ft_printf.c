@@ -22,7 +22,7 @@
 
 
 int in_file = 0;
-int debug = 0;
+int debug = 50;
 
 int g_fd;
 char *g_string;
@@ -323,9 +323,9 @@ char	*ft_strappend(char *str, char *to_append)
 	int		len_str;
 	int		len_append;
 
-	if (debug > 2) { logging("122: to_append = %p\n", to_append); }
-	if (debug > 2) { logging("122: to_append = %p\n", to_append); }
-	if (debug > 2) { logging("122: to_append = '%s'\n", to_append); }
+	if (debug > 2) { logging("326: to_append = %p\n", to_append); }
+	if (debug > 2) { logging("327: to_append = %p\n", to_append); }
+	if (debug > 2) { logging("328: to_append = '%s'\n", to_append); }
 	len_str = ft_strlen(str);
 	len_append = ft_strlen(to_append);
 	saida = (char *)malloc(len_str + len_append + 2);
@@ -337,8 +337,9 @@ char	*ft_strappend(char *str, char *to_append)
 		i++;
 	}
 	saida[len_str + i] = '\0';
-	if (debug > 2) { logging("122: to_append = '%p'\n", to_append); }
+	if (debug > 2) { logging("340: to_append = '%p'\n", to_append); }
 	free(str);
+	if (debug > 2) { logging("342: to_append = '%p'\n", to_append); }
 	return (saida);
 }
 
