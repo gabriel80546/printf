@@ -419,11 +419,18 @@ t_print	get_int(t_print print, char **output, va_list args)
 		}
 	}
 
-	if (n == 0 && saida.flags.precision == 1)
+	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
 	{
 		temp = ft_calloc(1, 2);
-		if (saida.flags.pad_zeros == 0)
+		//if (saida.flags.minus == 1 && saida.flags.n_right > 0)
+		if (saida.flags.n_right > 0)
+			temp[0] = '0';
+		else if (saida.flags.n_left >= 0)
 			temp[0] = ' ';
+	//	else if (saida.flags.n_right == 0)
+	//		temp[0] = ' ';
+	//	else if (saida.flags.precision == 1)
+	//		temp[0] = ' ';
 		*output = ft_strappend(*output, temp);
 	}
 	else
@@ -769,7 +776,8 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 			else if (saida.flags.precision == 1 && saida.flags.n_right == -2)
 				saida.flags.n_right = -1;
 		}
-		else if (saida.atual_char == '0' && saida.flags.pad_zeros != 1)
+		else if (saida.atual_char == '0' && saida.flags.pad_zeros != 1 &&
+				saida.flags.precision == 0)
 			saida.flags.pad_zeros = 1;
 		else if (saida.atual_char >= '0' && saida.atual_char <= '9')
 		{
