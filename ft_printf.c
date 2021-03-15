@@ -444,6 +444,7 @@ t_print	get_uint(t_print print, char **output, va_list args)
 	int				tamanho;
 
 	n = va_arg(args, unsigned int);
+	if (debug > 2) { logging("parte1\n"); }
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;
@@ -462,6 +463,7 @@ t_print	get_uint(t_print print, char **output, va_list args)
 			i++;
 		}
 	}
+	if (debug > 2) { logging("parte2\n"); }
 
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
@@ -473,6 +475,7 @@ t_print	get_uint(t_print print, char **output, va_list args)
 			i++;
 		}
 	}
+	if (debug > 2) { logging("parte3\n"); }
 
 	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
 	{
@@ -488,6 +491,7 @@ t_print	get_uint(t_print print, char **output, va_list args)
 		temp = ft_itoa_ui(n);
 		*output = ft_strappend(*output, temp);
 	}
+	if (debug > 2) { logging("parte4\n"); }
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
@@ -504,9 +508,13 @@ t_print	get_uint(t_print print, char **output, va_list args)
 			i++;
 		}
 	}
+	
+	if (debug > 2) { logging("parte5\n"); }
 
 	free(temp);
+	if (debug > 2) { logging("parte6\n"); }
 	saida.estado = UNTIL_PERCENT;
+	if (debug > 2) { logging("parte7\n"); }
 	return (saida);
 }
 
