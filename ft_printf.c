@@ -337,6 +337,7 @@ char	*ft_strappend(char *str, char *to_append)
 		i++;
 	}
 	saida[len_str + i] = '\0';
+	if (debug > 2) { logging("122: to_append = '%p'\n", to_append); }
 	free(str);
 	return (saida);
 }
