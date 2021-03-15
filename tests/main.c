@@ -548,18 +548,18 @@ int main()
 	printf("\n");
 
 	printf   ("\"main: 550: %%0.d   \\n\", 0\n"); // 1st '*' = -4, 2nd '*' = 0
-	printf   ("main: 551: %0.d   \n", 0); // 1st '*' = -4, 2nd '*' = 0
-	ft_printf("main: 552: %0.d   \n", 0); // 1st '*' = -4, 2nd '*' = 0
+	printf   ("main: 551: '%0.d'   \n", 0); // 1st '*' = -4, 2nd '*' = 0
+	ft_printf("main: 552: '%0.d'   \n", 0); // 1st '*' = -4, 2nd '*' = 0
 	printf("\n");
 
 	printf   ("\"main: 555: %%0.0d  \\n\", 0\n"); // 1st '*' = -4, 2nd '*' = 0
-	printf   ("main: 556: %0.0d  \n", 0); // 1st '*' = -4, 2nd '*' = 0
-	ft_printf("main: 557: %0.0d  \n", 0); // 1st '*' = -4, 2nd '*' = 0
+	printf   ("main: 556: '%0.0d'  \n", 0); // 1st '*' = -4, 2nd '*' = 0
+	ft_printf("main: 557: '%0.0d'  \n", 0); // 1st '*' = -4, 2nd '*' = 0
 	printf("\n");
 
 	printf   ("\"main: 560: %%-0.0d \\n\", 0\n"); // 1st '*' = -4, 2nd '*' = 0
-	printf   ("main: 561: %-0.0d \n", 0); // 1st '*' = -4, 2nd '*' = 0
-	ft_printf("main: 562: %-0.0d \n", 0); // 1st '*' = -4, 2nd '*' = 0
+	printf   ("main: 561: '%-0.0d' \n", 0); // 1st '*' = -4, 2nd '*' = 0
+	ft_printf("main: 562: '%-0.0d' \n", 0); // 1st '*' = -4, 2nd '*' = 0
 	printf("\n");
 
 	return (0);
