@@ -419,8 +419,18 @@ t_print	get_int(t_print print, char **output, va_list args)
 		}
 	}
 
-	temp = ft_itoa(n);
-	*output = ft_strappend(*output, temp);
+	if (n == 0 && saida.flags.precision == 1)
+	{
+		temp = ft_calloc(1, 2);
+		if (saida.flags.pad_zeros == 0)
+			temp[0] = ' ';
+		*output = ft_strappend(*output, temp);
+	}
+	else
+	{
+		temp = ft_itoa(n);
+		*output = ft_strappend(*output, temp);
+	}
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
