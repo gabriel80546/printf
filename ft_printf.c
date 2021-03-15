@@ -809,6 +809,11 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 		}
 		else
 		{
+			if (saida.flags.pad_zeros == 1 && saida.flags.n_left == -2)
+			{
+				saida.flags.pad_zeros = 0;
+				saida.flags.n_left = 0;
+			}
 			saida.estado = CHOOSE_ACTION;
 			saida.i -= 1;
 		}
@@ -840,11 +845,6 @@ t_print	choose_action(t_print print, char **output, va_list args)
 
 	saida = print;
 
-	if (saida.flags.pad_zeros == 1 && saida.flags.n_left == -2)
-	{
-		saida.flags.pad_zeros = 0;
-		saida.flags.n_left = 0;
-	}
 
 	if (debug > 2) { logging("260: saida.atual_char = '%c'; saida.p_flags.n_auxiliar = %d; saida.p_flags.estado = %d; saida.i = %d\n", saida.atual_char, saida.p_flags.n_auxiliar, saida.p_flags.estado, saida.i); }
 	if (saida.atual_char == 'd')
