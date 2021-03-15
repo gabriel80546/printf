@@ -353,9 +353,9 @@ t_print	get_int(t_print print, char **output, va_list args)
 	n = va_arg(args, int);
 
 
-	if (saida.flags.pad_zeros == 1 && saida.n_left == -2)
+	if (saida.flags.pad_zeros == 1 && saida.flags.n_left == -2)
 	{
-		saida.flags.pad_zeros == 0;
+		saida.flags.pad_zeros = 0;
 		saida.flags.n_left = 0;
 	}
 
@@ -431,8 +431,8 @@ t_print	get_int(t_print print, char **output, va_list args)
 		temp = ft_calloc(1, 2);
 		//if (saida.flags.minus == 1 && saida.flags.n_right > 0)
 		if (saida.flags.n_right > 0)
-			temp[0] = '8';
-		else if (saida.flags.n_left >= 0)
+			temp[0] = '0';
+		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
 	//	else if (saida.flags.n_right == 0)
 	//		temp[0] = ' ';
@@ -445,8 +445,8 @@ t_print	get_int(t_print print, char **output, va_list args)
 		if (n == 0)
 		{
 			temp = ft_calloc(1, 2);
-			if (saida.flags.precision == 0)
-				temp[0] = '0';
+			//if (saida.flags.precision == 0)
+			//	temp[0] = ' ';
 			*output = ft_strappend(*output, temp);
 		}
 		else
