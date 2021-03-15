@@ -436,31 +436,71 @@ t_print	get_uint(t_print print, char **output, va_list args)
 	t_print			saida;
 	char			*temp;
 	unsigned int	n;
-	int				log;
 	int				i;
+	int				tamanho;
 
-	saida = print;
-	if (debug > 2) { ft_print_flags("387: saida.", saida.flags); }
-
-	if (debug > 2) { logging("389,390: saida.flags.pad_zeros = %d; ", saida.flags.pad_zeros); }
-	if (debug > 2) { logging("saida.flags.n_left = %d\n",    saida.flags.n_left); }
 	n = va_arg(args, unsigned int);
-	if (debug > 2) { logging("n = %u\n", n); }
-	if (saida.flags.pad_zeros != 0 && saida.flags.n_left)
+	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
-		log = ft_itoa_ui_log((unsigned long)n);
 		i = 0;
-		while ((i + log - 1) < saida.flags.n_left)
+		tamanho = ft_printf_itoa_log((long)n) - 1;
+		if ((tamanho - saida.flags.n_right) < 0)
+			tamanho -= (tamanho - saida.flags.n_right);
+		while (i < (saida.flags.n_left - tamanho))
+		{
+			if (saida.flags.pad_zeros == 1)
+				if (saida.flags.precision == 1)
+					*output = ft_append(*output, ' ');
+				else
+					*output = ft_append(*output, '0');
+			else
+				*output = ft_append(*output, ' ');
+			i++;
+		}
+	}
+
+	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
+	{
+		i = 0;
+		tamanho = ft_printf_itoa_log((long)n) - 1;
+		while (i < (saida.flags.n_right - tamanho))
 		{
 			*output = ft_append(*output, '0');
 			i++;
 		}
 	}
-	temp = ft_itoa_ui(n);
-	if (debug > 2) { logging("403: temp = %p\n", temp); }
-	if (debug > 2) { logging("404: temp = '%s'\n", temp); }
-	*output = ft_strappend(*output, temp);
-	if (debug > 2) { logging("406: temp = '%s'\n", temp); }
+
+	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
+	{
+		temp = ft_calloc(1, 2);
+		if (saida.flags.n_right > 0)
+			temp[0] = '0';
+		else if (saida.flags.n_left > 0)
+			temp[0] = ' ';
+		*output = ft_strappend(*output, temp);
+	}
+	else
+	{
+		temp = ft_itoa_ui(n);
+		*output = ft_strappend(*output, temp);
+	}
+
+	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+	{
+		i = 0;
+		tamanho = ft_printf_itoa_log((long)n) - 1;
+		if ((tamanho - saida.flags.n_right) < 0)
+			tamanho -= (tamanho - saida.flags.n_right);
+		while (i < (saida.flags.n_left - tamanho))
+		{
+			if (saida.flags.pad_zeros == 1)
+				*output = ft_append(*output, ' ');
+			else
+				*output = ft_append(*output, ' ');
+			i++;
+		}
+	}
+
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
