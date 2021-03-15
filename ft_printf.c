@@ -324,6 +324,7 @@ char	*ft_strappend(char *str, char *to_append)
 	int		len_append;
 
 	if (debug > 2) { logging("122: to_append = %p\n", to_append); }
+	if (debug > 2) { logging("122: to_append = %p\n", to_append); }
 	if (debug > 2) { logging("122: to_append = '%s'\n", to_append); }
 	len_str = ft_strlen(str);
 	len_append = ft_strlen(to_append);
