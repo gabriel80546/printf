@@ -19,69 +19,54 @@
 
 int main()
 {
+	int a01;
+	int a02;
+	int a03;
+	int a04;
+	int a05;
+	int a06;
+	int a07;
+	int a08;
+	int a09;
+	int a10;
+	int a11;
+	int a12;
+	int a13;
+	int a14;
+	int a15;
+	int a16;
+	int a17;
+	int a18;
+	int a19;
+	int a20;
+	int a21;
 
 	int verbose;
 	verbose = 0;
 	verbose = 1;
 
-	if (verbose == 1) { printf   ("\"main: 27: '%%7x'\\n\", 33\n"); }
-	printf   ("main: 28: '%7x'\n", 33);
-	ft_printf("main: 29: '%7x'\n", 33);
+	printf   ("main: 48: '%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("main: 49: '%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
 	printf("\n");
 
-	if (verbose == 1) { printf   ("\"main: 32: '%%3x'\\n\", 0\n"); }
-	printf   ("main: 33: '%3x'\n", 0);
-	ft_printf("main: 34: '%3x'\n", 0);
+	printf   ("main: 52: '%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("main: 53: '%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
 	printf("\n");
 
-	if (verbose == 1) { printf   ("\"main: 37: '%%5x'\\n\", 52625\n"); }
-	printf   ("main: 38: '%5x'\n", 52625);
-	ft_printf("main: 39: '%5x'\n", 52625);
+	printf   ("main: 56: '%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("main: 57: '%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
 	printf("\n");
 
-	if (verbose == 1) { printf   ("\"main: 42: '%%-7x'\\n\", 33\n"); }
-	printf   ("main: 43: '%-7x'\n", 33);
-	ft_printf("main: 44: '%-7x'\n", 33);
+	printf   ("main: 60: '%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("main: 61: '%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
 	printf("\n");
 
-	if (verbose == 1) { printf   ("\"main: 47: '%%-3x'\\n\", 0\n"); }
-	printf   ("main: 48: '%-3x'\n", 0);
-	ft_printf("main: 49: '%-3x'\n", 0);
+	printf   ("main: 64: '%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("main: 65: '%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
 	printf("\n");
 
-	if (verbose == 1) { printf   ("\"main: 52: '%%-5x'\\n\", 52625\n"); }
-	printf   ("main: 53: '%-5x'\n", 52625);
-	ft_printf("main: 54: '%-5x'\n", 52625);
-	printf("\n");
-
-	if (verbose == 1) { printf   ("\"main: 57: '%%.5x'\\n\", 21\n"); }
-	printf   ("main: 58: '%.5x'\n", 21);
-	ft_printf("main: 59: '%.5x'\n", 21);
-	printf("\n");
-
-	if (verbose == 1) { printf   ("\"main: 62: '%%.3x'\\n\", 0\n"); }
-	printf   ("main: 63: '%.3x'\n", 0);
-	ft_printf("main: 64: '%.3x'\n", 0);
-	printf("\n");
-
-	if (verbose == 1) { printf   ("\"main: 67: '%%8.5x'\\n\", 34\n"); }
-	printf   ("main: 68: '%8.5x'\n", 34);
-	ft_printf("main: 69: '%8.5x'\n", 34);
-	printf("\n");
-
-	if (verbose == 1) { printf   ("\"main: 72: '%%8.5x'\\n\", 0\n"); }
-	printf   ("main: 73: '%8.5x'\n", 0);
-	ft_printf("main: 74: '%8.5x'\n", 0);
-	printf("\n");
-
-	if (verbose == 1) { printf   ("\"main: 77: '%%8.3x'\\n\", 8375\n"); }
-	printf   ("main: 78: '%8.3x'\n", 8375);
-	ft_printf("main: 79: '%8.3x'\n", 8375);
-	printf("\n");
-
-	if (verbose == 1) { printf   ("\"main: 82: '%%2.7x'\\n\", 3267\n"); }
-	printf   ("main: 83: '%2.7x'\n", 3267);
-	ft_printf("main: 84: '%2.7x'\n", 3267);
+	printf   ("main: 68: '%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("main: 69: '%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p'\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
 	printf("\n");
 
 	return (0);
