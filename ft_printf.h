@@ -29,6 +29,7 @@
 # define GET_STR 9
 # define GET_POINTER 10
 # define GET_PERCENT 11
+# define END 11
 
 typedef struct	s_flags
 {

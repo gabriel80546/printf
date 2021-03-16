@@ -713,7 +713,13 @@ t_print	get_char(t_print print, char **output, va_list args)
 		}
 	}
 	temp = va_arg(args, int);
-	*output = ft_append(*output, temp);
+	if (temp == 0)
+	{
+		saida.estado = END;
+		return (saida);
+	}
+	else
+		*output = ft_append(*output, temp);
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -1091,6 +1097,8 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			print = get_pointer(print, output, args);
 		else if (print.estado == GET_PERCENT)
 			print = get_percent(print, output, args);
+		else if (print.estado == END);
+			break;
 		else
 			return (-1);
 		print.i += 1;
