@@ -36,5 +36,23 @@ int main()
 	ft_printf("{%.*s}\n", -5, "42");
 	printf("\n");
 
+
+
+	printf   ("{%3c}\n", 0);
+	ft_printf("{%3c}\n", 0);
+	printf("\n");
+
+	printf   ("{%*c}\n", 0, 0);
+	ft_printf("{%*c}\n", 0, 0);
+	printf("\n");
+
+	printf   ("{%*c}\n", -15, 0);
+	ft_printf("{%*c}\n", -15, 0);
+	printf("\n");
+
+
+
+
+
 	return (0);
 }
