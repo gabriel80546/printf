@@ -24,26 +24,31 @@ int main()
 	verbose = 0;
 	verbose = 1;
 
-	printf   ("main: 59: '%---34c%-107.*u'\n" ,7,-168,2003619509u);
-	ft_printf("main: 60: '%---34c%-107.*u'\n" ,7,-168,2003619509u);
+	if (verbose == 1) { printf   ("\"main: 27: '%%---34c%%-107.*u'\\n\" ,7,-168,2003619509u\n"); }
+	printf   ("main: 28: '%---34c%-107.*u'\n" ,7,-168,2003619509u);
+	ft_printf("main: 29: '%---34c%-107.*u'\n" ,7,-168,2003619509u);
 	printf("\n");
 
-	printf   ("main: 61: '%-190.*u%--6.26X%156.96s'\n" ,-109,3830289361u,1359348041u,"p@.CbB<\\?d");
-	ft_printf("main: 62: '%-190.*u%--6.26X%156.96s'\n" ,-109,3830289361u,1359348041u,"p@.CbB<\\?d");
+	if (verbose == 1) { printf   ("\"main: 32: '%%-190.*u%%--6.26X%$156.96s'\\n\" ,-109,3830289361u,1359348041u,\"p@.CbB<\\?d\"\n"); }
+	printf   ("main: 33: '%-190.*u%--6.26X%156.96s'\n" ,-109,3830289361u,1359348041u,"p@.CbB<\\?d");
+	ft_printf("main: 34: '%-190.*u%--6.26X%156.96s'\n" ,-109,3830289361u,1359348041u,"p@.CbB<\\?d");
 	printf("\n");
 
 	printf("\n");
 
-	printf   ("{%05.*d}\n", -15, 42);
-	ft_printf("{%05.*d}\n", -15, 42);
+	if (verbose == 1) { printf   ("\"main: 39: {%%05.*d}\\n\", -15, 42\n"); }
+	printf   ("main: 40: {%05.*d}\n", -15, 42);
+	ft_printf("main: 41: {%05.*d}\n", -15, 42);
 	printf("\n");
 
-	printf   ("{%.*d}\n", -5, 42);
-	ft_printf("{%.*d}\n", -5, 42);
+	if (verbose == 1) { printf   ("\"main: 44: {%%.*d}\\n\", -5, 42\n"); }
+	printf   ("main: 45: {%.*d}\n", -5, 42);
+	ft_printf("main: 46: {%.*d}\n", -5, 42);
 	printf("\n");
 
-	printf   ("{%.*s}\n", -5, "42");
-	ft_printf("{%.*s}\n", -5, "42");
+	if (verbose == 1) { printf   ("\"main: 49: {%%.*s}\\n\", -5, \"42\"\n"); }
+	printf   ("main: 50: {%.*s}\n", -5, "42");
+	ft_printf("main: 51: {%.*s}\n", -5, "42");
 	printf("\n");
 
 //	printf   ("{%3c}\n", 0);
