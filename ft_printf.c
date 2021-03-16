@@ -713,7 +713,7 @@ t_print	get_char(t_print print, char **output, va_list args)
 		}
 	}
 	temp = va_arg(args, int);
-	if (temp == 0 || 0)
+	if (temp == 0 && 0)
 	{
 		saida.estado = END;
 		return (saida);
