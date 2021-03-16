@@ -957,10 +957,20 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 			if (saida.flags.n_left == -1)
 			{
 				saida.flags.n_left = va_arg(args, int);
+				if (saida.flags.n_left < 0)
+				{
+					saida.flags.minus = 1;
+					saida.flags.n_left = -saida.flags.n_left;
+				}
 			}
 			if (saida.flags.n_right == -1)
 			{
 				saida.flags.n_right = va_arg(args, int);
+				if (saida.flags.n_right < 0)
+				{
+					saida.flags.minus = 1;
+					saida.flags.n_right = -saida.flags.n_right;
+				}
 			}
 			saida.estado = CHOOSE_ACTION;
 			saida.i -= 1;
