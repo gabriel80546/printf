@@ -1097,7 +1097,7 @@ int		ft_printf_parse(const char *str, char **output, va_list args)
 			print = get_pointer(print, output, args);
 		else if (print.estado == GET_PERCENT)
 			print = get_percent(print, output, args);
-		else if (print.estado == END);
+		else if (print.estado == END)
 			break;
 		else
 			return (-1);
