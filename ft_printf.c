@@ -961,7 +961,6 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 				{
 					saida.flags.minus = 1;
 					saida.flags.n_left = -saida.flags.n_left;
-					saida.flags.n_left = -2;
 				}
 			}
 			if (saida.flags.n_right == -1)
