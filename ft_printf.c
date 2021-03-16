@@ -772,6 +772,7 @@ t_print	get_str(t_print print, char **output, va_list args)
 	return (saida);
 }
 
+/*
 t_print	get_pointer(t_print print, char **output, va_list args)
 {
 	t_print			saida;
@@ -780,40 +781,102 @@ t_print	get_pointer(t_print print, char **output, va_list args)
 
 	saida = print;
 	temp = va_arg(args, unsigned long);
-	// if (temp == 0)
-	// {
-	// 	// if ((saida.flags.precision == 1 && saida.flags.n_right >= 6) ||
-	// 	// 	(saida.flags.precision == 0))
-	// 	// {
-	// 	// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
-	// 	// 	{
-	// 	// 		i = 0;
-	// 	// 		while ((i + 6 - 0) < saida.flags.n_left)
-	// 	// 		{
-	// 	// 			*output = ft_append(*output, ' ');
-	// 	// 			i++;
-	// 	// 		}
-	// 	// 	}
-	// 		*output = ft_strappend(*output, "(nil)");
-	// 	// 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
-	// 	// 	{
-	// 	// 		i = 0;
-	// 	// 		while ((i + 6 - 0) < saida.flags.n_left)
-	// 	// 		{
-	// 	// 			*output = ft_append(*output, ' ');
-	// 	// 			i++;
-	// 	// 		}
-	// 	// 	}
-	// 	// }
-	// }
-	// else
-	// {
-		out = ft_itoa_x_ul(temp);
-		*output = ft_strappend(*output, "0x");
-		*output = ft_strappend(*output, out);
-		free(out);
-	// }
+	out = ft_itoa_x_ul(temp);
+	*output = ft_strappend(*output, "0x");
+	*output = ft_strappend(*output, out);
+	free(out);
 	saida.estado = UNTIL_PERCENT;
+	return (saida);
+}
+*/
+
+t_print	get_pointer(t_print print, char **output, va_list args)
+{
+	t_print			saida;
+	char			*temp;
+	int				tamanho;
+	unsigned long	n;
+	//int				log;
+	int				i;
+
+	saida = print;
+	n = va_arg(args, unsigned long);
+	if (debug > 2) { logging("parte1\n"); }
+	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+	{
+		i = 0;
+		tamanho = ft_itoa_x_ul_log(n) - 1;
+		if ((tamanho - saida.flags.n_right) < 0)
+			tamanho -= (tamanho - saida.flags.n_right);
+		while (i < (saida.flags.n_left - tamanho))
+		{
+			if (saida.flags.pad_zeros == 1)
+				if (saida.flags.precision == 1)
+					*output = ft_append(*output, ' ');
+				else
+					*output = ft_append(*output, '0');
+			else
+				*output = ft_append(*output, ' ');
+			i++;
+		}
+	}
+	if (debug > 2) { logging("parte2\n"); }
+
+	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
+	{
+		i = 0;
+		tamanho = ft_itoa_x_ul_log((long)n) - 1;
+		while (i < (saida.flags.n_right - tamanho))
+		{
+			*output = ft_append(*output, '0');
+			i++;
+		}
+	}
+	if (debug > 2) { logging("parte3\n"); }
+
+	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
+	{
+		temp = ft_calloc(1, 2);
+		if (saida.flags.n_right > 0)
+			temp[0] = '0';
+		else if (saida.flags.n_left > 0)
+			temp[0] = ' ';
+		*output = ft_strappend(*output, temp);
+	}
+	else
+	{
+		//temp = ft_itoa_X(n);
+		//*output = ft_strappend(*output, temp);
+
+		temp = ft_itoa_x_ul(n);
+		*output = ft_strappend(*output, "0x");
+		*output = ft_strappend(*output, temp);
+	}
+	if (debug > 2) { logging("parte4\n"); }
+
+	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+	{
+		i = 0;
+		tamanho = ft_itoa_x_ul_log((long)n) - 1;
+		if ((tamanho - saida.flags.n_right) < 0)
+			tamanho -= (tamanho - saida.flags.n_right);
+		while (i < (saida.flags.n_left - tamanho))
+		{
+			if (saida.flags.pad_zeros == 1)
+				*output = ft_append(*output, ' ');
+			else
+				*output = ft_append(*output, ' ');
+			i++;
+		}
+	}
+	
+	if (debug > 2) { logging("parte5\n"); }
+
+	free(temp);
+	if (debug > 2) { logging("parte6\n"); }
+	saida.estado = UNTIL_PERCENT;
+	if (debug > 2) { logging("parte7\n"); }
+	if (debug > 2) { logging("*output = '%s'\n", *output); }
 	return (saida);
 }
 
