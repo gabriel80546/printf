@@ -32,6 +32,9 @@ int main()
 	ft_printf("{%.*d}\n", -5, 42);
 	printf("\n");
 
+	printf   ("{%.*s}\n", -5, "42");
+	ft_printf("{%.*s}\n", -5, "42");
+	printf("\n");
 
 	return (0);
 }
