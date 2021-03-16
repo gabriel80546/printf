@@ -51,6 +51,11 @@ int main()
 	ft_printf("main: 51: {%.*s}\n", -5, "42");
 	printf("\n");
 
+	printf   ("main: 28: '%-107.*u'\n"
+									,-168,2003619509u);
+	printf   ("main: 28: '%-107.0u'\n"
+									,/*-168,*/2003619509u);
+
 //	printf   ("{%3c}\n", 0);
 //	ft_printf("{%3c}\n", 0);
 //	printf("\n");

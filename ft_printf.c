@@ -975,16 +975,19 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 				if (saida.flags.n_right < 0)
 				{
 					saida.flags.minus = 1;
-					saida.flags.n_right = -saida.flags.n_right;
-				//	if (saida.flags.n_left == -2)
-				//	{
-				//		saida.flags.n_right = 0;
-				//		saida.flags.n_right = -saida.flags.n_left;
-				//	}
-				//	else
-				//	{
-				//		saida.flags.n_right = saida.flags.n_left;
-				//	}
+					if (saida.flags.n_left == -2)
+					{
+						saida.flags.n_right = 0;
+						saida.flags.n_right = -saida.flags.n_right;
+						saida.flags.n_right = 0;
+						saida.flags.n_right = -saida.flags.n_left;
+					}
+					else
+					{
+						saida.flags.n_right = 0;
+						saida.flags.n_right = saida.flags.n_left;
+					}
+					saida.flags.n_right = 0;
 				}
 			}
 			saida.estado = CHOOSE_ACTION;
