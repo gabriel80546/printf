@@ -931,20 +931,20 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	if (debug > 2) { logging("parte3\n"); }
 
 	ft_pstr("0x", counter);
-	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
-	{
-		temp = ft_calloc(1, 2);
-		if (saida.flags.n_right > 0)
-			temp[0] = '0';
-		else if (saida.flags.n_left > 0)
-			temp[0] = ' ';
-		ft_pstr(temp, counter);
-	}
-	else
-	{
+//	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
+//	{
+//		temp = ft_calloc(1, 2);
+//		if (saida.flags.n_right > 0)
+//			temp[0] = '0';
+//		else if (saida.flags.n_left > 0)
+//			temp[0] = ' ';
+//		ft_pstr(temp, counter);
+//	}
+//	else
+//	{
 		temp = ft_itoa_x_ul(n);
 		ft_pstr(temp, counter);
-	}
+//	}
 	if (debug > 2) { logging("parte4\n"); }
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
