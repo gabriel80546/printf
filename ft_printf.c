@@ -419,8 +419,15 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	}
 	else
 	{
-		temp = ft_itoa(n);
-		ft_pstr(temp, counter);
+		if(saida.flags.precision == 1 && saida.flags.n_right == 0)
+		{
+			temp = ft_calloc(1, 1);
+		}
+		else
+		{
+			temp = ft_itoa(n);
+			ft_pstr(temp, counter);
+		}
 	}
 
 
