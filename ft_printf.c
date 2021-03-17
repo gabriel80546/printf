@@ -577,17 +577,19 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 
 	saida = print;
 
+	/*
 	if (saida.flags.n_right == -1)
 	{
 		saida.flags.n_right = va_arg(args, int);
 		if (saida.flags.n_right < 0)
 		{
-			if (saida.flags.pad_zeros == 1 && saida.flags.n_left != -2)
+			if (saida.flags.pad_zeros == 1 && saida.flags.n_left_indf != -2)
 				saida.flags.n_right = saida.flags.n_left;
 			else
 				saida.flags.n_right = 0;
 		}
 	}
+	*/
 
 	n = va_arg(args, unsigned int);
 	if (debug > 2) { logging("parte1\n"); }
@@ -676,6 +678,7 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 
 	saida = print;
 
+	/*
 	if (saida.flags.n_right == -1)
 	{
 		saida.flags.n_right = va_arg(args, int);
@@ -687,6 +690,7 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 				saida.flags.n_right = 0;
 		}
 	}
+	*/
 
 	n = va_arg(args, unsigned int);
 	if (debug > 2) { logging("parte1\n"); }
