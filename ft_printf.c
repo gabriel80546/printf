@@ -369,6 +369,12 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	saida = print;
 
 
+	if(saida.flags.n_left < 0)
+	{
+		saida.flags.minus = 1;
+		saida.flags.n_left = -saida.flags.n_left;
+	}
+
 
 	//if(saida.flags.n_left < 0)
 	//	printf("saida.flags.n_left  = %d; e esta negativo\n", saida.flags.n_left);
@@ -830,6 +836,13 @@ t_print	get_str(t_print print, int *counter, va_list args)
 	//int		flag;
 
 	saida = print;
+
+
+	if(saida.flags.n_left < 0)
+	{
+		saida.flags.minus = 1;
+		saida.flags.n_left = -saida.flags.n_left;
+	}
 
 	temp = va_arg(args, char*);
 	if (temp == NULL)
