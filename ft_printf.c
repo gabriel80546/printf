@@ -309,7 +309,7 @@ void	ft_pchar(char caracter, int *counter)
 void	ft_pstr(char *string, int *counter)
 {
 	ft_putstr_fd(string, 1);
-	*counter = *counter + 1;
+	*counter = *counter + ft_strlen(string);
 }
 
 
