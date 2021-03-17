@@ -1,2 +1,8 @@
-- [OUTPUT] ft_printf("%57c%-76.*s%--38p%-*.159X%000193.93X" ,55,-20,"@(ECnQ^2yp,6x4F\fwA*iLS\fgt,De",(void*)15808961691193129302lu,168,1914174653u,2368
-364743u)
+- [OUTPUT] ft_printf("%.p", NULL)
+- [OUTPUT] ft_printf("%.p", NULL)
+- [OUTPUT] ft_printf("%1.p", NULL)
+- [OUTPUT] ft_printf("%1.p", NULL)
+- [OUTPUT] ft_printf("%5.p", NULL)
+- [OUTPUT] ft_printf("%5.p", NULL)
+- [OUTPUT] ft_printf("-->|%-16.p|<-- ", NULL)
+- [OUTPUT] ft_printf("-->|%-16.p|<-- ", NULL)
