@@ -883,23 +883,18 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	t_print			saida;
 	char			*temp;
 	int				tamanho;
+	//int				flag;
 	unsigned long	n;
 	//int				log;
 	int				i;
 
 	saida = print;
 
+	//flag = 0;
 	if (saida.flags.n_right == -1)
-	{
 		saida.flags.n_right = va_arg(args, int);
-		if (saida.flags.n_right < 0)
-		{
-			if (saida.flags.pad_zeros == 1 && saida.flags.n_left != -2)
-				saida.flags.n_right = saida.flags.n_left;
-			else
-				saida.flags.n_right = 0;
-		}
-	}
+	//else if (saida.flags.n_right == -2)
+	//	flag = 1;
 
 	n = va_arg(args, unsigned long);
 	if (debug > 2) { logging("parte1\n"); }
