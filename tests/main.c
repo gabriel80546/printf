@@ -110,6 +110,11 @@ int main()
 
 	printf   ("main: 111: '%57c%-76.*s%--38p%-*.159X%000193.93X'\n" ,55,-20,"@(ECnQ^2yp,6x4F\fwA*iLS\fgt,De",(void*)15808961691193129302lu,168,1914174653u,2368364743u);
 	ft_printf("main: 111: '%57c%-76.*s%--38p%-*.159X%000193.93X'\n" ,55,-20,"@(ECnQ^2yp,6x4F\fwA*iLS\fgt,De",(void*)15808961691193129302lu,168,1914174653u,2368364743u);
+	printf("\n");
+
+	printf   ("main: 111: '%57c%-76.*s'\n" ,55,-20,"@(ECnQ^2yp,6x4F\fwA*iLS\fgt,De");
+	ft_printf("main: 111: '%57c%-76.*s'\n" ,55,-20,"@(ECnQ^2yp,6x4F\fwA*iLS\fgt,De");
+	printf("\n");
 
 	return (0);
 }

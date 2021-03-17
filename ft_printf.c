@@ -805,22 +805,20 @@ t_print	get_str(t_print print, int *counter, va_list args)
 	char	*temp;
 	int		tamanho;
 	int		i;
+	int		tt;
 
 	saida = print;
 
 	if (saida.flags.n_right == -1)
-	{
 		saida.flags.n_right = va_arg(args, int);
-		if (saida.flags.n_right < 0)
-			saida.flags.n_right = -saida.flags.n_right;
-	}
-
 
 	temp = va_arg(args, char*);
 	if (temp == NULL)
 		temp = "(null)";
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 		temp = ft_substr(temp, 0, saida.flags.n_right);
+	else if (saida.flags.precision == 1 && saida.flags.n_right < 0)
+		temp = ft_substr(temp, 0, ft_strlen(temp));
 	else if (saida.flags.precision == 1)
 		temp = "";
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
@@ -836,7 +834,12 @@ t_print	get_str(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-	ft_pstr(temp, counter);
+	//ft_pstr(temp, counter);
+	
+	//printf("\nstr = '%s'\n", temp);
+	tt = ft_strlen(temp);
+	write(1, temp, tt);
+	*counter = *counter + tt;
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
