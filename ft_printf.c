@@ -362,10 +362,24 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	int		i;
 	int		tamanho;
 	int		neg;
+	int		flag;
 
 
 	saida = print;
 
+
+	saida = print;
+
+	flag = 0;
+	if (saida.flags.n_right == -1)
+		saida.flags.n_right = va_arg(args, int);
+	else if (saida.flags.n_right == -2)
+		flag = 1;
+
+
+	if (flag == 3)
+		printf("kkkkk\n");
+	/*
 	if (saida.flags.n_right == -1)
 	{
 		saida.flags.n_right = va_arg(args, int);
@@ -377,6 +391,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 				saida.flags.n_right = 0;
 		}
 	}
+	*/
 
 	n = va_arg(args, int);
 
@@ -423,6 +438,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		}
 	}
 
+	/*
 	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
 	{
 		temp = ft_calloc(1, 2);
@@ -434,9 +450,19 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	}
 	else
 	{
+	*/
+	if (flag == 0 && n != 0)
+	{
 		temp = ft_itoa(n);
 		ft_pstr(temp, counter);
 	}
+	else
+	{
+		temp = ft_calloc(1, 1);
+		write(1, "0", 1);
+		*counter += 1;
+	}
+	//}
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
