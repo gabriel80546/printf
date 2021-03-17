@@ -368,6 +368,14 @@ t_print	get_int(t_print print, int *counter, va_list args)
 
 	saida = print;
 
+
+
+	//if(saida.flags.n_left < 0)
+	//	printf("saida.flags.n_left  = %d; e esta negativo\n", saida.flags.n_left);
+	//if(saida.flags.n_right < 0)
+	//	printf("saida.flags.n_right = %d; e esta negativo\n", saida.flags.n_right);
+
+
 	//if (saida.flags.n_left < 0)
 	//	saida.flags.minus = 1;
 
@@ -818,28 +826,18 @@ t_print	get_str(t_print print, int *counter, va_list args)
 	char	*temp;
 	int		tamanho;
 	int		i;
-	int		tt;
+	//int		tt;
 	//int		flag;
 
 	saida = print;
-
-
-	//if (saida.flags.n_left < 0)
-	//	saida.flags.minus = 1;
-
-/*
-	flag = 0;
-	if (saida.flags.n_right == -1)
-		saida.flags.n_right = va_arg(args, int);
-	else if (saida.flags.n_right == -2)
-		flag = 1;
-*/
 
 	temp = va_arg(args, char*);
 	if (temp == NULL)
 		temp = "(null)";
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 		temp = ft_substr(temp, 0, saida.flags.n_right);
+	else if (saida.flags.precision == 1 && saida.flags.n_right < 0)
+		temp = ft_substr(temp, 0, ft_strlen(temp));
 	else if (saida.flags.precision == 1)
 		temp = "";
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
@@ -855,12 +853,15 @@ t_print	get_str(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-	//ft_pstr(temp, counter);
-	
-	//printf("\nstr = '%s'\n", temp);
+
+/*
 	tt = ft_strlen(temp);
 	write(1, temp, tt);
 	*counter = *counter + tt;
+*/
+
+	ft_pstr(temp, counter);
+
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -908,9 +909,11 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	saida = print;
 
 	//flag = 0;
+	/*
 	if (saida.flags.n_right == -1)
 		saida.flags.n_right = va_arg(args, int);
 	//else if (saida.flags.n_right == -2)
+	*/
 	//	flag = 1;
 
 	n = va_arg(args, unsigned long);
