@@ -354,6 +354,19 @@ t_print	get_int(t_print print, char **output, va_list args)
 
 
 	saida = print;
+
+	if (saida.flags.n_right == -1)
+	{
+		saida.flags.n_right = va_arg(args, int);
+		if (saida.flags.n_right < 0)
+		{
+			if (saida.flags.pad_zeros == 1 && saida.flags.n_left != -2)
+				saida.flags.n_right = saida.flags.n_left;
+			else
+				saida.flags.n_right = 0;
+		}
+	}
+
 	n = va_arg(args, int);
 
 
@@ -444,6 +457,21 @@ t_print	get_uint(t_print print, char **output, va_list args)
 	int				tamanho;
 
 	saida = print;
+
+	if (saida.flags.n_right == -1)
+	{
+		saida.flags.n_right = va_arg(args, int);
+		if (saida.flags.n_right < 0)
+		{
+			if (saida.flags.pad_zeros == 1 && saida.flags.n_left != -2)
+				saida.flags.n_right = saida.flags.n_left;
+			else
+				saida.flags.n_right = 0;
+		}
+	}
+
+
+
 	n = va_arg(args, unsigned int);
 	if (debug > 2) { logging("parte1\n"); }
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
@@ -741,6 +769,15 @@ t_print	get_str(t_print print, char **output, va_list args)
 	int		i;
 
 	saida = print;
+
+	if (saida.flags.n_right == -1)
+	{
+		saida.flags.n_right = va_arg(args, int);
+		if (saida.flags.n_right < 0)
+			saida.flags.n_right = -saida.flags.n_right;
+	}
+
+
 	temp = va_arg(args, char*);
 	if (temp == NULL)
 		temp = "(null)";
@@ -967,30 +1004,6 @@ t_print	parse_flags(t_print print, char **output, va_list args)
 				{
 					saida.flags.minus = 1;
 					saida.flags.n_left = -saida.flags.n_left;
-				}
-			}
-			if (saida.flags.n_right == -1)
-			{
-				saida.flags.n_right = va_arg(args, int);
-				if (saida.flags.n_right < 0)
-				{
-					//saida.flags.minus = 1;
-					if (saida.flags.n_left == -2)
-					{
-						saida.flags.n_right = 0;
-						saida.flags.n_right = -saida.flags.n_right;
-						saida.flags.n_right = 0;
-						saida.flags.n_right = -saida.flags.n_left;
-					}
-					else
-					{
-						saida.flags.n_right = 0;
-						saida.flags.n_right = saida.flags.n_left;
-					}
-					if (saida.flags.pad_zeros == 1 && saida.flags.n_left != -2)
-						saida.flags.n_right = saida.flags.n_left;
-					else
-						saida.flags.n_right = 0;
 				}
 			}
 			saida.estado = CHOOSE_ACTION;
