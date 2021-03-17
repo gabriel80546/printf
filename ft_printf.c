@@ -558,6 +558,19 @@ t_print	get_hex(t_print print, char **output, va_list args)
 	int				i;
 
 	saida = print;
+
+	if (saida.flags.n_right == -1)
+	{
+		saida.flags.n_right = va_arg(args, int);
+		if (saida.flags.n_right < 0)
+		{
+			if (saida.flags.pad_zeros == 1 && saida.flags.n_left != -2)
+				saida.flags.n_right = saida.flags.n_left;
+			else
+				saida.flags.n_right = 0;
+		}
+	}
+
 	n = va_arg(args, unsigned int);
 	if (debug > 2) { logging("parte1\n"); }
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
