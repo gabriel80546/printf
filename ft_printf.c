@@ -368,8 +368,8 @@ t_print	get_int(t_print print, int *counter, va_list args)
 
 	saida = print;
 
-	if (saida.flags.n_left < 0)
-		saida.flags.minus = 1;
+	//if (saida.flags.n_left < 0)
+	//	saida.flags.minus = 1;
 
 /*
 	if (saida.flags.n_right == -1)
@@ -824,8 +824,8 @@ t_print	get_str(t_print print, int *counter, va_list args)
 	saida = print;
 
 
-	if (saida.flags.n_left < 0)
-		saida.flags.minus = 1;
+	//if (saida.flags.n_left < 0)
+	//	saida.flags.minus = 1;
 
 /*
 	flag = 0;
