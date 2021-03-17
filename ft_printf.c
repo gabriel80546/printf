@@ -901,10 +901,10 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;
-		if (n != 0)
-			tamanho = ft_itoa_x_ul_log(n) - 1 + 2;
-		else
+		if (n == 0 && saida.flags.precision == 1)
 			tamanho = ft_itoa_x_ul_log(n) - 2 + 2;
+		else
+			tamanho = ft_itoa_x_ul_log(n) - 1 + 2;
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
 		while (i < (saida.flags.n_left - tamanho))
@@ -943,10 +943,10 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
-		if (n != 0)
-			tamanho = ft_itoa_x_ul_log(n) - 1 + 2;
-		else
+		if (n == 0 && saida.flags.precision == 1)
 			tamanho = ft_itoa_x_ul_log(n) - 2 + 2;
+		else
+			tamanho = ft_itoa_x_ul_log(n) - 1 + 2;
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
 		while (i < (saida.flags.n_left - tamanho))
