@@ -368,6 +368,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 
 	saida = print;
 
+/*
 	if (saida.flags.n_right == -1)
 	{
 		saida.flags.n_right = va_arg(args, int);
@@ -379,6 +380,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 				saida.flags.n_right = 0;
 		}
 	}
+*/
 
 	n = va_arg(args, int);
 
@@ -471,6 +473,7 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 
 	saida = print;
 
+/*
 	if (saida.flags.n_right == -1)
 	{
 		saida.flags.n_right = va_arg(args, int);
@@ -483,6 +486,7 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 		}
 	}
 
+*/
 
 
 	n = va_arg(args, unsigned int);
@@ -808,15 +812,16 @@ t_print	get_str(t_print print, int *counter, va_list args)
 	int		tamanho;
 	int		i;
 	int		tt;
-	int		flag;
+	//int		flag;
 
 	saida = print;
-
+/*
 	flag = 0;
 	if (saida.flags.n_right == -1)
 		saida.flags.n_right = va_arg(args, int);
 	else if (saida.flags.n_right == -2)
 		flag = 1;
+*/
 
 	temp = va_arg(args, char*);
 	if (temp == NULL)
