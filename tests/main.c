@@ -109,21 +109,21 @@ int main()
 
 
 
-	ft_printf("main: 112: '%-5%'\n");
-	ft_printf("main: 112: '%-5%'\n");
-	ft_printf("main: 112: '%-05%'\n");
-	ft_printf("main: 112: '%-05%'\n");
-	ft_printf("main: 112: 'percent 3 %-12%'\n");
-	ft_printf("main: 112: 'percent 3 %-12%'\n");
-
-
-
 
 
 
 	printf   ("main: 84: '%-*.*%'\n" ,81,-117);
 	ft_printf("main: 85: '%-*.*%'\n" ,81,-117);
 	printf("\n");
+
+	ft_printf("main: 112: '%-5%'\n");
+	ft_printf("main: 112: '%-5%'\n");
+	ft_printf("main: 112: '%-05%'\n");
+	ft_printf("main: 112: '%-05%'\n");
+	ft_printf("main: 112: 'percent 3 %-12%'\n");
+	ft_printf("main: 112: 'percent 3 %-12%'\n");
+
+
 
 
 //	printf   ("{%3c}\n", 0);
