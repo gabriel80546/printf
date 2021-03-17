@@ -377,7 +377,7 @@ t_print	get_int(t_print print, char **output, va_list args)
 		neg = 1;
 	}
 	if (neg == 1 && (saida.flags.pad_zeros == 1 && saida.flags.precision == 0))
-		write(1, "-", 1);
+		*output = ft_append(*output, '-');
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
@@ -389,17 +389,17 @@ t_print	get_int(t_print print, char **output, va_list args)
 		{
 			if (saida.flags.pad_zeros == 1)
 				if (saida.flags.precision == 1)
-					write(1, " ", 1);
+					*output = ft_append(*output, ' ');
 				else
-					write(1, "0", 1);
+					*output = ft_append(*output, '0');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
 
 	if (neg == 1 && !(saida.flags.pad_zeros == 1 && saida.flags.precision == 0))
-		write(1, "-", 1);
+		*output = ft_append(*output, '-');
 
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
@@ -407,7 +407,7 @@ t_print	get_int(t_print print, char **output, va_list args)
 		tamanho = ft_printf_itoa_log((long)n) - 1;
 		while (i < (saida.flags.n_right - tamanho))
 		{
-			write(1, "0", 1);
+			*output = ft_append(*output, '0');
 			i++;
 		}
 	}
@@ -419,12 +419,12 @@ t_print	get_int(t_print print, char **output, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 	else
 	{
 		temp = ft_itoa(n);
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
@@ -436,9 +436,9 @@ t_print	get_int(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - tamanho - neg))
 		{
 			if (saida.flags.pad_zeros == 1)
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -484,11 +484,11 @@ t_print	get_uint(t_print print, char **output, va_list args)
 		{
 			if (saida.flags.pad_zeros == 1)
 				if (saida.flags.precision == 1)
-					write(1, " ", 1);
+					*output = ft_append(*output, ' ');
 				else
-					write(1, "0", 1);
+					*output = ft_append(*output, '0');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -500,7 +500,7 @@ t_print	get_uint(t_print print, char **output, va_list args)
 		tamanho = ft_printf_itoa_log((long)n) - 1;
 		while (i < (saida.flags.n_right - tamanho))
 		{
-			write(1, "0", 1);
+			*output = ft_append(*output, '0');
 			i++;
 		}
 	}
@@ -513,12 +513,12 @@ t_print	get_uint(t_print print, char **output, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 	else
 	{
 		temp = ft_itoa_ui(n);
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 	if (debug > 2) { logging("parte4\n"); }
 
@@ -531,9 +531,9 @@ t_print	get_uint(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - tamanho))
 		{
 			if (saida.flags.pad_zeros == 1)
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -583,11 +583,11 @@ t_print	get_hex(t_print print, char **output, va_list args)
 		{
 			if (saida.flags.pad_zeros == 1)
 				if (saida.flags.precision == 1)
-					write(1, " ", 1);
+					*output = ft_append(*output, ' ');
 				else
-					write(1, "0", 1);
+					*output = ft_append(*output, '0');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -599,7 +599,7 @@ t_print	get_hex(t_print print, char **output, va_list args)
 		tamanho = ft_itoa_x_log((long)n) - 1;
 		while (i < (saida.flags.n_right - tamanho))
 		{
-			write(1, "0", 1);
+			*output = ft_append(*output, '0');
 			i++;
 		}
 	}
@@ -612,12 +612,12 @@ t_print	get_hex(t_print print, char **output, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 	else
 	{
 		temp = ft_itoa_x(n);
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 	if (debug > 2) { logging("parte4\n"); }
 
@@ -630,9 +630,9 @@ t_print	get_hex(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - tamanho))
 		{
 			if (saida.flags.pad_zeros == 1)
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -682,11 +682,11 @@ t_print	get_HEX(t_print print, char **output, va_list args)
 		{
 			if (saida.flags.pad_zeros == 1)
 				if (saida.flags.precision == 1)
-					write(1, " ", 1);
+					*output = ft_append(*output, ' ');
 				else
-					write(1, "0", 1);
+					*output = ft_append(*output, '0');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -698,7 +698,7 @@ t_print	get_HEX(t_print print, char **output, va_list args)
 		tamanho = ft_itoa_X_log((long)n) - 1;
 		while (i < (saida.flags.n_right - tamanho))
 		{
-			write(1, "0", 1);
+			*output = ft_append(*output, '0');
 			i++;
 		}
 	}
@@ -711,12 +711,12 @@ t_print	get_HEX(t_print print, char **output, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 	else
 	{
 		temp = ft_itoa_X(n);
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 	if (debug > 2) { logging("parte4\n"); }
 
@@ -729,9 +729,9 @@ t_print	get_HEX(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - tamanho))
 		{
 			if (saida.flags.pad_zeros == 1)
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -760,9 +760,9 @@ t_print	get_char(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - 1))
 		{
 			if (saida.flags.pad_zeros == 1)
-				write(1, "0", 1);
+				*output = ft_append(*output, '0');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -773,13 +773,13 @@ t_print	get_char(t_print print, char **output, va_list args)
 		return (saida);
 	}
 	else
-		write(1, &temp, 1);
+		*output = ft_append(*output, temp);
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
 		while (i < (saida.flags.n_left - 1))
 		{
-			write(1, " ", 1);
+			*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -818,20 +818,20 @@ t_print	get_str(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - tamanho))
 		{
 			if (saida.flags.pad_zeros == 1)
-				write(1, "0", 1);
+				*output = ft_append(*output, '0');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
-	ft_putstr_fd(temp, 1);
+	*output = ft_strappend(*output, temp);
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
 		tamanho = ft_strlen(temp);
 		while (i < (saida.flags.n_left - tamanho))
 		{
-			write(1, " ", 1);
+			*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -881,11 +881,11 @@ t_print	get_pointer(t_print print, char **output, va_list args)
 		{
 			if (saida.flags.pad_zeros == 1)
 				if (saida.flags.precision == 1)
-					write(1, " ", 1);
+					*output = ft_append(*output, ' ');
 				else
-					write(1, "0", 1);
+					*output = ft_append(*output, '0');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -897,7 +897,7 @@ t_print	get_pointer(t_print print, char **output, va_list args)
 		tamanho = ft_itoa_x_ul_log(n) - 1 + 2;
 		while (i < (saida.flags.n_right - tamanho))
 		{
-			write(1, "0", 1);
+			*output = ft_append(*output, '0');
 			i++;
 		}
 	}
@@ -910,17 +910,16 @@ t_print	get_pointer(t_print print, char **output, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, temp);
 	}
 	else
 	{
 		//temp = ft_itoa_X(n);
-		//ft_putstr_fd(temp, 1);
+		//*output = ft_strappend(*output, temp);
 
 		temp = ft_itoa_x_ul(n);
-		//*output = ft_strappend(*output, "0x");
-		ft_putstr_fd("0x", 1);
-		ft_putstr_fd(temp, 1);
+		*output = ft_strappend(*output, "0x");
+		*output = ft_strappend(*output, temp);
 	}
 	if (debug > 2) { logging("parte4\n"); }
 
@@ -933,9 +932,9 @@ t_print	get_pointer(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - tamanho))
 		{
 			if (saida.flags.pad_zeros == 1)
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -962,20 +961,19 @@ t_print	get_percent(t_print print, char **output, va_list args)
 		while (i < (saida.flags.n_left - 1))
 		{
 			if (saida.flags.pad_zeros == 1)
-				write(1, "0", 1);
+				*output = ft_append(*output, '0');
 			else
-				write(1, " ", 1);
+				*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
-	//*output = ft_append(*output, '%');
-	write(1, "%", 1);
+	*output = ft_append(*output, '%');
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
 		while (i < (saida.flags.n_left - 1))
 		{
-			write(1, " ", 1);
+			*output = ft_append(*output, ' ');
 			i++;
 		}
 	}
@@ -1098,7 +1096,7 @@ t_print	until_percent(t_print print, char **output, va_list args)
 
 	saida = print;
 	if (saida.atual_char != '%')
-		write(1, &saida.atual_char, 1);
+		*output = ft_append(*output, saida.atual_char);
 	else
 	{
 		saida.flags = ft_init_flags();
