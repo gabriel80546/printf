@@ -108,35 +108,8 @@ int main()
 	printf("\n");
 
 
-
-
-
-
-	printf   ("main: 84: '%-*.*%'\n" ,81,-117);
-	ft_printf("main: 85: '%-*.*%'\n" ,81,-117);
-	printf("\n");
-
-	printf   ("main: 112: '%-5%'\n");
-	ft_printf("main: 112: '%-5%'\n");
-	printf   ("main: 112: '%-05%'\n");
-	ft_printf("main: 112: '%-05%'\n");
-	printf   ("main: 112: 'percent 3 %-12%'\n");
-	ft_printf("main: 112: 'percent 3 %-12%'\n");
-
-
-
-
-//	printf   ("{%3c}\n", 0);
-//	ft_printf("{%3c}\n", 0);
-//	printf("\n");
-//	
-//	printf   ("{%*c}\n", 0, 0);
-//	ft_printf("{%*c}\n", 0, 0);
-//	printf("\n");
-//	
-//	printf   ("{%*c}\n", -15, 0);
-//	ft_printf("{%*c}\n", -15, 0);
-//	printf("\n");
+	printf   ("main: 111: '%57c%-76.*s%--38p%-*.159X%000193.93X'\n" ,55,-20,"@(ECnQ^2yp,6x4F\fwA*iLS\fgt,De",(void*)15808961691193129302lu,168,1914174653u,2368364743u);
+	ft_printf("main: 111: '%57c%-76.*s%--38p%-*.159X%000193.93X'\n" ,55,-20,"@(ECnQ^2yp,6x4F\fwA*iLS\fgt,De",(void*)15808961691193129302lu,168,1914174653u,2368364743u);
 
 	return (0);
 }
