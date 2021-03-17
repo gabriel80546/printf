@@ -806,18 +806,22 @@ t_print	get_str(t_print print, int *counter, va_list args)
 	int		tamanho;
 	int		i;
 	int		tt;
+	int		flag;
 
 	saida = print;
 
+	flag = 0;
 	if (saida.flags.n_right == -1)
 		saida.flags.n_right = va_arg(args, int);
+	else if (saida.flags.n_right == -2)
+		flag = 1;
 
 	temp = va_arg(args, char*);
 	if (temp == NULL)
 		temp = "(null)";
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 		temp = ft_substr(temp, 0, saida.flags.n_right);
-	else if (saida.flags.precision == 1 && saida.flags.n_right < 0)
+	else if (saida.flags.precision == 1 && saida.flags.n_right < 0 && flag == 0)
 		temp = ft_substr(temp, 0, ft_strlen(temp));
 	else if (saida.flags.precision == 1)
 		temp = "";
