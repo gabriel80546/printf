@@ -155,7 +155,108 @@ int main()
 		a++;
 	}
 
+	printf("\n");
+	printf("\n");
 
+	printf   ("main: 159: 'this %i number'\n", 0);
+	ft_printf("main: 160: 'this %i number'\n", 0);
+	printf("\n");
+
+	printf   ("main: 163: '%i'\n", 0);
+	ft_printf("main: 164: '%i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 167: 'this %d number'\n", 0);
+	ft_printf("main: 168: 'this %d number'\n", 0);
+	printf("\n");
+
+	printf   ("main: 171: '%3i'\n", 0);
+	ft_printf("main: 172: '%3i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 175: '%-3i'\n", 0);
+	ft_printf("main: 176: '%-3i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 179: '%03i'\n", 0);
+	ft_printf("main: 180: '%03i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 183: '%5.0i'\n", 0);
+	ft_printf("main: 184: '%5.0i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 187: '%5.i'\n", 0);
+	ft_printf("main: 188: '%5.i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 191: '%-5.0i'\n", 0);
+	ft_printf("main: 192: '%-5.0i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 195: '%-5.i'\n", 0);
+	ft_printf("main: 196: '%-5.i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 199: '%d'\n", 0);
+	ft_printf("main: 200: '%d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 203: '%3d'\n", 0);
+	ft_printf("main: 204: '%3d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 207: '%-3d'\n", 0);
+	ft_printf("main: 208: '%-3d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 211: '%03d'\n", 0);
+	ft_printf("main: 212: '%03d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 215: '%5.0d'\n", 0);
+	ft_printf("main: 216: '%5.0d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 219: '%5.d'\n", 0);
+	ft_printf("main: 220: '%5.d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 223: '%-5.0d'\n", 0);
+	ft_printf("main: 224: '%-5.0d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 227: '%-5.d'\n", 0);
+	ft_printf("main: 228: '%-5.d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 231: '{%05.*d}'\n", -15, 42);
+	ft_printf("main: 232: '{%05.*d}'\n", -15, 42);
+	printf("\n");
+
+	printf   ("main: 235: '32 This is an int : %0d\n\n'\n", 0);
+	ft_printf("main: 236: '32 This is an int : %0d\n\n'\n", 0);
+	printf("\n");
+
+	printf   ("main: 239: 'st13 %*d\n'\n", 0, 0);
+	ft_printf("main: 240: 'st13 %*d\n'\n", 0, 0);
+	printf("\n");
+
+	printf   ("main: 243: 'st118 %*d\n'\n", 100, 0);
+	ft_printf("main: 244: 'st118 %*d\n'\n", 100, 0);
+	printf("\n");
+
+	printf   ("main: 247: 'ultimate1 %*d        %*i\n'\n", 500, 0, 10, 10);
+	ft_printf("main: 248: 'ultimate1 %*d        %*i\n'\n", 500, 0, 10, 10);
+	printf("\n");
+
+	printf   ("main: 251: '%20.d'\n", 0);
+	ft_printf("main: 252: '%20.d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 255: '%20.i'\n", 0);
+	ft_printf("main: 256: '%20.i'\n", 0);
+	printf("\n");
 
 	return (0);
 }

@@ -33,6 +33,8 @@
 
 typedef struct	s_flags
 {
+	int			left_asteristic;
+	int			right_asteristic;
 	int			n_left_indf;
 	int			n_right_indf;
 	int			n_left;

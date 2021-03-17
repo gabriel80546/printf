@@ -48,13 +48,15 @@ t_flags	ft_init_flags(void)
 {
 	t_flags saida;
 
-	saida.n_left_indf  = 1;
-	saida.n_right_indf = 1;
-	saida.n_left       = 0;
-	saida.n_right      = 0;
-	saida.pad_zeros    = 0;
-	saida.minus        = 0;
-	saida.precision    = 0;
+	saida.left_asteristic  = 0;
+	saida.right_asteristic = 0;
+	saida.n_left_indf      = 1;
+	saida.n_right_indf     = 1;
+	saida.n_left           = 0;
+	saida.n_right          = 0;
+	saida.pad_zeros        = 0;
+	saida.minus            = 0;
+	saida.precision        = 0;
 	return (saida);
 }
 
@@ -367,33 +369,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 
 
 	saida = print;
-
-	//if(saida.flags.n_left < 0)
-	//	printf("saida.flags.n_left  = %d; e esta negativo\n", saida.flags.n_left);
-	//if(saida.flags.n_right < 0)
-	//	printf("saida.flags.n_right = %d; e esta negativo\n", saida.flags.n_right);
-
-
-	//if (saida.flags.n_left < 0)
-	//	saida.flags.minus = 1;
-
-/*
-	if (saida.flags.n_right == -1)
-	{
-		saida.flags.n_right = va_arg(args, int);
-		if (saida.flags.n_right < 0)
-		{
-			if (saida.flags.pad_zeros == 1 && saida.flags.n_left != -2)
-				saida.flags.n_right = saida.flags.n_left;
-			else
-				saida.flags.n_right = 0;
-		}
-	}
-*/
-
-
 	n = va_arg(args, int);
-
 
 	neg = 0;
 	if (n < 0 && n != -2147483648)
@@ -437,7 +413,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		}
 	}
 
-	if (saida.flags.n_right == 0 && n == 0)
+	if (saida.flags.n_right == 0 && saida.flags.right_asteristic == 1 && n == 0)
 	{
 		temp = ft_calloc(1, 1);
 	}
@@ -446,6 +422,8 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		temp = ft_itoa(n);
 		ft_pstr(temp, counter);
 	}
+
+
 	/*
 	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
 	{
@@ -1071,6 +1049,7 @@ t_print	parse_flags(t_print print, int *counter, va_list args)
 			if (saida.flags.precision == 0)
 			{
 				//saida.flags.n_left = -1;
+				saida.flags.left_asteristic  = 1;
 				saida.flags.n_left = va_arg(args, int);
 				saida.flags.n_left_indf = 0;
 				if (saida.flags.n_left < 0)
@@ -1082,6 +1061,7 @@ t_print	parse_flags(t_print print, int *counter, va_list args)
 			else if (saida.flags.precision == 1 && saida.flags.n_right_indf == 1)
 			{
 				//saida.flags.n_right = -1;
+				saida.flags.right_asteristic = 1;
 				saida.flags.n_right = va_arg(args, int);
 				saida.flags.n_right_indf = 0;
 			}
