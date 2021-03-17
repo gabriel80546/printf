@@ -828,8 +828,6 @@ t_print	get_str(t_print print, int *counter, va_list args)
 		temp = "(null)";
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 		temp = ft_substr(temp, 0, saida.flags.n_right);
-	else if (saida.flags.precision == 1 && saida.flags.n_right < 0 && flag == 0)
-		temp = ft_substr(temp, 0, ft_strlen(temp));
 	else if (saida.flags.precision == 1)
 		temp = "";
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
