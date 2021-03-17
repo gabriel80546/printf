@@ -1,10 +1,5 @@
-
-Total     OK: 994  KO: 37
-=========================
-- [OUTPUT] ft_printf("{%*d}", -5, 42)
-- [OUTPUT] ft_printf("{%.*s}", -5, "42")
 - [OUTPUT] ft_printf("{%05.*d}", -15, 42)
-- [OUTPUT] ft_printf("neg1 %*s\n", -9, "coucou")
-- [OUTPUT] ft_printf("neg2 %*.*s\n", -9, 4, "coucou")
-- [OUTPUT] ft_printf("neg3 %*s\n", -9, NULL)
-- [OUTPUT] ft_printf("neg5 %*s\n", -100, "coucou")
+- [OUTPUT] ft_printf("%-171.108s%0022.*u%-93.114u%*c" ,"r>KM,cWZ,k7U",-75,1057557429u,580880397u,-25,-80)
+- [OUTPUT] ft_printf("%-12.*s%98.128s%--8p%095.*i%00182.193x" ,139,"o=Z*[","9S14l$RgnTv`-Wm",(void*)3870843096944218592lu,-156,201214506,1134523837u)
+- [OUTPUT] ft_printf("%-66p%-90c%--*.69x%0045.*u" ,(void*)9420165689360028937lu,-29,-122,174318236u,-127,2553740548u)
+

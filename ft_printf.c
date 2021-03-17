@@ -391,6 +391,14 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	}
 */
 
+	if (saida.flags.n_right < 0)
+	{
+		if (saida.flags.pad_zeros == 1 && saida.flags.n_left_indf == 0)
+			saida.flags.n_right = saida.flags.n_left;
+		else
+			saida.flags.n_right = 0;
+	}
+
 	n = va_arg(args, int);
 
 
