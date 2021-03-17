@@ -33,8 +33,8 @@
 
 typedef struct	s_flags
 {
-//	int			n_left_indf;
-//	int			n_right_indf;
+	int			n_left_indf;
+	int			n_right_indf;
 	int			n_left;
 	int			n_right;
 	int			pad_zeros;
