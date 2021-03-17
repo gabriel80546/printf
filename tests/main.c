@@ -47,6 +47,14 @@ int main()
 	printf("\n");
 
 
+	printf   ("main: 50: '%15p'\n", NULL);
+	ft_printf("main: 50: '%15p'\n", NULL);
+	printf("\n");
+
+	printf   ("main: 50: '%-15p'\n", NULL);
+	ft_printf("main: 50: '%-15p'\n", NULL);
+	printf("\n");
+
 
 
 
