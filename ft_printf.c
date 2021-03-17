@@ -999,7 +999,7 @@ t_print	get_percent(t_print print, int *counter, va_list args)
 		}
 	}
 	ft_pchar('%', counter);
-	if (saida.flags.n_left >= 0 && saida.flags.minus == 1 && saida.flags.n_right > 0)
+	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
 		while (i < (saida.flags.n_left - 1))
