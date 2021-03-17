@@ -430,12 +430,12 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 	else
 	{
 		temp = ft_itoa(n);
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
@@ -524,12 +524,12 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 	else
 	{
 		temp = ft_itoa_ui(n);
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 	if (debug > 2) { logging("parte4\n"); }
 
@@ -555,7 +555,8 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 	if (debug > 2) { logging("parte6\n"); }
 	saida.estado = UNTIL_PERCENT;
 	if (debug > 2) { logging("parte7\n"); }
-	if (debug > 2) { logging("*output = '%s'\n", *output); }
+	//if (debug > 2) { logging("*output = '%s'\n", *output); }
+	if (debug > 2) { logging("*counter = %d\n", *counter); }
 	return (saida);
 }
 
@@ -623,12 +624,12 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 	else
 	{
 		temp = ft_itoa_x(n);
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 	if (debug > 2) { logging("parte4\n"); }
 
@@ -654,7 +655,7 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 	if (debug > 2) { logging("parte6\n"); }
 	saida.estado = UNTIL_PERCENT;
 	if (debug > 2) { logging("parte7\n"); }
-	if (debug > 2) { logging("*output = '%s'\n", *output); }
+	if (debug > 2) { logging("*counter = %d\n", *counter); }
 	return (saida);
 }
 
@@ -722,12 +723,12 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 	else
 	{
 		temp = ft_itoa_X(n);
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 	if (debug > 2) { logging("parte4\n"); }
 
@@ -753,7 +754,7 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 	if (debug > 2) { logging("parte6\n"); }
 	saida.estado = UNTIL_PERCENT;
 	if (debug > 2) { logging("parte7\n"); }
-	if (debug > 2) { logging("*output = '%s'\n", *output); }
+	if (debug > 2) { logging("*counter = %d\n", *counter); }
 	return (saida);
 }
 
@@ -835,7 +836,7 @@ t_print	get_str(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-	ft_putstr_fd(temp, 1);
+	ft_pstr(temp, counter);
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -921,17 +922,17 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 			temp[0] = '0';
 		else if (saida.flags.n_left > 0)
 			temp[0] = ' ';
-		ft_putstr_fd(temp, 1);
+		ft_pstr(temp, counter);
 	}
 	else
 	{
 		//temp = ft_itoa_X(n);
-		//ft_putstr_fd(temp, 1);
+		//ft_pstr(temp, counter);
 
 		temp = ft_itoa_x_ul(n);
 		//*output = ft_strappend(*output, "0x");
-		ft_putstr_fd("0x", 1);
-		ft_putstr_fd(temp, 1);
+		ft_pstr("0x", counter);
+		ft_pstr(temp, counter);
 	}
 	if (debug > 2) { logging("parte4\n"); }
 
@@ -957,7 +958,7 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	if (debug > 2) { logging("parte6\n"); }
 	saida.estado = UNTIL_PERCENT;
 	if (debug > 2) { logging("parte7\n"); }
-	if (debug > 2) { logging("*output = '%s'\n", *output); }
+	if (debug > 2) { logging("*counter = %d\n", *counter); }
 	return (saida);
 }
 
@@ -1132,36 +1133,36 @@ int		ft_printf_parse(const char *str, int *counter, va_list args)
 	while (str[print.i] != '\0')
 	{
 		print.atual_char = str[print.i];
-		if (debug > 2) { logging("305: *output = '%s'(%ld); print.estado = %d; print.atual_char = '%c'\n", *output, ft_strlen(*output), print.estado, print.atual_char); }
+		//if (debug > 2) { logging("305: *output = '%s'(%ld); print.estado = %d; print.atual_char = '%c'\n", *output, ft_strlen(*output), print.estado, print.atual_char); }
 		if (print.estado == UNTIL_PERCENT)
-			print = until_percent(print, output, args);
+			print = until_percent(print, counter, args);
 		else if (print.estado == PARSE_FLAGS)
-			print = parse_flags(print, output, args);
+			print = parse_flags(print, counter, args);
 		else if (print.estado == CHOOSE_ACTION)
-			print = choose_action(print, output, args);
+			print = choose_action(print, counter, args);
 		else if (print.estado == GET_INT)
-			print = get_int(print, output, args);
+			print = get_int(print, counter, args);
 		else if (print.estado == GET_UINT)
-			print = get_uint(print, output, args);
+			print = get_uint(print, counter, args);
 		else if (print.estado == GET_hex)
-			print = get_hex(print, output, args);
+			print = get_hex(print, counter, args);
 		else if (print.estado == GET_HEX)
-			print = get_HEX(print, output, args);
+			print = get_HEX(print, counter, args);
 		else if (print.estado == GET_CHAR)
-			print = get_char(print, output, args);
+			print = get_char(print, counter, args);
 		else if (print.estado == GET_STR)
-			print = get_str(print, output, args);
+			print = get_str(print, counter, args);
 		else if (print.estado == GET_POINTER)
-			print = get_pointer(print, output, args);
+			print = get_pointer(print, counter, args);
 		else if (print.estado == GET_PERCENT)
-			print = get_percent(print, output, args);
+			print = get_percent(print, counter, args);
 		else if (print.estado == END)
 			break;
 		else
 			return (-1);
 		print.i += 1;
 	}
-	if (debug > 2) { logging("305: *output = '%s'(%ld); print.estado = %d; print.atual_char = '%c'\n", *output, ft_strlen(*output), print.estado, print.atual_char); }
+	//if (debug > 2) { logging("305: *output = '%s'(%ld); print.estado = %d; print.atual_char = '%c'\n", *output, ft_strlen(*output), print.estado, print.atual_char); }
 	return (0);
 }
 
@@ -1169,7 +1170,7 @@ int		ft_printf(const char *str, ...)
 {
 	char	*output;
 	int		counter;
-	int		saida;
+	//int		saida;
 	va_list	args;
 
 
@@ -1185,7 +1186,7 @@ int		ft_printf(const char *str, ...)
 	if (debug > 0) { logging("874: entrou aqui\n"); }
 	output = ft_calloc(1, 1);
 	if (debug > 0) { logging("876: entrou aqui\n"); }
-	saida = ft_printf_parse(str, &counter, args);
+	ft_printf_parse(str, &counter, args);
 	//ft_putstr_fd(output, 1);
 	free(output);
 	va_end(args);

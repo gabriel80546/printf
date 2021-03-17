@@ -70,6 +70,10 @@ int main()
 	printf("\n");
 
 
+	printf   ("saida = %d\n", printf   ("Hello World\n"));
+	ft_printf("saida = %d\n", ft_printf("Hello World\n"));
+
+
 //	printf   ("{%3c}\n", 0);
 //	ft_printf("{%3c}\n", 0);
 //	printf("\n");
