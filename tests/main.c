@@ -258,5 +258,100 @@ int main()
 	ft_printf("main: 256: '%20.i'\n", 0);
 	printf("\n");
 
+
+	printf("*******************************************************\n");
+	printf("************************* main ************************\n");
+	printf("*******************************************************\n");
+	printf("\n");
+
+
+	printf   ("main: 261: '%.0i'\n", 0);
+	ft_printf("main: 261: '%.0i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%.i'\n", 0);
+	ft_printf("main: 261: '%.i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%5.0i'\n", 0);
+	ft_printf("main: 261: '%5.0i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%5.i'\n", 0);
+	ft_printf("main: 261: '%5.i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%-5.0i'\n", 0);
+	ft_printf("main: 261: '%-5.0i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%-5.i'\n", 0);
+	ft_printf("main: 261: '%-5.i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%.0d'\n", 0);
+	ft_printf("main: 261: '%.0d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%.d'\n", 0);
+	ft_printf("main: 261: '%.d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%5.0d'\n", 0);
+	ft_printf("main: 261: '%5.0d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%5.d'\n", 0);
+	ft_printf("main: 261: '%5.d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%-5.0d'\n", 0);
+	ft_printf("main: 261: '%-5.0d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%-5.d'\n", 0);
+	ft_printf("main: 261: '%-5.d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%.d, %.0d'\n", 0, 0);
+	ft_printf("main: 261: '%.d, %.0d'\n", 0, 0);
+	printf("\n");
+
+	printf   ("main: 261: '%.i, %.0i'\n", 0, 0);
+	ft_printf("main: 261: '%.i, %.0i'\n", 0, 0);
+	printf("\n");
+
+	printf   ("main: 261: '{%05.*d}'\n", -15, 42);
+	ft_printf("main: 261: '{%05.*d}'\n", -15, 42);
+	printf("\n");
+
+	printf   ("main: 261: 'p12 %.0d\n'\n", 0);
+	ft_printf("main: 261: 'p12 %.0d\n'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: 't12 %.0d\n'\n", 0);
+	ft_printf("main: 261: 't12 %.0d\n'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '31 This is an int : %.0d\n\n'\n", 0);
+	ft_printf("main: 261: '31 This is an int : %.0d\n\n'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%20.d'\n", 0);
+	ft_printf("main: 261: '%20.d'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%20.i'\n", 0);
+	ft_printf("main: 261: '%20.i'\n", 0);
+	printf("\n");
+
+	printf   ("main: 261: '%-12.*s%98.128s%--8p%095.*i%00182.193x'\n" ,139,"o=Z*[","9S14l$RgnTv`-Wm",(void*)3870843096944218592lu,-156,201214506,1134523837u);
+	ft_printf("main: 261: '%-12.*s%98.128s%--8p%095.*i%00182.193x'\n" ,139,"o=Z*[","9S14l$RgnTv`-Wm",(void*)3870843096944218592lu,-156,201214506,1134523837u);
+	printf("\n");
+
+	printf   ("main: 261: '%.d'\n", 0);
+	ft_printf("main: 261: '%.d'\n", 0);
+	printf("\n");
+
 	return (0);
 }
