@@ -146,7 +146,7 @@ int main()
 
 
 
-/*
+
 	while (a < 5) //T34-69
 	{
 		printf   ("a = %d\n", a);
@@ -155,7 +155,7 @@ int main()
 		a++;
 	}
 
-*/
+
 
 	return (0);
 }
