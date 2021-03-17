@@ -27,24 +27,37 @@ int main()
 	printf("\n");
 
 	printf   ("\"'%%.p'\", NULL\n");
-	printf   ("'%.p'\n", NULL);
+	printf   ("'0x'\n", NULL);
 	ft_printf("'%.p'\n", NULL);
 	printf("\n");
 
 	printf   ("\"'%%1.p'\", NULL\n");
-	printf   ("'%1.p'\n", NULL);
+	printf   ("'0x'\n", NULL);
 	ft_printf("'%1.p'\n", NULL);
 	printf("\n");
 
 	printf   ("\"'%%5.p'\", NULL\n");
-	printf   ("'%5.p'\n", NULL);
+	printf   ("'   0x'\n", NULL);
 	ft_printf("'%5.p'\n", NULL);
 	printf("\n");
 
 	printf   ("\"'-->|%%-16.p|<-- '\", NULL\n");
-	printf   ("'-->|%-16.p|<-- '\n", NULL);
+	printf   ("'-->|0x              |<-- '\n", NULL);
 	ft_printf("'-->|%-16.p|<-- '\n", NULL);
 	printf("\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	return (0);
 }

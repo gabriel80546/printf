@@ -1,8 +1,17 @@
-- [OUTPUT] ft_printf("%.p", NULL)
-- [OUTPUT] ft_printf("%.p", NULL)
-- [OUTPUT] ft_printf("%1.p", NULL)
-- [OUTPUT] ft_printf("%1.p", NULL)
-- [OUTPUT] ft_printf("%5.p", NULL)
-- [OUTPUT] ft_printf("%5.p", NULL)
-- [OUTPUT] ft_printf("-->|%-16.p|<-- ", NULL)
-- [OUTPUT] ft_printf("-->|%-16.p|<-- ", NULL)
+
+"'%.p'", NULL
+'0x'
+'0x0'
+
+"'%1.p'", NULL
+'0x'
+'0x0'
+
+"'%5.p'", NULL
+'   0x'
+'  0x0'
+
+"'-->|%-16.p|<-- '", NULL
+'-->|0x              |<-- '
+'-->|0x0             |<-- '
+
