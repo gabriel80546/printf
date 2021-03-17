@@ -930,6 +930,7 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	}
 	if (debug > 2) { logging("parte3\n"); }
 
+	ft_pstr("0x", counter);
 	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
 	{
 		temp = ft_calloc(1, 2);
@@ -941,12 +942,7 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	}
 	else
 	{
-		//temp = ft_itoa_X(n);
-		//ft_pstr(temp, counter);
-
 		temp = ft_itoa_x_ul(n);
-		//*output = ft_strappend(*output, "0x");
-		ft_pstr("0x", counter);
 		ft_pstr(temp, counter);
 	}
 	if (debug > 2) { logging("parte4\n"); }
