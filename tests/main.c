@@ -94,8 +94,37 @@ int main()
 
 
 
-/*
+	printf   ("main: 97: {%*d}\n", -5, 42);
+	ft_printf("main: 98: {%*d}\n", -5, 42);
+	printf("\n");
 
+	printf   ("main: 101: {%.*s}\n", -5, "42");
+	ft_printf("main: 102: {%.*s}\n", -5, "42");
+	printf("\n");
+
+	printf   ("main: 105: {%05.*d}\n", -15, 42);
+	ft_printf("main: 106: {%05.*d}\n", -15, 42);
+	printf("\n");
+
+	printf   ("main: 109: neg1 %*s\n", -9, "coucou");
+	ft_printf("main: 110: neg1 %*s\n", -9, "coucou");
+	printf("\n");
+
+	printf   ("main: 113: neg2 %*.*s\n", -9, 4, "coucou");
+	ft_printf("main: 114: neg2 %*.*s\n", -9, 4, "coucou");
+	printf("\n");
+
+	printf   ("main: 117: neg3 %*s\n", -9, NULL);
+	ft_printf("main: 118: neg3 %*s\n", -9, NULL);
+	printf("\n");
+
+	printf   ("main: 121: neg5 %*s\n", -100, "coucou");
+	ft_printf("main: 122: neg5 %*s\n", -100, "coucou");
+	printf("\n");
+
+
+
+/*
 	while (a < 5) //T34-69
 	{
 		printf   ("a = %d\n", a);
