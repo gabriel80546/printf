@@ -419,9 +419,14 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	}
 	else
 	{
-		if(saida.flags.precision == 1 && saida.flags.n_right == 0)
+		if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
 		{
-			temp = ft_calloc(1, 1);
+			temp = ft_calloc(1, 2);
+			if (saida.flags.n_right > 0 || saida.flags.n_right < 0)
+				temp[0] = '0';
+			else if (saida.flags.n_left > 0)
+				temp[0] = ' ';
+			ft_pstr(temp, counter);
 		}
 		else
 		{
