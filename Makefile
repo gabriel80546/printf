@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-#CFLAGS = -g -Wall -Werror -Wextra
-CFLAGS = -g -Wall -Werror
+CFLAGS = -g -Wall -Werror -Wextra
+#CFLAGS = -g -Wall -Werror
 CC = gcc
 
 P = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))

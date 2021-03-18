@@ -101,11 +101,6 @@ static unsigned int	ft_itoa_ui_log(unsigned long n)
 	unsigned int temp;
 
 	contador = 0;
-	if (n < 0)
-	{
-		contador++;
-		n = -n;
-	}
 	temp = n;
 	while (n > 9)
 	{
@@ -127,7 +122,6 @@ char		*ft_itoa_ui(unsigned int n)
 		return (NULL);
 	*(saida + 0) = '-';
 	contador = (ft_itoa_ui_log(n) - 1);
-	n = (n < 0) ? (-n) : n;
 	*(saida + contador) = '\0';
 	while (n > 9)
 	{
@@ -145,11 +139,6 @@ static int	ft_itoa_x_log(unsigned long n)
 	int temp;
 
 	contador = 0;
-	if (n < 0)
-	{
-		contador++;
-		n = -n;
-	}
 	temp = n;
 	while (n > 15)
 	{
@@ -172,7 +161,6 @@ char		*ft_itoa_x(unsigned int n)
 		return (NULL);
 	*(saida + 0) = '-';
 	contador = (ft_itoa_x_log(n) - 1);
-	n = (n < 0) ? (-n) : n;
 	*(saida + contador) = '\0';
 	while (n > 15)
 	{
@@ -198,11 +186,6 @@ static int	ft_itoa_x_ul_log(unsigned long n)
 	int temp;
 
 	contador = 0;
-	if (n < 0)
-	{
-		contador++;
-		n = -n;
-	}
 	temp = n;
 	while (n > 15)
 	{
@@ -225,7 +208,6 @@ char		*ft_itoa_x_ul(unsigned long n)
 		return (NULL);
 	*(saida + 0) = '-';
 	contador = (ft_itoa_x_ul_log(n) - 1);
-	n = (n < 0) ? (-n) : n;
 	*(saida + contador) = '\0';
 	while (n > 15)
 	{
@@ -249,11 +231,6 @@ static int	ft_itoa_X_log(unsigned long n)
 	int temp;
 
 	contador = 0;
-	if (n < 0)
-	{
-		contador++;
-		n = -n;
-	}
 	temp = n;
 	while (n > 15)
 	{
@@ -276,7 +253,6 @@ char		*ft_itoa_X(unsigned int n)
 		return (NULL);
 	*(saida + 0) = '-';
 	contador = (ft_itoa_X_log(n) - 1);
-	n = (n < 0) ? (-n) : n;
 	*(saida + contador) = '\0';
 	while (n > 15)
 	{
@@ -958,7 +934,7 @@ t_print	get_percent(t_print print, int *counter, va_list args)
 	return (saida);
 }
 
-t_print	parse_flags(t_print print, int *counter, va_list args)
+t_print	parse_flags(t_print print, va_list args)
 {
 	t_print	saida;
 
@@ -973,7 +949,6 @@ t_print	parse_flags(t_print print, int *counter, va_list args)
 		{
 			if (saida.flags.precision == 0)
 			{
-				//saida.flags.n_left = -1;
 				saida.flags.left_asteristic  = 1;
 				saida.flags.n_left = va_arg(args, int);
 				saida.flags.n_left_indf = 0;
@@ -985,7 +960,6 @@ t_print	parse_flags(t_print print, int *counter, va_list args)
 			}
 			else if (saida.flags.precision == 1 && saida.flags.n_right_indf == 1)
 			{
-				//saida.flags.n_right = -1;
 				saida.flags.right_asteristic = 1;
 				saida.flags.n_right = va_arg(args, int);
 				saida.flags.n_right_indf = 0;
@@ -1047,7 +1021,7 @@ t_print	parse_flags(t_print print, int *counter, va_list args)
  	return (saida);
 }
 
-t_print	choose_action(t_print print, int *counter, va_list args)
+t_print	choose_action(t_print print)
 {
 	t_print	saida;
 
@@ -1078,7 +1052,7 @@ t_print	choose_action(t_print print, int *counter, va_list args)
  	return (saida);
 }
 
-t_print	until_percent(t_print print, int *counter, va_list args)
+t_print	until_percent(t_print print, int *counter)
 {
 	t_print	saida;
 
@@ -1108,11 +1082,11 @@ int		ft_printf_parse(const char *str, int *counter, va_list args)
 	{
 		print.atual_char = str[print.i];
 		if (print.estado == UNTIL_PERCENT)
-			print = until_percent(print, counter, args);
+			print = until_percent(print, counter);
 		else if (print.estado == PARSE_FLAGS)
-			print = parse_flags(print, counter, args);
+			print = parse_flags(print, args);
 		else if (print.estado == CHOOSE_ACTION)
-			print = choose_action(print, counter, args);
+			print = choose_action(print);
 		else if (print.estado == GET_INT)
 			print = get_int(print, counter, args);
 		else if (print.estado == GET_UINT)
