@@ -104,5 +104,10 @@ int main()
 	printf("\n");
 
 
+	printf   ("0x\n", 0);
+	ft_printf("%.0p\n", 0);
+	printf("\n");
+
+
 	return (0);
 }
