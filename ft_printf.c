@@ -367,6 +367,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	int		tamanho;
 	int		neg;
 	int		tt;
+	int		troca;
 
 
 	saida = print;
@@ -389,10 +390,14 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
 
+	troca = 0;
 	if (saida.flags.n_right < 0)
 	{
-		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.n_left_indf == 0 && n >= 0)
+		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.n_left_indf == 0)
+		{
+			troca = 1;
 			saida.flags.n_right = saida.flags.n_left;
+		}
 	}
 
 	neg = 0;
@@ -430,43 +435,13 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	{
 		i = 0;
 		tamanho = ft_printf_itoa_log((long)n) - 1;
-		//ft_pchar((saida.flags.n_right % 10) + '0', counter);
-		//if (saida.flags.n_right < 0)
-			//tamanho += neg;
-
-
-
-
-
-
-
-
-
-
-
-
-
+		if(troca == 1)
+			tamanho += neg;
 		while (i < (saida.flags.n_right - tamanho))
 		{
 			ft_pchar('0', counter);
 			i++;
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 
 	//if (saida.flags.n_right == 0 && saida.flags.right_asteristic == 1 && n == 0)
