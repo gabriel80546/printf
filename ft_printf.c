@@ -371,19 +371,6 @@ t_print	get_int(t_print print, int *counter, va_list args)
 
 
 	saida = print;
-
-
-/*
-	a = 3, b = -2, n = -12 => '-12'
-	a = 3, b = -1, n = -12 => '-12'
-	a = 4, b = -2, n = -12 => '-012'
-	a = 4, b = -1, n = -12 => '-012'
-*/
-
-
-//	if (n == 0 && saida.flags.n_left != 0 && saida.flags.n_right == 0)
-//		printf("");
-
 	n = va_arg(args, int);
 
 	tt = 0;
@@ -444,7 +431,6 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		}
 	}
 
-	//if (saida.flags.n_right == 0 && saida.flags.right_asteristic == 1 && n == 0)
 	if (tt == 1)
 	{
 		temp = ft_calloc(1, 1);
@@ -476,22 +462,6 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	}
 
 
-	/*
-	if (n == 0 && saida.flags.precision == 1 && saida.flags.pad_zeros == 0)
-	{
-		temp = ft_calloc(1, 2);
-		if (saida.flags.n_right > 0)
-			temp[0] = '0';
-		else if (saida.flags.n_left > 0)
-			temp[0] = ' ';
-		ft_pstr(temp, counter);
-	}
-	else
-	{
-	}
-	*/
-
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -500,10 +470,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			tamanho -= (tamanho - saida.flags.n_right);
 		while (i < (saida.flags.n_left - tamanho - neg))
 		{
-			if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1))
-				ft_pchar(' ', counter);
-			else
-				ft_pchar(' ', counter);
+			ft_pchar(' ', counter);
 			i++;
 		}
 	}
