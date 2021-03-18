@@ -1316,14 +1316,14 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 		tamanho = ft_itoa_x_ul_log(n) - 1 + 0;
 		while (i < (saida.flags.n_right - tamanho))
 		{
-			ft_pchar('0', counter);
+			ft_pchar('8', counter);
 			i++;
 		}
 	}
 	if (debug > 2) { logging("parte3\n"); }
 
 	temp = ft_itoa_x_ul(n);
-	if (!(saida.flags.precision == 1 && n == 0))
+	if (!(saida.flags.precision == 1 && saida.flags.n_right_indf == 1 && n == 0))
 		ft_pstr(temp, counter);
 
 	if (debug > 2) { logging("parte4\n"); }

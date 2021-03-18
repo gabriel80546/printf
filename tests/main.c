@@ -98,8 +98,9 @@ int main()
 	ft_printf("%2.9p\n", 1234);
 	printf("\n");
 
-	printf   ("%.5p\n", 1234);
-	ft_printf("%.5p\n", 1234);
+	//printf   ("%.5p\n", 0);
+	printf   ("0x00000\n", 0);
+	ft_printf("%.5p\n", 0);
 	printf("\n");
 
 
