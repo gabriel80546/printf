@@ -371,6 +371,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 
 	saida = print;
 
+
 	n = va_arg(args, int);
 
 	tt = 0;

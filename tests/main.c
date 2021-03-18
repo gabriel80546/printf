@@ -353,5 +353,35 @@ int main()
 	ft_printf("main: 261: '%.d'\n", 0);
 	printf("\n");
 
+
+	a = -2;
+	while(a < 5) //T70-177
+	{
+		b = -2;
+		while (b < 5)
+		{
+			printf("b == %d\n", b);
+			printf("a == %d\n", a);
+			printf("\n");
+
+			printf   (" --- Return : %d\n", printf   ("main: 363: '%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d'", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			ft_printf(" --- Return : %d\n", ft_printf("main: 363: '%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d'", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			printf("\n");
+
+			printf   (" --- Return : %d\n", printf   ("main: 363: '%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d'", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			ft_printf(" --- Return : %d\n", ft_printf("main: 363: '%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d'", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			printf("\n");
+
+			printf   (" --- Return : %d\n", printf   ("main: 363: '%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d'", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			ft_printf(" --- Return : %d\n", ft_printf("main: 363: '%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d'", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			printf("\n");
+
+			b++;
+		}
+		a++;
+	}
+
+
+
 	return (0);
 }
