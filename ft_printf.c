@@ -675,6 +675,7 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 }
 */
 
+/*
 t_print	get_hex(t_print print, int *counter, va_list args)
 {
 	t_print	saida;
@@ -788,9 +789,10 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
+*/
 
 
-/*
+//*/
 t_print	get_hex(t_print print, int *counter, va_list args)
 {
 	t_print			saida;
@@ -877,7 +879,7 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 	if (debug > 2) { logging("*counter = %d\n", *counter); }
 	return (saida);
 }
-*/
+//*/
 
 t_print	get_HEX(t_print print, int *counter, va_list args)
 {
