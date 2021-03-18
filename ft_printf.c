@@ -453,8 +453,22 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		}
 		else
 		{
-			temp = ft_itoa(n);
-			ft_pstr(temp, counter);
+			/*
+			a = 2, b = 0 => ' '
+			a = 1, b = 0 => ' '
+			a = 3, b = 0 => ' '
+			a = 0, b = 0 => '0'
+			*/
+			if (n == 0 && saida.flags.n_left != 0 && saida.flags.n_right == 0)
+			{
+				temp = ft_calloc(1, 1);
+				ft_pchar('0', counter);
+			}
+			else
+			{
+				temp = ft_itoa(n);
+				ft_pstr(temp, counter);
+			}
 		}
 	}
 
