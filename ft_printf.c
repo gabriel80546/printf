@@ -1170,15 +1170,17 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	unsigned long		n;
 	int		i;
 	int		tamanho;
-	int		tt;
+	//int		tt;
 
 
 	saida = print;
 	n = va_arg(args, unsigned long);
 
+	/*
 	tt = 0;
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
+	*/
 
 	if (saida.flags.n_right < 0)
 	{
@@ -1212,6 +1214,13 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
 	}
 
+	ft_pstr("0x", counter);
+	temp = ft_itoa_x_ul(n);
+	if (!(saida.flags.precision == 1 && n == 0))
+		ft_pstr(temp, counter);
+
+
+	/*
 	if (tt == 1)
 	{
 		temp = ft_calloc(1, 1);
@@ -1241,13 +1250,10 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 				//temp = ft_itoa_x(n);
 				//ft_pstr(temp, counter);
 
-				ft_pstr("0x", counter);
-				temp = ft_itoa_x_ul(n);
-				if (!(saida.flags.precision == 1 && n == 0))
-					ft_pstr(temp, counter);
 			}
 		}
 	}
+	*/
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
