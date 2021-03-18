@@ -372,10 +372,16 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	saida = print;
 
 
+	if (saida.flags.minus == 1 && saida.flags.pad_zeros == 1)
+	{
+		saida.flags.pad_zeros = 0;
+	}
+
+
 	n = va_arg(args, int);
 
 	tt = 0;
-	if (saida.flags.n_right == 0 && saida.flags.right_asteristic == 1 && n == 0)
+	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
 
 	if (saida.flags.n_right < 0)
