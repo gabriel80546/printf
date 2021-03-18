@@ -435,11 +435,14 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		tamanho = ft_printf_itoa_log((long)n) - 1;
 		if(troca == 1)
 			tamanho += neg;
+		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
+		/*
 		while (i < (saida.flags.n_right - tamanho))
 		{
 			ft_pchar('0', counter);
 			i++;
 		}
+		*/
 	}
 
 	if (tt == 1)
@@ -479,13 +482,6 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
 		ft_pnchar(' ',saida.flags.n_left - tamanho - neg, counter); 
-		/*
-		while (i < (saida.flags.n_left - tamanho - neg))
-		{
-			ft_pchar(' ', counter);
-			i++;
-		}
-		*/
 	}
 
 	free(temp);
