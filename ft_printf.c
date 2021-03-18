@@ -675,7 +675,7 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 }
 */
 
-/*
+
 t_print	get_hex(t_print print, int *counter, va_list args)
 {
 	t_print	saida;
@@ -683,9 +683,7 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 	unsigned int		n;
 	int		i;
 	int		tamanho;
-	int		neg;
 	int		tt;
-	int		troca;
 
 
 	saida = print;
@@ -695,24 +693,11 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
 
-	troca = 0;
 	if (saida.flags.n_right < 0)
 	{
 		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.n_left_indf == 0)
-		{
-			troca = 1;
 			saida.flags.n_right = saida.flags.n_left;
-		}
 	}
-
-	neg = 0;
-	if (n < 0 && n != -2147483648)
-	{
-		n = -n;
-		neg = 1;
-	}
-	if (neg == 1 && ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.precision == 0))
-		ft_pchar('-', counter);
 
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
@@ -720,7 +705,7 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 		tamanho = ft_itoa_x_log((long)n) - 1;
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
-		while (i < (saida.flags.n_left - tamanho - neg))
+		while (i < (saida.flags.n_left - tamanho))
 		{
 			if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1))
 				if (saida.flags.precision == 1)
@@ -733,15 +718,10 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 		}
 	}
 
-	if (neg == 1 && !((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.precision == 0))
-		ft_pchar('-', counter);
-
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
 		i = 0;
 		tamanho = ft_itoa_x_log((long)n) - 1;
-		if(troca == 1)
-			tamanho += neg;
 		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
 	}
 
@@ -770,6 +750,7 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 			else
 			{
 				//temp = ft_itoa(n);
+				//temp = ft_itoa_ui(n);
 				temp = ft_itoa_x(n);
 				ft_pstr(temp, counter);
 			}
@@ -782,17 +763,17 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 		tamanho = ft_itoa_x_log((long)n) - 1;
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
-		ft_pnchar(' ',saida.flags.n_left - tamanho - neg, counter); 
+		ft_pnchar(' ',saida.flags.n_left - tamanho, counter); 
 	}
 
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
 }
-*/
 
 
-//*/
+
+/*
 t_print	get_hex(t_print print, int *counter, va_list args)
 {
 	t_print			saida;
@@ -879,7 +860,7 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 	if (debug > 2) { logging("*counter = %d\n", *counter); }
 	return (saida);
 }
-//*/
+*/
 
 t_print	get_HEX(t_print print, int *counter, va_list args)
 {
