@@ -24,22 +24,22 @@ t_flags	ft_init_flags(void)
 {
 	t_flags saida;
 
-	saida.left_asteristic  = 0;
+	saida.left_asteristic = 0;
 	saida.right_asteristic = 0;
-	saida.n_left_indf      = 1;
-	saida.n_right_indf     = 1;
-	saida.n_left           = 0;
-	saida.n_right          = 0;
-	saida.pad_zeros        = 0;
-	saida.minus            = 0;
-	saida.precision        = 0;
+	saida.n_left_indf = 1;
+	saida.n_right_indf = 1;
+	saida.n_left = 0;
+	saida.n_right = 0;
+	saida.pad_zeros = 0;
+	saida.minus = 0;
+	saida.precision = 0;
 	return (saida);
 }
 
 int	ft_printf_itoa_log(long n)
 {
-	int contador;
-	int temp;
+	int	contador;
+	int	temp;
 
 	contador = 0;
 	if (n < 0)
@@ -60,8 +60,8 @@ int	ft_printf_itoa_log(long n)
 
 static unsigned int	ft_itoa_ui_log(unsigned long n)
 {
-	unsigned int contador;
-	unsigned int temp;
+	unsigned int	contador;
+	unsigned int	temp;
 
 	contador = 0;
 	temp = n;
@@ -98,8 +98,8 @@ char		*ft_itoa_ui(unsigned int n)
 
 static int	ft_itoa_x_log(unsigned long n)
 {
-	int contador;
-	int temp;
+	int	contador;
+	int	temp;
 
 	contador = 0;
 	temp = n;
@@ -145,8 +145,8 @@ char		*ft_itoa_x(unsigned int n)
 
 static int	ft_itoa_x_ul_log(unsigned long n)
 {
-	int contador;
-	int temp;
+	int	contador;
+	int	temp;
 
 	contador = 0;
 	temp = n;
@@ -248,7 +248,7 @@ void	ft_pnchar(char caracter, int n, int *counter)
 	int i;
 
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
 		ft_pchar(caracter, counter);
 		i++;
@@ -270,28 +270,6 @@ char	*ft_append(char *str, char caracter)
 	return (saida);
 }
 
-char	*ft_strappend(char *str, char *to_append)
-{
-	char	*saida;
-	int		i;
-	int		len_str;
-	int		len_append;
-
-	len_str = ft_strlen(str);
-	len_append = ft_strlen(to_append);
-	saida = (char *)malloc(len_str + len_append + 2);
-	ft_strlcpy(saida, str, len_str + 1);
-	i = 0;
-	while (to_append[i] != '\0')
-	{
-		saida[len_str + i] = to_append[i];
-		i++;
-	}
-	saida[len_str + i] = '\0';
-	free(str);
-	return (saida);
-}
-
 t_print	get_int(t_print print, int *counter, va_list args)
 {
 	t_print	saida;
@@ -306,11 +284,9 @@ t_print	get_int(t_print print, int *counter, va_list args)
 
 	saida = print;
 	n = va_arg(args, int);
-
 	tt = 0;
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
-
 	troca = 0;
 	if (saida.flags.n_right < 0)
 	{
@@ -320,7 +296,6 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			saida.flags.n_right = saida.flags.n_left;
 		}
 	}
-
 	neg = 0;
 	if (n < 0 && n != -2147483648)
 	{
@@ -329,7 +304,6 @@ t_print	get_int(t_print print, int *counter, va_list args)
 	}
 	if (neg == 1 && ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.precision == 0))
 		ft_pchar('-', counter);
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;
@@ -348,19 +322,16 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-
 	if (neg == 1 && !((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.precision == 0))
 		ft_pchar('-', counter);
-
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
 		i = 0;
 		tamanho = ft_printf_itoa_log((long)n) - 1;
-		if(troca == 1)
+		if (troca == 1)
 			tamanho += neg;
 		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
 	}
-
 	if (tt == 1)
 	{
 		temp = ft_calloc(1, 1);
@@ -390,7 +361,6 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			}
 		}
 	}
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -399,7 +369,6 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			tamanho -= (tamanho - saida.flags.n_right);
 		ft_pnchar(' ',saida.flags.n_left - tamanho - neg, counter); 
 	}
-
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -407,27 +376,24 @@ t_print	get_int(t_print print, int *counter, va_list args)
 
 t_print	get_uint(t_print print, int *counter, va_list args)
 {
-	t_print	saida;
-	char	*temp;
-	unsigned int		n;
-	int		i;
-	int		tamanho;
-	int		tt;
+	t_print			saida;
+	char			*temp;
+	unsigned int	n;
+	int				i;
+	int				tamanho;
+	int				tt;
 
 
 	saida = print;
 	n = va_arg(args, unsigned int);
-
 	tt = 0;
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
-
 	if (saida.flags.n_right < 0)
 	{
 		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.n_left_indf == 0)
 			saida.flags.n_right = saida.flags.n_left;
 	}
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;
@@ -446,14 +412,12 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
 		i = 0;
 		tamanho = ft_printf_itoa_log((long)n) - 1;
 		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
 	}
-
 	if (tt == 1)
 	{
 		temp = ft_calloc(1, 1);
@@ -483,7 +447,6 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 			}
 		}
 	}
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -492,7 +455,6 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 			tamanho -= (tamanho - saida.flags.n_right);
 		ft_pnchar(' ',saida.flags.n_left - tamanho, counter); 
 	}
-
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -500,27 +462,24 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 
 t_print	get_hex(t_print print, int *counter, va_list args)
 {
-	t_print	saida;
-	char	*temp;
-	unsigned int		n;
-	int		i;
-	int		tamanho;
-	int		tt;
+	t_print			saida;
+	char			*temp;
+	unsigned int	n;
+	int				i;
+	int				tamanho;
+	int				tt;
 
 
 	saida = print;
 	n = va_arg(args, unsigned int);
-
 	tt = 0;
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
-
 	if (saida.flags.n_right < 0)
 	{
 		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.n_left_indf == 0)
 			saida.flags.n_right = saida.flags.n_left;
 	}
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;
@@ -539,14 +498,12 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
 		i = 0;
 		tamanho = ft_itoa_x_log((long)n) - 1;
 		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
 	}
-
 	if (tt == 1)
 	{
 		temp = ft_calloc(1, 1);
@@ -576,7 +533,6 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 			}
 		}
 	}
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -585,7 +541,6 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 			tamanho -= (tamanho - saida.flags.n_right);
 		ft_pnchar(' ',saida.flags.n_left - tamanho, counter); 
 	}
-
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -593,13 +548,12 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 
 t_print	get_HEX(t_print print, int *counter, va_list args)
 {
-	t_print	saida;
-	char	*temp;
-	unsigned int		n;
-	int		i;
-	int		tamanho;
-	int		tt;
-
+	t_print			saida;
+	char			*temp;
+	unsigned int	n;
+	int				i;
+	int				tamanho;
+	int				tt;
 
 	saida = print;
 	n = va_arg(args, unsigned int);
@@ -607,13 +561,11 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 	tt = 0;
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
-
 	if (saida.flags.n_right < 0)
 	{
 		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.n_left_indf == 0)
 			saida.flags.n_right = saida.flags.n_left;
 	}
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;
@@ -632,14 +584,12 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
 		i = 0;
 		tamanho = ft_itoa_X_log((long)n) - 1;
 		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
 	}
-
 	if (tt == 1)
 	{
 		temp = ft_calloc(1, 1);
@@ -669,7 +619,6 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 			}
 		}
 	}
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -678,7 +627,6 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 			tamanho -= (tamanho - saida.flags.n_right);
 		ft_pnchar(' ',saida.flags.n_left - tamanho, counter); 
 	}
-
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -733,8 +681,6 @@ t_print	get_str(t_print print, int *counter, va_list args)
 	int		i;
 
 	saida = print;
-
-
 	temp = va_arg(args, char*);
 	if (temp == NULL)
 		temp = "(null)";
@@ -757,9 +703,7 @@ t_print	get_str(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-
 	ft_pstr(temp, counter);
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -786,7 +730,6 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	int				i;
 
 	saida = print;
-
 	n = va_arg(args, unsigned long);
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
@@ -809,7 +752,6 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-
 	ft_pstr("0x", counter);
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
@@ -825,8 +767,6 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	temp = ft_itoa_x_ul(n);
 	if (!(saida.flags.precision == 1 && saida.flags.n_right <= 0 && n == 0))
 		ft_pstr(temp, counter);
-
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
@@ -845,8 +785,6 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-	
-
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
@@ -950,7 +888,7 @@ t_print	parse_flags(t_print print, va_list args)
 	}
 	else if (saida.p_flags.estado == 2)
 	{
-		if(saida.atual_char >= '0' && saida.atual_char <= '9')
+		if (saida.atual_char >= '0' && saida.atual_char <= '9')
 		{
 			saida.p_flags.auxiliar = ft_append(saida.p_flags.auxiliar, saida.atual_char);
 			saida.leak = 1;
@@ -962,12 +900,12 @@ t_print	parse_flags(t_print print, va_list args)
 			saida.leak = 0;
 			if (saida.p_flags.left_or_right == 1)
 			{
-				saida.flags.n_left      = saida.p_flags.n_auxiliar;
+				saida.flags.n_left = saida.p_flags.n_auxiliar;
 				saida.flags.n_left_indf = 0;
 			}
 			else if (saida.p_flags.left_or_right == 2)
 			{
-				saida.flags.n_right      = saida.p_flags.n_auxiliar;
+				saida.flags.n_right = saida.p_flags.n_auxiliar;
 				saida.flags.n_right_indf = 0;
 			}
 			saida.p_flags.estado = 1;
@@ -982,8 +920,6 @@ t_print	choose_action(t_print print)
 	t_print	saida;
 
 	saida = print;
-
-
 	if (saida.atual_char == 'd')
 		saida.estado = GET_INT;
 	else if (saida.atual_char == 'i')
