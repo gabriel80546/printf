@@ -315,6 +315,17 @@ void	ft_pstr(char *string, int *counter)
 	ft_putstr_fd(string, 1);
 	*counter = *counter + ft_strlen(string);
 }
+void	ft_pnchar(char caracter, int n, int *counter)
+{
+	int i;
+
+	i = 0;
+	while(i < n)
+	{
+		ft_pchar(caracter, counter);
+		i++;
+	}
+}
 
 
 char	*ft_append(char *str, char caracter)
@@ -461,18 +472,20 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		}
 	}
 
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
 		tamanho = ft_printf_itoa_log((long)n) - 1;
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
+		ft_pnchar(' ',saida.flags.n_left - tamanho - neg, counter); 
+		/*
 		while (i < (saida.flags.n_left - tamanho - neg))
 		{
 			ft_pchar(' ', counter);
 			i++;
 		}
+		*/
 	}
 
 	free(temp);
@@ -889,7 +902,7 @@ t_print	get_str(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
+	if (saida.flags.precision == 1)
 		free(temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
