@@ -462,7 +462,7 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			if (n == 0 && saida.flags.n_left != 0 && saida.flags.n_right == 0)
 			{
 				temp = ft_calloc(1, 1);
-				ft_pchar('0', counter);
+				ft_pchar(' ', counter);
 			}
 			else
 			{
