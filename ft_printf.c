@@ -1461,11 +1461,15 @@ t_print	parse_flags(t_print print, int *counter, va_list args)
 	{
 		if (debug > 0) { logging("235: saida.p_flags.auxiliar = '%s'\n", saida.p_flags.auxiliar); }
 		if(saida.atual_char >= '0' && saida.atual_char <= '9')
+		{
 			saida.p_flags.auxiliar = ft_append(saida.p_flags.auxiliar, saida.atual_char);
+			saida.leak = 1;
+		}
 		else
 		{
 			saida.p_flags.n_auxiliar = ft_atoi(saida.p_flags.auxiliar);
 			free(saida.p_flags.auxiliar);
+			saida.leak = 0;
 			if (saida.p_flags.left_or_right == 1)
 			{
 				saida.flags.n_left      = saida.p_flags.n_auxiliar;
@@ -1542,6 +1546,7 @@ int		ft_printf_parse(const char *str, int *counter, va_list args)
 
 	print.i = 0;
 	print.estado = UNTIL_PERCENT;
+	print.leak = 0;
 	if (debug > 2) { logging("301: str = '%s'\n", str); }
 	while (str[print.i] != '\0')
 	{
@@ -1575,6 +1580,8 @@ int		ft_printf_parse(const char *str, int *counter, va_list args)
 			return (-1);
 		print.i += 1;
 	}
+	if (print.leak == 1)
+		free(print.p_flags.auxiliar);
 	//if (debug > 2) { logging("305: *output = '%s'(%ld); print.estado = %d; print.atual_char = '%c'\n", *output, ft_strlen(*output), print.estado, print.atual_char); }
 	return (0);
 }

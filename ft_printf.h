@@ -58,6 +58,7 @@ typedef struct	s_print
 	int			i;
 	int			estado;
 	char		atual_char;
+	int			leak;
 	t_p_flags	p_flags;
 	t_flags		flags;
 }				t_print;
