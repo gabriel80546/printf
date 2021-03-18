@@ -80,16 +80,26 @@ int main()
 
 
 
-	ft_printf("main: 50: '%15p'\n", NULL);
+	printf   ("main: 50: '%15p'\n", NULL);
 	printf   ("main: 50: '            0x0'\n");
 	ft_printf("main: 50: '%15p'\n", NULL);
 	printf("\n");
 
 
 
-	ft_printf("main: 50: '%-15p'\n", NULL);
+	printf   ("main: 50: '%-15p'\n", NULL);
 	printf   ("main: 50: '0x0            '\n");
 	ft_printf("main: 50: '%-15p'\n", NULL);
+	printf("\n");
+
+
+
+	printf   ("%2.9p\n", 1234);
+	ft_printf("%2.9p\n", 1234);
+	printf("\n");
+
+	printf   ("%.5p\n", 1234);
+	ft_printf("%.5p\n", 1234);
 	printf("\n");
 
 

@@ -1,25 +1,19 @@
-1009  KO: 22
-==========================
-- [OUTPUT] ft_printf("%.0i", 0)
-- [OUTPUT] ft_printf("%.i", 0)
-- [OUTPUT] ft_printf("%5.0i", 0)
-- [OUTPUT] ft_printf("%5.i", 0)
-- [OUTPUT] ft_printf("%-5.0i", 0)
-- [OUTPUT] ft_printf("%-5.i", 0)
-- [OUTPUT] ft_printf("%.0d", 0)
-- [OUTPUT] ft_printf("%.d", 0)
-- [OUTPUT] ft_printf("%5.0d", 0)
-- [OUTPUT] ft_printf("%5.d", 0)
-- [OUTPUT] ft_printf("%-5.0d", 0)
-- [OUTPUT] ft_printf("%-5.d", 0)
-- [OUTPUT] ft_printf("%.d, %.0d", 0, 0)
-- [OUTPUT] ft_printf("%.i, %.0i", 0, 0)
-- [OUTPUT] ft_printf("{%05.*d}", -15, 42)
-- [OUTPUT] ft_printf("p12 %.0d\n", 0)
-- [OUTPUT] ft_printf("t12 %.0d\n", 0)
-- [OUTPUT] ft_printf("31 This is an int : %.0d\n\n", 0)
-- [OUTPUT] ft_printf("%20.d", 0)
-- [OUTPUT] ft_printf("%20.i", 0)
-- [OUTPUT] ft_printf("%-12.*s%98.128s%--8p%095.*i%00182.193x" ,139,"o=Z*[","9S14l$RgnTv`-Wm",(void*)3870843096944218592lu,-156,201214506,1134523837u)
-- [OUTPUT] ft_printf("%.d", 0)
+   First line of code: {return test("%2.9p
+", 1234);}
+      expected return value : 13
+      your return value     : 11
+      expected output : "0x0000004d2
+"
+      your output     : "00000x4d2
+"
+      expected (nonprintable as hex) : "0x0000004d2\x0a"
+      actual   (nonprintable as hex) : "00000x4d2\x0a"
 
+Test 434 (p_ftfc_zero_prec5_undefbehav) : FAILED.
+    First line of code: {return test("%.5p", 0);}
+      expected return value : 7
+      your return value     : 4
+      expected output : "0x00000"
+      your output     : "000x"
+      expected (nonprintable as hex) : "0x00000"
+      actual   (nonprintable as hex) : "000x"

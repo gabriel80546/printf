@@ -1309,10 +1309,11 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	}
 	if (debug > 2) { logging("parte2\n"); }
 
+	ft_pstr("0x", counter);
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
 		i = 0;
-		tamanho = ft_itoa_x_ul_log(n) - 1 + 2;
+		tamanho = ft_itoa_x_ul_log(n) - 1 + 0;
 		while (i < (saida.flags.n_right - tamanho))
 		{
 			ft_pchar('0', counter);
@@ -1321,7 +1322,6 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	}
 	if (debug > 2) { logging("parte3\n"); }
 
-	ft_pstr("0x", counter);
 	temp = ft_itoa_x_ul(n);
 	if (!(saida.flags.precision == 1 && n == 0))
 		ft_pstr(temp, counter);
