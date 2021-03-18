@@ -14,8 +14,6 @@ CFLAGS = -g -Wall -Werror -Wextra
 #CFLAGS = -g -Wall -Werror
 CC = gcc
 
-P = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
-
 NAME	= libftprintf.a
 
 SOURCES = ft_printf.c
@@ -25,7 +23,7 @@ LIBFT = make -C libft re
 all: fclean
 	printf "" > saida
 	$(LIBFT)
-	$(CC) -c -D CAMINHO_SAIDA="\"$(P)saida\"" $(CFLAGS) $(SOURCES)
+	$(CC) -c $(CFLAGS) $(SOURCES)
 	ar -rc $(NAME) ft_printf.o libft/*.o
 
 #CAMINHO_SAIDA="$(P)saida"

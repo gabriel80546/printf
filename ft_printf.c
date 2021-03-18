@@ -20,19 +20,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-
-int in_file = 0;
-int debug = 0;
-
-int g_fd;
-char *g_string;
-
-
-#ifndef CAMINHO_SAIDA
-# define CAMINHO_SAIDA "/home/gabriel/desktop/qd/projetos/printf/printf/tests/saida"
-#endif
-
-
 t_flags	ft_init_flags(void)
 {
 	t_flags saida;
@@ -47,30 +34,6 @@ t_flags	ft_init_flags(void)
 	saida.minus            = 0;
 	saida.precision        = 0;
 	return (saida);
-}
-
-void	logging(char *str, ...)
-{
-	va_list args;
-
-	va_start(args, str);
-	if (in_file == 0)
-		vprintf(str, args);
-	else if (in_file == 1)
-	{
-		vsprintf(g_string, str, args);
-		ft_putstr_fd(g_string, g_fd);
-	}
-	va_end(args);
-}
-
-void	ft_print_flags(char *append, t_flags flags)
-{
-	logging("%sflags.minus     = %d\n", append, flags.minus);
-	logging("%sflags.n_left    = %d\n", append, flags.n_left);
-	logging("%sflags.n_right   = %d\n", append, flags.n_right);
-	logging("%sflags.pad_zeros = %d\n", append, flags.pad_zeros);
-	logging("%sflags.precision = %d\n", append, flags.precision);
 }
 
 int	ft_printf_itoa_log(long n)
@@ -515,7 +478,6 @@ t_print	get_uint(t_print print, int *counter, va_list args)
 			}
 			else
 			{
-				//temp = ft_itoa(n);
 				temp = ft_itoa_ui(n);
 				ft_pstr(temp, counter);
 			}
@@ -609,8 +571,6 @@ t_print	get_hex(t_print print, int *counter, va_list args)
 			}
 			else
 			{
-				//temp = ft_itoa(n);
-				//temp = ft_itoa_ui(n);
 				temp = ft_itoa_x(n);
 				ft_pstr(temp, counter);
 			}
@@ -704,8 +664,6 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 			}
 			else
 			{
-				//temp = ft_itoa(n);
-				//temp = ft_itoa_ui(n);
 				temp = ft_itoa_X(n);
 				ft_pstr(temp, counter);
 			}
@@ -824,9 +782,7 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 	t_print			saida;
 	char			*temp;
 	int				tamanho;
-	//int				flag;
 	unsigned long	n;
-	//int				log;
 	int				i;
 
 	saida = print;
@@ -1120,20 +1076,12 @@ int		ft_printf(const char *str, ...)
 	int		counter;
 	va_list	args;
 
-
 	counter = 0;
-
-	g_string = (char *)malloc(sizeof(char) * 4450);
-	g_fd = open(CAMINHO_SAIDA, O_RDWR | O_APPEND);
-
 	va_start(args, str);
 	output = ft_calloc(1, 1);
 	ft_printf_parse(str, &counter, args);
 	free(output);
 	va_end(args);
 
-	free(g_string);
-	if (g_fd != -1)
-		close(g_fd);
 	return (counter);
 }
