@@ -12,70 +12,103 @@
 
 #include "ft_printf.h"
 
-t_print	get_pointer(t_print print, int *counter, va_list args)
+t_cn	get_pointer_first_pad(t_cn input, int *counter)
 {
-	t_print			saida;
-	char			*temp;
-	int				tamanho;
-	unsigned long	n;
-	int				i;
+	t_cn conv;
 
-	saida = print;
-	n = va_arg(args, unsigned long);
-	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+	conv = input;
+	if (conv.saida.flags.n_left >= 0 && conv.saida.flags.minus == 0)
 	{
-		i = 0;
-		if (n == 0 && saida.flags.precision == 1)
-			tamanho = ft_itoa_x_ul_log(n) - 2 + 2;
+		conv.i = 0;
+		if (conv.n_ul == 0 && conv.saida.flags.precision == 1)
+			conv.tam = ft_itoa_x_ul_log(conv.n_ul) - 2 + 2;
 		else
-			tamanho = ft_itoa_x_ul_log(n) - 1 + 2;
-		if ((tamanho - saida.flags.n_right) < 0)
-			tamanho -= (tamanho - saida.flags.n_right);
-		while (i < (saida.flags.n_left - tamanho))
+			conv.tam = ft_itoa_x_ul_log(conv.n_ul) - 1 + 2;
+		if ((conv.tam - conv.saida.flags.n_right) < 0)
+			conv.tam -= (conv.tam - conv.saida.flags.n_right);
+		while (conv.i < (conv.saida.flags.n_left - conv.tam))
 		{
-			if (saida.flags.pad_zeros == 1)
-				if (saida.flags.precision == 1)
+			if (conv.saida.flags.pad_zeros == 1)
+				if (conv.saida.flags.precision == 1)
 					ft_pchar(' ', counter);
 				else
 					ft_pchar('0', counter);
 			else
 				ft_pchar(' ', counter);
-			i++;
+			conv.i++;
 		}
 	}
-	ft_pstr("0x", counter);
-	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
+	return (conv);
+}
+
+t_cn	get_pointer_sec_pad(t_cn input, int *counter)
+{
+	t_cn conv;
+
+	conv = input;
+	if (conv.saida.flags.precision == 1 && conv.saida.flags.n_right >= 0)
 	{
-		i = 0;
-		tamanho = ft_itoa_x_ul_log(n) - 1 + 0;
-		while (i < (saida.flags.n_right - tamanho))
+		conv.i = 0;
+		conv.tam = ft_itoa_x_ul_log(conv.n_ul) - 1 + 0;
+		while (conv.i < (conv.saida.flags.n_right - conv.tam))
 		{
 			ft_pchar('0', counter);
-			i++;
+			conv.i++;
 		}
 	}
-	temp = ft_itoa_x_ul(n);
-	if (!(saida.flags.precision == 1 && saida.flags.n_right <= 0 && n == 0))
-		ft_pstr(temp, counter);
-	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+	return (conv);
+}
+
+t_cn	get_pointer_pnumber(t_cn input, int *counter)
+{
+	t_cn conv;
+
+	conv = input;
+	conv.temp = ft_itoa_x_ul(conv.n_ul);
+	if (!(conv.saida.flags.precision == 1 && conv.saida.flags.n_right <= 0 &&
+		conv.n_ul == 0))
+		ft_pstr(conv.temp, counter);
+	return (conv);
+}
+
+t_cn	get_pointer_last_pad(t_cn input, int *counter)
+{
+	t_cn conv;
+
+	conv = input;
+	if (conv.saida.flags.n_left >= 0 && conv.saida.flags.minus == 1)
 	{
-		i = 0;
-		if (n == 0 && saida.flags.precision == 1)
-			tamanho = ft_itoa_x_ul_log(n) - 2 + 2;
+		conv.i = 0;
+		if (conv.n_ul == 0 && conv.saida.flags.precision == 1)
+			conv.tam = ft_itoa_x_ul_log(conv.n_ul) - 2 + 2;
 		else
-			tamanho = ft_itoa_x_ul_log(n) - 1 + 2;
-		if ((tamanho - saida.flags.n_right) < 0)
-			tamanho -= (tamanho - saida.flags.n_right);
-		while (i < (saida.flags.n_left - tamanho))
+			conv.tam = ft_itoa_x_ul_log(conv.n_ul) - 1 + 2;
+		if ((conv.tam - conv.saida.flags.n_right) < 0)
+			conv.tam -= (conv.tam - conv.saida.flags.n_right);
+		while (conv.i < (conv.saida.flags.n_left - conv.tam))
 		{
-			if (saida.flags.pad_zeros == 1)
+			if (conv.saida.flags.pad_zeros == 1)
 				ft_pchar(' ', counter);
 			else
 				ft_pchar(' ', counter);
-			i++;
+			conv.i++;
 		}
 	}
-	free(temp);
-	saida.estado = UNTIL_PERCENT;
-	return (saida);
+	return (conv);
+}
+
+t_print	get_pointer(t_print print, int *counter, va_list args)
+{
+	t_cn	conv;
+
+	conv.saida = print;
+	conv.n_ul = va_arg(args, unsigned long);
+	conv = get_pointer_first_pad(conv, counter);
+	ft_pstr("0x", counter);
+	conv = get_pointer_sec_pad(conv, counter);
+	conv = get_pointer_pnumber(conv, counter);
+	conv = get_pointer_last_pad(conv, counter);
+	free(conv.temp);
+	conv.saida.estado = UNTIL_PERCENT;
+	return (conv.saida);
 }
