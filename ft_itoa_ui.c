@@ -29,7 +29,7 @@ unsigned int	ft_itoa_ui_log(unsigned long n)
 	return (contador + 1);
 }
 
-char		*ft_itoa_ui(unsigned int n)
+char			*ft_itoa_ui(unsigned int n)
 {
 	char			*saida;
 	unsigned int	contador;

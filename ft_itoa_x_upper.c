@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_itoa_x_upper_log(unsigned long n)
+int			ft_itoa_x_upper_log(unsigned long n)
 {
 	int contador;
 	int temp;

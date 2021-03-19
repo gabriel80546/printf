@@ -22,7 +22,6 @@ t_print	get_percent(t_print print, int *counter, va_list args)
 	{
 		saida.flags.n_right = va_arg(args, int);
 	}
-
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;

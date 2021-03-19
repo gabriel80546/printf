@@ -54,7 +54,6 @@ t_print	get_pointer(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-
 	temp = ft_itoa_x_ul(n);
 	if (!(saida.flags.precision == 1 && saida.flags.n_right <= 0 && n == 0))
 		ft_pstr(temp, counter);

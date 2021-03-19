@@ -87,5 +87,6 @@ t_print			get_char(t_print print, int *counter, va_list args);
 t_print			get_HEX(t_print print, int *counter, va_list args);
 t_print			get_hex(t_print print, int *counter, va_list args);
 t_print			get_uint(t_print print, int *counter, va_list args);
+t_print			parse_flags(t_print print, va_list args);
 
 #endif

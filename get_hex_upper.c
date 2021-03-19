@@ -23,7 +23,6 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 
 	saida = print;
 	n = va_arg(args, unsigned int);
-
 	tt = 0;
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
 		tt = 1;
@@ -91,7 +90,7 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 		tamanho = ft_itoa_x_upper_log((long)n) - 1;
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
-		ft_pnchar(' ',saida.flags.n_left - tamanho, counter); 
+		ft_pnchar(' ', saida.flags.n_left - tamanho, counter);
 	}
 	free(temp);
 	saida.estado = UNTIL_PERCENT;
