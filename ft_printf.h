@@ -63,6 +63,29 @@ typedef struct	s_print
 	t_flags		flags;
 }				t_print;
 
-int		ft_printf(const char *, ...);
+int				ft_printf(const char *, ...);
+int				ft_printf_itoa_log(long n);
+unsigned int	ft_itoa_ui_log(unsigned long n);
+char			*ft_itoa_ui(unsigned int n);
+int				ft_itoa_x_ul_log(unsigned long n);
+char			*ft_itoa_x_ul(unsigned long n);
+int				ft_itoa_x_log(unsigned long n);
+char			*ft_itoa_x(unsigned int n);
+int				ft_itoa_X_log(unsigned long n);
+char			*ft_itoa_X(unsigned int n);
+void			ft_pchar(char caracter, int *counter);
+void			ft_pstr(char *string, int *counter);
+void			ft_pnchar(char caracter, int n, int *counter);
+char			*ft_append(char *str, char caracter);
+t_flags			ft_init_flags(void);
+t_print			until_percent(t_print print, int *counter);
+t_print			get_int(t_print print, int *counter, va_list args);
+t_print			get_percent(t_print print, int *counter, va_list args);
+t_print			get_pointer(t_print print, int *counter, va_list args);
+t_print			get_str(t_print print, int *counter, va_list args);
+t_print			get_char(t_print print, int *counter, va_list args);
+t_print			get_HEX(t_print print, int *counter, va_list args);
+t_print			get_hex(t_print print, int *counter, va_list args);
+t_print			get_uint(t_print print, int *counter, va_list args);
 
 #endif

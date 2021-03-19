@@ -19,6 +19,23 @@
 
 int main()
 {
+	int i;
+
+
+	i = 0;
+
+	while(i < 13)
+	{
+		ft_printf("Hello World!; i = %02i\n", i);
+		i++;
+	}
+	return (0);
+}
+
+
+/*
+int main_two()
+{
 
 	int		a = -4;
 	int		b = 0;
@@ -98,7 +115,6 @@ int main()
 	ft_printf("%2.9p\n", 1234);
 	printf("\n");
 
-	//printf   ("%.5p\n", 0);
 	printf   ("0x00000\n", 0);
 	ft_printf("%.5p\n", 0);
 	printf("\n");
@@ -111,3 +127,4 @@ int main()
 
 	return (0);
 }
+*/
