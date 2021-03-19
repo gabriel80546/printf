@@ -88,7 +88,7 @@ int		ft_printf_parse(const char *str, int *counter, va_list args)
 		print.i += 1;
 	}
 	if (print.leak == 1)
-		free(print.p_flags.auxiliar);
+		free(print.p_flags.aux);
 	return (0);
 }
 

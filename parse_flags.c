@@ -1,7 +1,7 @@
 
 #include "ft_printf.h"
 
-t_print	parse_flags(t_print print, va_list args)
+t_print	parse_flags_main(t_print print, va_list args)
 {
 	t_print	saida;
 
@@ -38,7 +38,7 @@ t_print	parse_flags(t_print print, va_list args)
 		else if (saida.atual_char >= '0' && saida.atual_char <= '9')
 		{
 			saida.p_flags.estado = 2;
-			saida.p_flags.auxiliar = ft_calloc(1, 1);
+			saida.p_flags.aux = ft_calloc(1, 1);
 			if (saida.flags.precision == 0)
 				saida.p_flags.left_or_right = 1;
 			else if (saida.flags.precision == 1 && saida.flags.n_right_indf == 1)
@@ -59,31 +59,57 @@ t_print	parse_flags(t_print print, va_list args)
 			saida.i -= 1;
 		}
 	}
-	else if (saida.p_flags.estado == 2)
+	return (saida);
+}
+
+t_print	parse_flags_num_set(t_print print)
+{
+	t_print	saida;
+
+	saida = print;
+	if (saida.p_flags.left_or_right == 1)
 	{
-		if (saida.atual_char >= '0' && saida.atual_char <= '9')
-		{
-			saida.p_flags.auxiliar = ft_append(saida.p_flags.auxiliar, saida.atual_char);
-			saida.leak = 1;
-		}
-		else
-		{
-			saida.p_flags.n_auxiliar = ft_atoi(saida.p_flags.auxiliar);
-			free(saida.p_flags.auxiliar);
-			saida.leak = 0;
-			if (saida.p_flags.left_or_right == 1)
-			{
-				saida.flags.n_left = saida.p_flags.n_auxiliar;
-				saida.flags.n_left_indf = 0;
-			}
-			else if (saida.p_flags.left_or_right == 2)
-			{
-				saida.flags.n_right = saida.p_flags.n_auxiliar;
-				saida.flags.n_right_indf = 0;
-			}
-			saida.p_flags.estado = 1;
-			saida.i -= 1;
-		}
+		saida.flags.n_left = saida.p_flags.n_auxiliar;
+		saida.flags.n_left_indf = 0;
 	}
+	else if (saida.p_flags.left_or_right == 2)
+	{
+		saida.flags.n_right = saida.p_flags.n_auxiliar;
+		saida.flags.n_right_indf = 0;
+	}
+	return (saida);
+}
+
+t_print	parse_flags_num(t_print print)
+{
+	t_print	saida;
+
+	saida = print;
+	if (saida.atual_char >= '0' && saida.atual_char <= '9')
+	{
+		saida.p_flags.aux = ft_append(saida.p_flags.aux, saida.atual_char);
+		saida.leak = 1;
+	}
+	else
+	{
+		saida.p_flags.n_auxiliar = ft_atoi(saida.p_flags.aux);
+		free(saida.p_flags.aux);
+		saida.leak = 0;
+		saida = parse_flags_num_set(saida);
+		saida.p_flags.estado = 1;
+		saida.i -= 1;
+	}
+	return (saida);
+}
+
+t_print	parse_flags(t_print print, va_list args)
+{
+	t_print	saida;
+
+	saida = print;
+	if (saida.p_flags.estado == 1)
+		saida = parse_flags_main(saida, args);
+	else if (saida.p_flags.estado == 2)
+		saida = parse_flags_num(saida);
 	return (saida);
 }

@@ -23,7 +23,7 @@ t_print	until_percent(t_print print, int *counter)
 	{
 		saida.flags = ft_init_flags();
 		saida.p_flags.pos_inicial = saida.i;
-		saida.p_flags.auxiliar = NULL;
+		saida.p_flags.aux = NULL;
 		saida.p_flags.n_auxiliar = 0;
 		saida.p_flags.estado = 1;
 		saida.estado = PARSE_FLAGS;

@@ -48,7 +48,7 @@ typedef struct	s_p_flags
 {
 	int			pos_inicial;
 	int			estado;
-	char		*auxiliar;
+	char		*aux;
 	int			left_or_right;
 	int			n_auxiliar;
 }				t_p_flags;
