@@ -19,7 +19,10 @@ SOURCES = ft_itoa.c ft_itoa_ui.c ft_itoa_x_ul.c ft_itoa_x.c \
 			ft_printf.c ft_put.c ft_append.c \
 			ft_init.c until_percent.c get_char.c get_hex.c \
 			get_hex_upper.c get_int.c get_percent.c get_pointer.c \
-			get_str.c get_uint.c ft_itoa_x_upper.c parse_flags.c
+			get_str.c get_uint.c ft_itoa_x_upper.c parse_flags.c \
+			parse_flags_num.c
+
+
 
 OBJS = $(SOURCES:.c=.o)
 
