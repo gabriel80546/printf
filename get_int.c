@@ -12,32 +12,43 @@
 
 #include "ft_printf.h"
 
-t_print	get_int(t_print print, int *counter, va_list args)
+t_cn	get_int_change_flag(t_cn input)
 {
-	t_cn	conv;
+	t_cn conv;
 
-	conv.saida = print;
-	conv.n_i = va_arg(args, int);
-	conv.tt = 0;
-	if (conv.saida.flags.n_right == 0 && conv.saida.flags.n_left == 0 && conv.saida.flags.right_asteristic == 1 && conv.n_i == 0)
-		conv.tt = 1;
+	conv = input;
 	conv.troca = 0;
 	if (conv.saida.flags.n_right < 0)
 	{
-		if ((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) && conv.saida.flags.n_left_indf == 0)
+		if ((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) &&
+		conv.saida.flags.n_left_indf == 0)
 		{
 			conv.troca = 1;
 			conv.saida.flags.n_right = conv.saida.flags.n_left;
 		}
 	}
+	return (conv);
+}
+
+t_cn	get_int_neg(t_cn input)
+{
+	t_cn conv;
+
+	conv = input;
 	conv.neg = 0;
 	if (conv.n_i < 0 && conv.n_i != -2147483648)
 	{
 		conv.n_i = -conv.n_i;
 		conv.neg = 1;
 	}
-	if (conv.neg == 1 && ((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) && conv.saida.flags.precision == 0))
-		ft_pchar('-', counter);
+	return (conv);
+}
+
+t_cn	get_int_first_pad(t_cn input, int *counter)
+{
+	t_cn conv;
+
+	conv = input;
 	if (conv.saida.flags.n_left >= 0 && conv.saida.flags.minus == 0)
 	{
 		conv.i = 0;
@@ -46,7 +57,8 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			conv.tam -= (conv.tam - conv.saida.flags.n_right);
 		while (conv.i < (conv.saida.flags.n_left - conv.tam - conv.neg))
 		{
-			if ((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1))
+			if ((conv.saida.flags.pad_zeros == 1 &&
+				conv.saida.flags.minus != 1))
 				if (conv.saida.flags.precision == 1)
 					ft_pchar(' ', counter);
 				else
@@ -56,8 +68,14 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			conv.i += 1;
 		}
 	}
-	if (conv.neg == 1 && !((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) && conv.saida.flags.precision == 0))
-		ft_pchar('-', counter);
+	return (conv);
+}
+
+t_cn	get_int_sec_pad(t_cn input, int *counter)
+{
+	t_cn conv;
+
+	conv = input;
 	if (conv.saida.flags.precision == 1 && conv.saida.flags.n_right >= 0)
 	{
 		conv.i = 0;
@@ -66,13 +84,37 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			conv.tam += conv.neg;
 		ft_pnchar('0', conv.saida.flags.n_right - conv.tam, counter);
 	}
+	return (conv);
+}
+
+t_print	get_int(t_print print, int *counter, va_list args)
+{
+	t_cn	conv;
+
+	conv.saida = print;
+	conv.n_i = va_arg(args, int);
+	conv.tt = 0;
+	if (conv.saida.flags.n_right == 0 && conv.saida.flags.n_left == 0 &&
+		conv.saida.flags.right_asteristic == 1 && conv.n_i == 0)
+		conv.tt = 1;
+	conv = get_int_change_flag(conv);
+	conv = get_int_neg(conv);
+	if (conv.neg == 1 &&
+		((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) &&
+		 conv.saida.flags.precision == 0))
+		ft_pchar('-', counter);
+	conv = get_int_first_pad(conv, counter);
+	if (conv.neg == 1 && !((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) &&
+		conv.saida.flags.precision == 0))
+		ft_pchar('-', counter);
+	conv = get_int_sec_pad(conv, counter);
+	//conv = get_int_pnumber(conv, counter);
 	if (conv.tt == 1)
-	{
 		conv.temp = ft_calloc(1, 1);
-	}
 	else
 	{
-		if (conv.n_i == 0 && conv.saida.flags.precision == 1 && (conv.saida.flags.pad_zeros == 0 || conv.saida.flags.minus == 1))
+		if (conv.n_i == 0 && conv.saida.flags.precision == 1 &&
+			(conv.saida.flags.pad_zeros == 0 || conv.saida.flags.minus == 1))
 		{
 			conv.temp = ft_calloc(1, 2);
 			if (conv.saida.flags.n_right > 0 || conv.saida.flags.n_right < 0)
@@ -83,7 +125,9 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		}
 		else
 		{
-			if (conv.n_i == 0 && conv.saida.flags.n_left_indf == 0 && conv.saida.flags.n_right_indf == 0 && conv.saida.flags.n_left != 0 && conv.saida.flags.n_right == 0)
+			if (conv.n_i == 0 && conv.saida.flags.n_left_indf == 0 &&
+				conv.saida.flags.n_right_indf == 0 && conv.saida.flags.n_left != 0 &&
+				conv.saida.flags.n_right == 0)
 			{
 				conv.temp = ft_calloc(1, 1);
 				ft_pchar(' ', counter);
