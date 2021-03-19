@@ -103,6 +103,32 @@ t_conv_num	get_int_pad(t_conv_num in, t_print saida, int *c, int n, int neg)
 	return (conv);
 }
 
+t_conv_num	get_int_pad_t(t_conv_num in, t_print saida, int *c, int n, int t, int neg)
+{
+	t_conv_num conv;
+
+	conv = in;
+	conv.i = 0;
+	conv.tam = ft_printf_itoa_log((long)n) - 1;
+	if (t == 1)
+		conv.tam += neg;
+	ft_pnchar('0', saida.flags.n_right - conv.tam, c);
+	return (conv);
+}
+
+t_conv_num	get_int_end(t_conv_num in, t_print saida, int *c, int n, int neg)
+{
+	t_conv_num conv;
+
+	conv = in;
+	conv.i = 0;
+	conv.tam = ft_printf_itoa_log((long)n) - 1;
+	if ((conv.tam - saida.flags.n_right) < 0)
+		conv.tam -= (conv.tam - saida.flags.n_right);
+	ft_pnchar(' ', saida.flags.n_left - conv.tam - neg, c);
+	return (conv);
+}
+
 t_print		get_int(t_print print, int *counter, va_list args)
 {
 	t_print		saida;
@@ -114,12 +140,10 @@ t_print		get_int(t_print print, int *counter, va_list args)
 	saida = print;
 	conv = (t_conv_num) {0};
 	n = va_arg(args, int);
-	/*
 	conv.tt = 0;
 	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 &&
 		saida.flags.right_asteristic == 1 && n == 0)
 		conv.tt = 1;
-	*/
 	saida = get_int_change_f(saida, &troca);
 	neg = get_int_neg(&n);
 	if (neg == 1 && ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) &&
@@ -131,27 +155,13 @@ t_print		get_int(t_print print, int *counter, va_list args)
 		saida.flags.precision == 0))
 		ft_pchar('-', counter);
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
-	{
-		conv.i = 0;
-		conv.tam = ft_printf_itoa_log((long)n) - 1;
-		if (troca == 1)
-			conv.tam += neg;
-		ft_pnchar('0', saida.flags.n_right - conv.tam, counter);
-	}
-	//if (conv.tt == 1)
-	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 &&
-		saida.flags.right_asteristic == 1 && n == 0)
+		conv = get_int_pad_t(conv, saida, counter, n, troca, neg);
+	if (conv.tt == 1)
 		conv.temp = ft_calloc(1, 1);
 	else
 		conv = get_int_pzero(conv, saida, counter, n);
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
-	{
-		conv.i = 0;
-		conv.tam = ft_printf_itoa_log((long)n) - 1;
-		if ((conv.tam - saida.flags.n_right) < 0)
-			conv.tam -= (conv.tam - saida.flags.n_right);
-		ft_pnchar(' ', saida.flags.n_left - conv.tam - neg, counter);
-	}
+		conv = get_int_end(conv, saida, counter, n, neg);
 	free(conv.temp);
 	saida.estado = UNTIL_PERCENT;
 	return (saida);
