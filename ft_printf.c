@@ -72,7 +72,7 @@ int		ft_printf_parse(const char *str, int *counter, va_list args)
 		else if (print.estado == GET_hex)
 			print = get_hex(print, counter, args);
 		else if (print.estado == GET_HEX)
-			print = get_HEX(print, counter, args);
+			print = get_hex_up(print, counter, args);
 		else if (print.estado == GET_CHAR)
 			print = get_char(print, counter, args);
 		else if (print.estado == GET_STR)
