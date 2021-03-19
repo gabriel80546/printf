@@ -1,7 +1,7 @@
 
 #include "ft_printf.h"
 
-int	ft_itoa_X_log(unsigned long n)
+int	ft_itoa_x_upper_log(unsigned long n)
 {
 	int contador;
 	int temp;
@@ -18,17 +18,17 @@ int	ft_itoa_X_log(unsigned long n)
 	return (contador + 1);
 }
 
-char		*ft_itoa_X(unsigned int n)
+char		*ft_itoa_x_upper(unsigned int n)
 {
 	char	*saida;
 	int		contador;
 	char	temp;
 
-	saida = (char *)malloc(sizeof(char) * ft_itoa_X_log(n));
+	saida = (char *)malloc(sizeof(char) * ft_itoa_x_upper_log(n));
 	if (saida == NULL)
 		return (NULL);
 	*(saida + 0) = '-';
-	contador = (ft_itoa_X_log(n) - 1);
+	contador = (ft_itoa_x_upper_log(n) - 1);
 	*(saida + contador) = '\0';
 	while (n > 15)
 	{

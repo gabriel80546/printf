@@ -24,7 +24,7 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
 		i = 0;
-		tamanho = ft_itoa_X_log((long)n) - 1;
+		tamanho = ft_itoa_x_upper_log((long)n) - 1;
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
 		while (i < (saida.flags.n_left - tamanho))
@@ -42,7 +42,7 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
 		i = 0;
-		tamanho = ft_itoa_X_log((long)n) - 1;
+		tamanho = ft_itoa_x_upper_log((long)n) - 1;
 		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
 	}
 	if (tt == 1)
@@ -69,7 +69,7 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 			}
 			else
 			{
-				temp = ft_itoa_X(n);
+				temp = ft_itoa_x_upper(n);
 				ft_pstr(temp, counter);
 			}
 		}
@@ -77,7 +77,7 @@ t_print	get_HEX(t_print print, int *counter, va_list args)
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
 	{
 		i = 0;
-		tamanho = ft_itoa_X_log((long)n) - 1;
+		tamanho = ft_itoa_x_upper_log((long)n) - 1;
 		if ((tamanho - saida.flags.n_right) < 0)
 			tamanho -= (tamanho - saida.flags.n_right);
 		ft_pnchar(' ',saida.flags.n_left - tamanho, counter); 
