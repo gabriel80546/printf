@@ -109,6 +109,11 @@ t_cn			get_int_neg(t_cn input);
 t_cn			get_int_first_pad(t_cn input, int *counter);
 t_cn			get_int_sec_pad(t_cn input, int *counter);
 
+t_cn			get_uint_init(t_cn input);
+t_cn			get_uint_change_flag(t_cn input);
+t_cn			get_uint_first_pad(t_cn input, int *counter);
+t_cn			get_uint_sec_pad(t_cn input, int *counter);
+
 #endif
 
 
