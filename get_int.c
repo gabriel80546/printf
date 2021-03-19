@@ -14,24 +14,24 @@
 
 t_print	get_int(t_print print, int *counter, va_list args)
 {
-	t_print	saida;
-	char	*temp;
-	int		n;
-	int		i;
-	int		tamanho;
-	int		neg;
-	int		tt;
-	int		troca;
+	t_print		saida;
+	t_conv_num	conv;
+	int			n;
+	int			neg;
+	int			troca;
 
 	saida = print;
+	conv = (t_conv_num) {0};
 	n = va_arg(args, int);
-	tt = 0;
-	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
-		tt = 1;
+	conv.tt = 0;
+	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 &&
+		saida.flags.right_asteristic == 1 && n == 0)
+		conv.tt = 1;
 	troca = 0;
 	if (saida.flags.n_right < 0)
 	{
-		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.n_left_indf == 0)
+		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) &&
+			saida.flags.n_left_indf == 0)
 		{
 			troca = 1;
 			saida.flags.n_right = saida.flags.n_left;
@@ -43,7 +43,8 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		n = -n;
 		neg = 1;
 	}
-	if (neg == 1 && ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.precision == 0))
+	if (neg == 1 && ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) &&
+		saida.flags.precision == 0))
 		ft_pchar('-', counter);
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
 	{
@@ -63,7 +64,8 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			i++;
 		}
 	}
-	if (neg == 1 && !((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.precision == 0))
+	if (neg == 1 && !((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) &&
+		saida.flags.precision == 0))
 		ft_pchar('-', counter);
 	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
 	{
@@ -73,13 +75,12 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			tamanho += neg;
 		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
 	}
-	if (tt == 1)
-	{
+	if (conv.tt == 1)
 		temp = ft_calloc(1, 1);
-	}
 	else
 	{
-		if (n == 0 && saida.flags.precision == 1 && (saida.flags.pad_zeros == 0 || saida.flags.minus == 1))
+		if (n == 0 && saida.flags.precision == 1 &&
+			(saida.flags.pad_zeros == 0 || saida.flags.minus == 1))
 		{
 			temp = ft_calloc(1, 2);
 			if (saida.flags.n_right > 0 || saida.flags.n_right < 0)
@@ -90,7 +91,9 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		}
 		else
 		{
-			if (n == 0 && saida.flags.n_left_indf == 0 && saida.flags.n_right_indf == 0 && saida.flags.n_left != 0 && saida.flags.n_right == 0)
+			if (n == 0 && saida.flags.n_left_indf == 0 &&
+				saida.flags.n_right_indf == 0 && saida.flags.n_left != 0 &&
+				saida.flags.n_right == 0)
 			{
 				temp = ft_calloc(1, 1);
 				ft_pchar(' ', counter);
