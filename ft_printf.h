@@ -119,5 +119,10 @@ t_cn			get_hex_change_flag(t_cn input);
 t_cn			get_hex_first_pad(t_cn input, int *counter);
 t_cn			get_hex_sec_pad(t_cn input, int *counter);
 
+t_cn			get_hex_up_init(t_cn input);
+t_cn			get_hex_up_change_flag(t_cn input);
+t_cn			get_hex_up_first_pad(t_cn input, int *counter);
+t_cn			get_hex_up_sec_pad(t_cn input, int *counter);
+
 #endif
 
