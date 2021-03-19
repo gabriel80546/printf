@@ -63,6 +63,20 @@ typedef struct	s_print
 	t_flags		flags;
 }				t_print;
 
+typedef struct	s_cn
+{
+	char			*temp;
+	int				i;
+	int				tam;
+	int				tt;
+	int				troca;
+	int				neg;
+	int				n_i;
+	unsigned int	n_ui;
+	unsigned long	n_ul;
+	t_print			saida;
+}				t_cn;
+
 int				ft_printf(const char *, ...);
 int				ft_printf_itoa_log(long n);
 unsigned int	ft_itoa_ui_log(unsigned long n);

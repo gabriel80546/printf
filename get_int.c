@@ -14,103 +14,96 @@
 
 t_print	get_int(t_print print, int *counter, va_list args)
 {
-	t_print	saida;
-	char	*temp;
-	int		n;
-	int		i;
-	int		tamanho;
-	int		neg;
-	int		tt;
-	int		troca;
+	t_cn	conv;
 
-	saida = print;
-	n = va_arg(args, int);
-	tt = 0;
-	if (saida.flags.n_right == 0 && saida.flags.n_left == 0 && saida.flags.right_asteristic == 1 && n == 0)
-		tt = 1;
-	troca = 0;
-	if (saida.flags.n_right < 0)
+	conv.saida = print;
+	conv.n_i = va_arg(args, int);
+	conv.tt = 0;
+	if (conv.saida.flags.n_right == 0 && conv.saida.flags.n_left == 0 && conv.saida.flags.right_asteristic == 1 && conv.n_i == 0)
+		conv.tt = 1;
+	conv.troca = 0;
+	if (conv.saida.flags.n_right < 0)
 	{
-		if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.n_left_indf == 0)
+		if ((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) && conv.saida.flags.n_left_indf == 0)
 		{
-			troca = 1;
-			saida.flags.n_right = saida.flags.n_left;
+			conv.troca = 1;
+			conv.saida.flags.n_right = conv.saida.flags.n_left;
 		}
 	}
-	neg = 0;
-	if (n < 0 && n != -2147483648)
+	conv.neg = 0;
+	if (conv.n_i < 0 && conv.n_i != -2147483648)
 	{
-		n = -n;
-		neg = 1;
+		conv.n_i = -conv.n_i;
+		conv.neg = 1;
 	}
-	if (neg == 1 && ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.precision == 0))
+	if (conv.neg == 1 && ((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) && conv.saida.flags.precision == 0))
 		ft_pchar('-', counter);
-	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+	if (conv.saida.flags.n_left >= 0 && conv.saida.flags.minus == 0)
 	{
-		i = 0;
-		tamanho = ft_printf_itoa_log((long)n) - 1;
-		if ((tamanho - saida.flags.n_right) < 0)
-			tamanho -= (tamanho - saida.flags.n_right);
-		while (i < (saida.flags.n_left - tamanho - neg))
+		conv.i = 0;
+		conv.tam = ft_printf_itoa_log((long)conv.n_i) - 1;
+		if ((conv.tam - conv.saida.flags.n_right) < 0)
+			conv.tam -= (conv.tam - conv.saida.flags.n_right);
+		while (conv.i < (conv.saida.flags.n_left - conv.tam - conv.neg))
 		{
-			if ((saida.flags.pad_zeros == 1 && saida.flags.minus != 1))
-				if (saida.flags.precision == 1)
+			if ((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1))
+				if (conv.saida.flags.precision == 1)
 					ft_pchar(' ', counter);
 				else
 					ft_pchar('0', counter);
 			else
 				ft_pchar(' ', counter);
-			i++;
+			conv.i += 1;
 		}
 	}
-	if (neg == 1 && !((saida.flags.pad_zeros == 1 && saida.flags.minus != 1) && saida.flags.precision == 0))
+	if (conv.neg == 1 && !((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) && conv.saida.flags.precision == 0))
 		ft_pchar('-', counter);
-	if (saida.flags.precision == 1 && saida.flags.n_right >= 0)
+	if (conv.saida.flags.precision == 1 && conv.saida.flags.n_right >= 0)
 	{
-		i = 0;
-		tamanho = ft_printf_itoa_log((long)n) - 1;
-		if (troca == 1)
-			tamanho += neg;
-		ft_pnchar('0', saida.flags.n_right - tamanho, counter);
+		conv.i = 0;
+		conv.tam = ft_printf_itoa_log((long)conv.n_i) - 1;
+		if (conv.troca == 1)
+			conv.tam += conv.neg;
+		ft_pnchar('0', conv.saida.flags.n_right - conv.tam, counter);
 	}
-	if (tt == 1)
+	if (conv.tt == 1)
 	{
-		temp = ft_calloc(1, 1);
+		conv.temp = ft_calloc(1, 1);
 	}
 	else
 	{
-		if (n == 0 && saida.flags.precision == 1 && (saida.flags.pad_zeros == 0 || saida.flags.minus == 1))
+		if (conv.n_i == 0 && conv.saida.flags.precision == 1 && (conv.saida.flags.pad_zeros == 0 || conv.saida.flags.minus == 1))
 		{
-			temp = ft_calloc(1, 2);
-			if (saida.flags.n_right > 0 || saida.flags.n_right < 0)
-				temp[0] = '0';
-			else if (saida.flags.n_left > 0)
-				temp[0] = ' ';
-			ft_pstr(temp, counter);
+			conv.temp = ft_calloc(1, 2);
+			if (conv.saida.flags.n_right > 0 || conv.saida.flags.n_right < 0)
+				conv.temp[0] = '0';
+			else if (conv.saida.flags.n_left > 0)
+				conv.temp[0] = ' ';
+			ft_pstr(conv.temp, counter);
 		}
 		else
 		{
-			if (n == 0 && saida.flags.n_left_indf == 0 && saida.flags.n_right_indf == 0 && saida.flags.n_left != 0 && saida.flags.n_right == 0)
+			if (conv.n_i == 0 && conv.saida.flags.n_left_indf == 0 && conv.saida.flags.n_right_indf == 0 && conv.saida.flags.n_left != 0 && conv.saida.flags.n_right == 0)
 			{
-				temp = ft_calloc(1, 1);
+				conv.temp = ft_calloc(1, 1);
 				ft_pchar(' ', counter);
 			}
 			else
 			{
-				temp = ft_itoa(n);
-				ft_pstr(temp, counter);
+				conv.temp = ft_itoa(conv.n_i);
+				ft_pstr(conv.temp, counter);
 			}
 		}
 	}
-	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
+	if (conv.saida.flags.n_left >= 0 && conv.saida.flags.minus == 1)
 	{
-		i = 0;
-		tamanho = ft_printf_itoa_log((long)n) - 1;
-		if ((tamanho - saida.flags.n_right) < 0)
-			tamanho -= (tamanho - saida.flags.n_right);
-		ft_pnchar(' ', saida.flags.n_left - tamanho - neg, counter);
+		conv.i = 0;
+		conv.tam = ft_printf_itoa_log((long)conv.n_i) - 1;
+		if ((conv.tam - conv.saida.flags.n_right) < 0)
+			conv.tam -= (conv.tam - conv.saida.flags.n_right);
+		ft_pnchar(' ', conv.saida.flags.n_left - conv.tam - conv.neg, counter);
 	}
-	free(temp);
-	saida.estado = UNTIL_PERCENT;
-	return (saida);
+	free(conv.temp);
+	conv.saida.estado = UNTIL_PERCENT;
+	return (conv.saida);
 }
