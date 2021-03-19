@@ -87,6 +87,27 @@ t_cn	get_int_sec_pad(t_cn input, int *counter)
 	return (conv);
 }
 
+t_cn	get_int_pnumber_t(t_cn input, int *counter)
+{
+	t_cn conv;
+
+	conv = input;
+	if (conv.n_i == 0 && conv.saida.flags.n_left_indf == 0 &&
+		conv.saida.flags.n_right_indf == 0 &&
+		conv.saida.flags.n_left != 0 &&
+		conv.saida.flags.n_right == 0)
+	{
+		conv.temp = ft_calloc(1, 1);
+		ft_pchar(' ', counter);
+	}
+	else
+	{
+		conv.temp = ft_itoa(conv.n_i);
+		ft_pstr(conv.temp, counter);
+	}
+	return (conv);
+}
+
 t_cn	get_int_pnumber(t_cn input, int *counter)
 {
 	t_cn conv;
@@ -107,21 +128,7 @@ t_cn	get_int_pnumber(t_cn input, int *counter)
 			ft_pstr(conv.temp, counter);
 		}
 		else
-		{
-			if (conv.n_i == 0 && conv.saida.flags.n_left_indf == 0 &&
-				conv.saida.flags.n_right_indf == 0 &&
-				conv.saida.flags.n_left != 0 &&
-				conv.saida.flags.n_right == 0)
-			{
-				conv.temp = ft_calloc(1, 1);
-				ft_pchar(' ', counter);
-			}
-			else
-			{
-				conv.temp = ft_itoa(conv.n_i);
-				ft_pstr(conv.temp, counter);
-			}
-		}
+			conv = get_int_pnumber_t(conv, counter);
 	}
 	return (conv);
 }
