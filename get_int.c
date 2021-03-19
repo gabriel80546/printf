@@ -87,28 +87,11 @@ t_cn	get_int_sec_pad(t_cn input, int *counter)
 	return (conv);
 }
 
-t_print	get_int(t_print print, int *counter, va_list args)
+t_cn	get_int_pnumber(t_cn input, int *counter)
 {
-	t_cn	conv;
+	t_cn conv;
 
-	conv.saida = print;
-	conv.n_i = va_arg(args, int);
-	conv.tt = 0;
-	if (conv.saida.flags.n_right == 0 && conv.saida.flags.n_left == 0 &&
-		conv.saida.flags.right_asteristic == 1 && conv.n_i == 0)
-		conv.tt = 1;
-	conv = get_int_change_flag(conv);
-	conv = get_int_neg(conv);
-	if (conv.neg == 1 &&
-		((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) &&
-		 conv.saida.flags.precision == 0))
-		ft_pchar('-', counter);
-	conv = get_int_first_pad(conv, counter);
-	if (conv.neg == 1 && !((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) &&
-		conv.saida.flags.precision == 0))
-		ft_pchar('-', counter);
-	conv = get_int_sec_pad(conv, counter);
-	//conv = get_int_pnumber(conv, counter);
+	conv = input;
 	if (conv.tt == 1)
 		conv.temp = ft_calloc(1, 1);
 	else
@@ -126,7 +109,8 @@ t_print	get_int(t_print print, int *counter, va_list args)
 		else
 		{
 			if (conv.n_i == 0 && conv.saida.flags.n_left_indf == 0 &&
-				conv.saida.flags.n_right_indf == 0 && conv.saida.flags.n_left != 0 &&
+				conv.saida.flags.n_right_indf == 0 &&
+				conv.saida.flags.n_left != 0 &&
 				conv.saida.flags.n_right == 0)
 			{
 				conv.temp = ft_calloc(1, 1);
@@ -139,6 +123,14 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			}
 		}
 	}
+	return (conv);
+}
+
+t_cn	get_int_last_pad(t_cn input, int *counter)
+{
+	t_cn conv;
+
+	conv = input;
 	if (conv.saida.flags.n_left >= 0 && conv.saida.flags.minus == 1)
 	{
 		conv.i = 0;
@@ -147,6 +139,32 @@ t_print	get_int(t_print print, int *counter, va_list args)
 			conv.tam -= (conv.tam - conv.saida.flags.n_right);
 		ft_pnchar(' ', conv.saida.flags.n_left - conv.tam - conv.neg, counter);
 	}
+	return (conv);
+}
+
+t_print	get_int(t_print print, int *counter, va_list args)
+{
+	t_cn	conv;
+
+	conv.saida = print;
+	conv.n_i = va_arg(args, int);
+	conv.tt = 0;
+	if (conv.saida.flags.n_right == 0 && conv.saida.flags.n_left == 0 &&
+		conv.saida.flags.right_asteristic == 1 && conv.n_i == 0)
+		conv.tt = 1;
+	conv = get_int_change_flag(conv);
+	conv = get_int_neg(conv);
+	if (conv.neg == 1 &&
+		((conv.saida.flags.pad_zeros == 1 && conv.saida.flags.minus != 1) &&
+			conv.saida.flags.precision == 0))
+		ft_pchar('-', counter);
+	conv = get_int_first_pad(conv, counter);
+	if (conv.neg == 1 && !((conv.saida.flags.pad_zeros == 1
+		&& conv.saida.flags.minus != 1) && conv.saida.flags.precision == 0))
+		ft_pchar('-', counter);
+	conv = get_int_sec_pad(conv, counter);
+	conv = get_int_pnumber(conv, counter);
+	conv = get_int_last_pad(conv, counter);
 	free(conv.temp);
 	conv.saida.estado = UNTIL_PERCENT;
 	return (conv.saida);
