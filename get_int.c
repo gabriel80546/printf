@@ -60,7 +60,7 @@ t_cn	get_int_pnumber(t_cn input, int *counter)
 
 t_cn	get_int_last_pad(t_cn input, int *counter)
 {
-	t_cn conv;
+	t_cn	conv;
 
 	conv = input;
 	if (conv.saida.flags.n_left >= 0 && conv.saida.flags.minus == 1)
