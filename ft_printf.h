@@ -63,15 +63,6 @@ typedef struct	s_print
 	t_flags		flags;
 }				t_print;
 
-
-typedef struct	s_conv_num
-{
-	char	*temp;
-	int		i;
-	int		tam;
-	int		tt;
-}				t_conv_num;
-
 int				ft_printf(const char *, ...);
 int				ft_printf_itoa_log(long n);
 unsigned int	ft_itoa_ui_log(unsigned long n);
