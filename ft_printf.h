@@ -104,4 +104,11 @@ t_print			get_uint(t_print print, int *counter, va_list args);
 t_print			parse_flags(t_print print, va_list args);
 t_print			parse_flags_num(t_print print);
 
+t_cn			get_int_change_flag(t_cn input);
+t_cn			get_int_neg(t_cn input);
+t_cn			get_int_first_pad(t_cn input, int *counter);
+t_cn			get_int_sec_pad(t_cn input, int *counter);
+
 #endif
+
+
