@@ -15,7 +15,6 @@
 t_print	get_percent(t_print print, int *counter)
 {
 	t_print	saida;
-	int		i;
 
 	saida = print;
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
