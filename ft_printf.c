@@ -32,9 +32,9 @@ t_print	choose_action(t_print print)
 	else if (saida.atual_char == 'u')
 		saida.estado = GET_UINT;
 	else if (saida.atual_char == 'x')
-		saida.estado = GET_hex;
-	else if (saida.atual_char == 'X')
 		saida.estado = GET_HEX;
+	else if (saida.atual_char == 'X')
+		saida.estado = GET_HEX_UP;
 	else if (saida.atual_char == 'c')
 		saida.estado = GET_CHAR;
 	else if (saida.atual_char == 's')
@@ -55,9 +55,9 @@ int		ft_printf_parse_two(t_print *print, int *counter, va_list args)
 		*print = get_int(*print, counter, args);
 	else if (print->estado == GET_UINT)
 		*print = get_uint(*print, counter, args);
-	else if (print->estado == GET_hex)
-		*print = get_hex(*print, counter, args);
 	else if (print->estado == GET_HEX)
+		*print = get_hex(*print, counter, args);
+	else if (print->estado == GET_HEX_UP)
 		*print = get_hex_up(*print, counter, args);
 	else if (print->estado == GET_CHAR)
 		*print = get_char(*print, counter, args);
