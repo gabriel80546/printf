@@ -19,10 +19,12 @@ t_print	get_char(t_print print, int *counter, va_list args)
 
 	saida = print;
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 0)
+	{
 		if (saida.flags.pad_zeros == 1)
 			ft_pnchar('0', saida.flags.n_left - 1, counter);
 		else
 			ft_pnchar(' ', saida.flags.n_left - 1, counter);
+	}
 	temp = va_arg(args, int);
 	ft_pchar(temp, counter);
 	if (saida.flags.n_left >= 0 && saida.flags.minus == 1)
