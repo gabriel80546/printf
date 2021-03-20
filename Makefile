@@ -6,12 +6,11 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 10:05:36 by gabriel           #+#    #+#              #
-#    Updated: 2021/03/12 08:05:54 by gabriel          ###   ########.fr        #
+#    Updated: 2021/03/19 22:14:52 by gpassos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#CFLAGS = -Wall -Werror -Wextra
-CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 CC = clang
 NAME = libftprintf.a
 LIBFT = make -C libft re
@@ -28,12 +27,19 @@ OBJS = $(SOURCES:.c=.o)
 %.o: %.c
 	$(CC) -c $(CFLAGS) $^
 
-all: $(OBJS)
+$(NAME): $(OBJS)
 	$(LIBFT)
 	ar -rc $(NAME) $^ libft/*.o
 
+all: $(NAME)
+
 re: fclean all
 
-fclean:
+clean:
 	rm -f -- *.o
+
+fclean: clean
 	rm -f -- libftprintf.a
+
+bonus:
+	echo ""
