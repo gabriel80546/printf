@@ -80,7 +80,7 @@ int		ft_printf_parse(const char *str, int *counter, va_list args)
 		else if (print.estado == GET_POINTER)
 			print = get_pointer(print, counter, args);
 		else if (print.estado == GET_PERCENT)
-			print = get_percent(print, counter, args);
+			print = get_percent(print, counter/*, args*/);
 		else if (print.estado == END)
 			break ;
 		else

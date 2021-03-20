@@ -94,7 +94,7 @@ char			*ft_append(char *str, char caracter);
 t_flags			ft_init_flags(void);
 t_print			until_percent(t_print print, int *counter);
 t_print			get_int(t_print print, int *counter, va_list args);
-t_print			get_percent(t_print print, int *counter, va_list args);
+t_print			get_percent(t_print print, int *counter/*, va_list args*/);
 t_print			get_pointer(t_print print, int *counter, va_list args);
 t_print			get_str(t_print print, int *counter, va_list args);
 t_print			get_char(t_print print, int *counter, va_list args);
