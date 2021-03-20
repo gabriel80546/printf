@@ -6,19 +6,11 @@
 /*   By: gpassos- <gpassos-@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 07:34:35 by gpassos-          #+#    #+#             */
-/*   Updated: 2021/03/19 07:34:37 by gpassos-         ###   ########.fr       */
+/*   Updated: 2021/03/19 22:03:42 by gpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 t_print	choose_action(t_print print)
 {
