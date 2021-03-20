@@ -77,7 +77,7 @@ typedef struct	s_cn
 	t_print			saida;
 }				t_cn;
 
-int				ft_printf(const char *, ...);
+int				ft_printf(const char *str, ...);
 int				ft_printf_itoa_log(long n);
 unsigned int	ft_itoa_ui_log(unsigned long n);
 char			*ft_itoa_ui(unsigned int n);
@@ -94,7 +94,7 @@ char			*ft_append(char *str, char caracter);
 t_flags			ft_init_flags(void);
 t_print			until_percent(t_print print, int *counter);
 t_print			get_int(t_print print, int *counter, va_list args);
-t_print			get_percent(t_print print, int *counter/*, va_list args*/);
+t_print			get_percent(t_print print, int *counter);
 t_print			get_pointer(t_print print, int *counter, va_list args);
 t_print			get_str(t_print print, int *counter, va_list args);
 t_print			get_char(t_print print, int *counter, va_list args);
@@ -125,4 +125,3 @@ t_cn			get_hex_up_first_pad(t_cn input, int *counter);
 t_cn			get_hex_up_sec_pad(t_cn input, int *counter);
 
 #endif
-

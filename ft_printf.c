@@ -49,6 +49,29 @@ t_print	choose_action(t_print print)
 	return (saida);
 }
 
+int		ft_printf_parse_two(t_print *print, int *counter, va_list args)
+{
+	if (print->estado == GET_INT)
+		*print = get_int(*print, counter, args);
+	else if (print->estado == GET_UINT)
+		*print = get_uint(*print, counter, args);
+	else if (print->estado == GET_hex)
+		*print = get_hex(*print, counter, args);
+	else if (print->estado == GET_HEX)
+		*print = get_hex_up(*print, counter, args);
+	else if (print->estado == GET_CHAR)
+		*print = get_char(*print, counter, args);
+	else if (print->estado == GET_STR)
+		*print = get_str(*print, counter, args);
+	else if (print->estado == GET_POINTER)
+		*print = get_pointer(*print, counter, args);
+	else if (print->estado == GET_PERCENT)
+		*print = get_percent(*print, counter);
+	else
+		return (-1);
+	return (0);
+}
+
 int		ft_printf_parse(const char *str, int *counter, va_list args)
 {
 	t_print	print;
@@ -65,22 +88,8 @@ int		ft_printf_parse(const char *str, int *counter, va_list args)
 			print = parse_flags(print, args);
 		else if (print.estado == CHOOSE_ACTION)
 			print = choose_action(print);
-		else if (print.estado == GET_INT)
-			print = get_int(print, counter, args);
-		else if (print.estado == GET_UINT)
-			print = get_uint(print, counter, args);
-		else if (print.estado == GET_hex)
-			print = get_hex(print, counter, args);
-		else if (print.estado == GET_HEX)
-			print = get_hex_up(print, counter, args);
-		else if (print.estado == GET_CHAR)
-			print = get_char(print, counter, args);
-		else if (print.estado == GET_STR)
-			print = get_str(print, counter, args);
-		else if (print.estado == GET_POINTER)
-			print = get_pointer(print, counter, args);
-		else if (print.estado == GET_PERCENT)
-			print = get_percent(print, counter/*, args*/);
+		else if (ft_printf_parse_two(&print, counter, args) == 0)
+			print.i = (print.i + 0);
 		else if (print.estado == END)
 			break ;
 		else
